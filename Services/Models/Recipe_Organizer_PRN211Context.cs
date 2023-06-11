@@ -255,7 +255,7 @@ namespace Services.Models
 
                 entity.Property(e => e.UserId).HasColumnName("user_id");
 
-                entity.Property(e => e.Avater)
+                entity.Property(e => e.Avatar)
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("avater");
