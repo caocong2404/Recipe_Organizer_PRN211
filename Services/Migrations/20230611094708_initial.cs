@@ -38,7 +38,7 @@ namespace Services.Migrations
                     last_name = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: true),
                     birthday = table.Column<DateTime>(type: "datetime", nullable: true),
                     status = table.Column<bool>(type: "bit", nullable: true),
-                    avater = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: true)
+                    avatar = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: true)
                 },
                 constraints: table =>
                 {
