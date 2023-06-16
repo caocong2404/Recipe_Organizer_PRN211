@@ -19,25 +19,21 @@ namespace Services.Services
             _context = new Recipe_Organizer_PRN211Context();
             _dbSet = _context.Set<User>();
         }
-
+        public User getUser(string userName, string password)
+        {
+            var user = _dbSet.Where(entity => entity.Username == userName && entity.Password == password).FirstOrDefault();
+            return user;
+        }
         public List<User> getAccountByBrand(string userName)
         {
             var records = _dbSet.Where(entity => entity.Username.Contains(userName)).ToList();
             return records;
         }
 
-        public void Add(User bankAccount)
+        public void Add(User user)
         {
-            var lastRecord = _dbSet.OrderByDescending(record => record.UserId).FirstOrDefault();
-            if (lastRecord != null)
-            {
-               // bankAccount.UserId = autoGenerateID(lastRecord.UserId);
-            }
-            else
-            {
-               // bankAccount.UserId = autoGenerateID("ACCT0000");
-            }
-            _dbSet.Add(bankAccount);
+            
+            _dbSet.Add(user);
             _context.SaveChanges();
         }
 
