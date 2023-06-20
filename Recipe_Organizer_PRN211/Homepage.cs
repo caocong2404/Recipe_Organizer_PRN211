@@ -11,20 +11,20 @@ using Recipe_Organizer_PRN211.Authentication;
 
 namespace Recipe_Organizer_PRN211
 {
-	public partial class Homepage : Form
-	{
-		public Homepage()
-		{
-			InitializeComponent();
-		}
+    public partial class Homepage : Form
+    {
+        public Homepage()
+        {
+            InitializeComponent();
+        }
 
 
-		private void btnRegister_Click(object sender, EventArgs e)
-		{
-			Form register = new Register();
-			register.ShowDialog();
-			this.Hide();
-		}
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            Form register = new Register();
+            register.ShowDialog();
+            this.Hide();
+        }
 
 		private void btnLogin_Click(object sender, EventArgs e)
 		{
@@ -33,4 +33,5 @@ namespace Recipe_Organizer_PRN211
             login.ShowDialog();
 		}
 	}
+
 }
