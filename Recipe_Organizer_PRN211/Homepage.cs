@@ -29,8 +29,8 @@ namespace Recipe_Organizer_PRN211
 		private void btnLogin_Click(object sender, EventArgs e)
 		{
 			Form login = new Login();
-			login.ShowDialog();
-			this.Hide();
+            this.Hide();
+            login.ShowDialog();
 		}
 	}
 }
