@@ -32,8 +32,8 @@ namespace Recipe_Organizer_PRN211.Authentication
 				if (user != null)
 				{
                     Form adminPage = new AdminPage();
-                    adminPage.ShowDialog();
                     this.Hide();
+                    adminPage.ShowDialog();
      //               if (user.Role.Equals("admin"))
 					//{
      //                   Form adminPage = new AdminPage();

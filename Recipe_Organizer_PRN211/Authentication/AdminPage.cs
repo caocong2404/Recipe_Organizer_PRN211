@@ -49,5 +49,10 @@ namespace Recipe_Organizer_PRN211.Authentication
         {
             openChildForm(new UserList());
         }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

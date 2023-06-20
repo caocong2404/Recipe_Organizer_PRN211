@@ -35,17 +35,19 @@
             panel2 = new Panel();
             btnUserList = new Button();
             panel6 = new Panel();
+            btnCategory = new Button();
             panel7 = new Panel();
+            button2 = new Button();
+            button1 = new Button();
             btnLogout = new Button();
-            panel4 = new Panel();
-            btnCategorySetting = new Button();
+            button3 = new Button();
             panel5 = new Panel();
             Pn_body = new Panel();
             flowLayoutPanel1.SuspendLayout();
             panel3.SuspendLayout();
             panel2.SuspendLayout();
+            panel6.SuspendLayout();
             panel7.SuspendLayout();
-            panel4.SuspendLayout();
             SuspendLayout();
             // 
             // label5
@@ -53,11 +55,12 @@
             label5.AutoSize = true;
             label5.Font = new Font("Montserrat Black", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
             label5.ForeColor = Color.FromArgb(192, 0, 0);
-            label5.Location = new Point(593, 9);
+            label5.Location = new Point(35, 468);
             label5.Name = "label5";
             label5.Size = new Size(195, 37);
             label5.TabIndex = 11;
             label5.Text = "Admin page";
+            label5.Click += label5_Click;
             // 
             // flowLayoutPanel1
             // 
@@ -65,9 +68,11 @@
             flowLayoutPanel1.Controls.Add(panel2);
             flowLayoutPanel1.Controls.Add(panel6);
             flowLayoutPanel1.Controls.Add(panel7);
-            flowLayoutPanel1.Location = new Point(12, 12);
+            flowLayoutPanel1.Controls.Add(button3);
+            flowLayoutPanel1.Dock = DockStyle.Left;
+            flowLayoutPanel1.Location = new Point(0, 0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(283, 426);
+            flowLayoutPanel1.Size = new Size(295, 514);
             flowLayoutPanel1.TabIndex = 21;
             // 
             // panel3
@@ -113,18 +118,57 @@
             // 
             // panel6
             // 
+            panel6.Controls.Add(btnCategory);
             panel6.Location = new Point(3, 127);
             panel6.Name = "panel6";
-            panel6.Size = new Size(193, 56);
+            panel6.Size = new Size(280, 65);
             panel6.TabIndex = 2;
+            // 
+            // btnCategory
+            // 
+            btnCategory.Dock = DockStyle.Fill;
+            btnCategory.Font = new Font("Montserrat Black", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCategory.ForeColor = Color.Coral;
+            btnCategory.Location = new Point(0, 0);
+            btnCategory.Name = "btnCategory";
+            btnCategory.Size = new Size(280, 65);
+            btnCategory.TabIndex = 0;
+            btnCategory.Text = "Category settings";
+            btnCategory.UseVisualStyleBackColor = true;
             // 
             // panel7
             // 
+            panel7.Controls.Add(button2);
+            panel7.Controls.Add(button1);
             panel7.Controls.Add(btnLogout);
-            panel7.Location = new Point(3, 189);
+            panel7.Location = new Point(3, 198);
             panel7.Name = "panel7";
             panel7.Size = new Size(280, 56);
             panel7.TabIndex = 2;
+            // 
+            // button2
+            // 
+            button2.Dock = DockStyle.Fill;
+            button2.Font = new Font("Montserrat Black", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button2.ForeColor = Color.Coral;
+            button2.Location = new Point(0, 0);
+            button2.Name = "button2";
+            button2.Size = new Size(280, 56);
+            button2.TabIndex = 3;
+            button2.Text = "Logout";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            button1.Dock = DockStyle.Fill;
+            button1.Font = new Font("Montserrat Black", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.ForeColor = Color.Coral;
+            button1.Location = new Point(0, 0);
+            button1.Name = "button1";
+            button1.Size = new Size(280, 56);
+            button1.TabIndex = 2;
+            button1.Text = "Logout";
+            button1.UseVisualStyleBackColor = true;
             // 
             // btnLogout
             // 
@@ -138,25 +182,17 @@
             btnLogout.Text = "Logout";
             btnLogout.UseVisualStyleBackColor = true;
             // 
-            // panel4
+            // button3
             // 
-            panel4.Controls.Add(btnCategorySetting);
-            panel4.Location = new Point(12, 139);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(283, 56);
-            panel4.TabIndex = 1;
-            // 
-            // btnCategorySetting
-            // 
-            btnCategorySetting.Dock = DockStyle.Fill;
-            btnCategorySetting.Font = new Font("Montserrat Black", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCategorySetting.ForeColor = Color.Coral;
-            btnCategorySetting.Location = new Point(0, 0);
-            btnCategorySetting.Name = "btnCategorySetting";
-            btnCategorySetting.Size = new Size(283, 56);
-            btnCategorySetting.TabIndex = 1;
-            btnCategorySetting.Text = "Category setting";
-            btnCategorySetting.UseVisualStyleBackColor = true;
+            button3.Dock = DockStyle.Fill;
+            button3.Font = new Font("Montserrat Black", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button3.ForeColor = Color.Coral;
+            button3.Location = new Point(3, 260);
+            button3.Name = "button3";
+            button3.Size = new Size(280, 0);
+            button3.TabIndex = 4;
+            button3.Text = "Logout";
+            button3.UseVisualStyleBackColor = true;
             // 
             // panel5
             // 
@@ -167,29 +203,29 @@
             // 
             // Pn_body
             // 
-            Pn_body.Location = new Point(317, 59);
+            Pn_body.Dock = DockStyle.Fill;
+            Pn_body.Location = new Point(295, 0);
             Pn_body.Name = "Pn_body";
-            Pn_body.Size = new Size(471, 379);
+            Pn_body.Size = new Size(673, 514);
             Pn_body.TabIndex = 22;
             // 
             // AdminPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(968, 514);
+            Controls.Add(label5);
             Controls.Add(Pn_body);
-            Controls.Add(panel4);
             Controls.Add(flowLayoutPanel1);
             Controls.Add(panel5);
-            Controls.Add(label5);
             Name = "AdminPage";
             Text = "AdminPage";
             Load += AdminPage_Load;
             flowLayoutPanel1.ResumeLayout(false);
             panel3.ResumeLayout(false);
             panel2.ResumeLayout(false);
+            panel6.ResumeLayout(false);
             panel7.ResumeLayout(false);
-            panel4.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -202,12 +238,14 @@
         private Panel panel2;
         private Panel panel6;
         private Panel panel7;
-        private Panel panel4;
         private Panel panel5;
         private Button btnAdminProfile;
         private Button btnUserList;
         private Button btnLogout;
-        private Button btnCategorySetting;
+        private Button btnCategory;
+        private Button button2;
+        private Button button1;
+        private Button button3;
         private Panel Pn_body;
     }
 }

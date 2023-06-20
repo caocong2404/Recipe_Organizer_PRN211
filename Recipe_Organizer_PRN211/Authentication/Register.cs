@@ -28,6 +28,7 @@ namespace Recipe_Organizer_PRN211.Authentication
 			string userName = txtUsername.Text;
 			string email = txtEmail.Text;
 			string password = txtPassword.Text;
+			string confirmPassword = txtConfirmPassword.Text;
 			if (_userRepository.checkUserExisted(userName))
 			{
                 // login fail
@@ -36,6 +37,12 @@ namespace Recipe_Organizer_PRN211.Authentication
                 txtUsername.Text = "";
 				return;
             } 
+			if (!password.Equals(confirmPassword))
+			{
+                MessageBox.Show("Password and confirm password not match", "Warning", MessageBoxButtons.OK);
+                txtPassword.Text = "";
+				return;
+            }
 			User user = new User();
 			user.Username = userName;
 			user.Email = email;

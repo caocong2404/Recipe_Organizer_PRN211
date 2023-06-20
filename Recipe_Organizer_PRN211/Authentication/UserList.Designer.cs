@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             label5 = new Label();
             dgvListUser = new DataGridView();
             textBox1 = new TextBox();
@@ -50,8 +51,19 @@
             btnUpdate = new Button();
             btnDelete = new Button();
             dateBirthday = new DateTimePicker();
-            comboBox1 = new ComboBox();
+            cbRole = new ComboBox();
+            userBindingSource = new BindingSource(components);
+            userIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            usernameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            passwordDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            roleDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            emailDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            firstNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            lastNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            birthdayDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            statusDataGridViewCheckBoxColumn = new DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvListUser).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)userBindingSource).BeginInit();
             SuspendLayout();
             // 
             // label5
@@ -67,12 +79,16 @@
             // 
             // dgvListUser
             // 
+            dgvListUser.AutoGenerateColumns = false;
             dgvListUser.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvListUser.Columns.AddRange(new DataGridViewColumn[] { userIdDataGridViewTextBoxColumn, usernameDataGridViewTextBoxColumn, passwordDataGridViewTextBoxColumn, roleDataGridViewTextBoxColumn, emailDataGridViewTextBoxColumn, firstNameDataGridViewTextBoxColumn, lastNameDataGridViewTextBoxColumn, birthdayDataGridViewTextBoxColumn, statusDataGridViewCheckBoxColumn });
+            dgvListUser.DataSource = userBindingSource;
             dgvListUser.Location = new Point(12, 86);
             dgvListUser.Name = "dgvListUser";
             dgvListUser.RowTemplate.Height = 25;
-            dgvListUser.Size = new Size(776, 145);
+            dgvListUser.Size = new Size(864, 145);
             dgvListUser.TabIndex = 13;
+            dgvListUser.CellDoubleClick += dgvListUser_CellDoubleClick;
             // 
             // textBox1
             // 
@@ -163,7 +179,6 @@
             // 
             txtUsername.Location = new Point(99, 262);
             txtUsername.Name = "txtUsername";
-            txtUsername.ReadOnly = true;
             txtUsername.Size = new Size(229, 23);
             txtUsername.TabIndex = 23;
             // 
@@ -192,7 +207,6 @@
             // 
             txtPassword.Location = new Point(500, 263);
             txtPassword.Name = "txtPassword";
-            txtPassword.ReadOnly = true;
             txtPassword.Size = new Size(229, 23);
             txtPassword.TabIndex = 28;
             // 
@@ -234,6 +248,7 @@
             btnUpdate.TabIndex = 33;
             btnUpdate.Text = "Update";
             btnUpdate.UseVisualStyleBackColor = true;
+            btnUpdate.Click += btnUpdate_Click;
             // 
             // btnDelete
             // 
@@ -243,6 +258,7 @@
             btnDelete.TabIndex = 34;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
             // dateBirthday
             // 
@@ -251,20 +267,78 @@
             dateBirthday.Size = new Size(229, 23);
             dateBirthday.TabIndex = 35;
             // 
-            // comboBox1
+            // cbRole
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(500, 337);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(229, 23);
-            comboBox1.TabIndex = 36;
+            cbRole.FormattingEnabled = true;
+            cbRole.Location = new Point(500, 337);
+            cbRole.Name = "cbRole";
+            cbRole.Size = new Size(229, 23);
+            cbRole.TabIndex = 36;
+            // 
+            // userBindingSource
+            // 
+            userBindingSource.DataSource = typeof(Services.Models.User);
+            // 
+            // userIdDataGridViewTextBoxColumn
+            // 
+            userIdDataGridViewTextBoxColumn.DataPropertyName = "UserId";
+            userIdDataGridViewTextBoxColumn.HeaderText = "UserId";
+            userIdDataGridViewTextBoxColumn.Name = "userIdDataGridViewTextBoxColumn";
+            // 
+            // usernameDataGridViewTextBoxColumn
+            // 
+            usernameDataGridViewTextBoxColumn.DataPropertyName = "Username";
+            usernameDataGridViewTextBoxColumn.HeaderText = "Username";
+            usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
+            // 
+            // passwordDataGridViewTextBoxColumn
+            // 
+            passwordDataGridViewTextBoxColumn.DataPropertyName = "Password";
+            passwordDataGridViewTextBoxColumn.HeaderText = "Password";
+            passwordDataGridViewTextBoxColumn.Name = "passwordDataGridViewTextBoxColumn";
+            // 
+            // roleDataGridViewTextBoxColumn
+            // 
+            roleDataGridViewTextBoxColumn.DataPropertyName = "Role";
+            roleDataGridViewTextBoxColumn.HeaderText = "Role";
+            roleDataGridViewTextBoxColumn.Name = "roleDataGridViewTextBoxColumn";
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
+            emailDataGridViewTextBoxColumn.HeaderText = "Email";
+            emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            // 
+            // firstNameDataGridViewTextBoxColumn
+            // 
+            firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
+            firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
+            firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            // 
+            // lastNameDataGridViewTextBoxColumn
+            // 
+            lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
+            lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
+            lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            // 
+            // birthdayDataGridViewTextBoxColumn
+            // 
+            birthdayDataGridViewTextBoxColumn.DataPropertyName = "Birthday";
+            birthdayDataGridViewTextBoxColumn.HeaderText = "Birthday";
+            birthdayDataGridViewTextBoxColumn.Name = "birthdayDataGridViewTextBoxColumn";
+            // 
+            // statusDataGridViewCheckBoxColumn
+            // 
+            statusDataGridViewCheckBoxColumn.DataPropertyName = "Status";
+            statusDataGridViewCheckBoxColumn.HeaderText = "Status";
+            statusDataGridViewCheckBoxColumn.Name = "statusDataGridViewCheckBoxColumn";
             // 
             // UserList
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(comboBox1);
+            ClientSize = new Size(800, 461);
+            Controls.Add(cbRole);
             Controls.Add(dateBirthday);
             Controls.Add(btnDelete);
             Controls.Add(btnUpdate);
@@ -290,6 +364,7 @@
             Name = "UserList";
             Text = "UserList";
             ((System.ComponentModel.ISupportInitialize)dgvListUser).EndInit();
+            ((System.ComponentModel.ISupportInitialize)userBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -318,6 +393,16 @@
         private Button btnUpdate;
         private Button btnDelete;
         private DateTimePicker dateBirthday;
-        private ComboBox comboBox1;
+        private ComboBox cbRole;
+        private DataGridViewTextBoxColumn userIdDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn usernameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn passwordDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn roleDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn birthdayDataGridViewTextBoxColumn;
+        private DataGridViewCheckBoxColumn statusDataGridViewCheckBoxColumn;
+        private BindingSource userBindingSource;
     }
 }
