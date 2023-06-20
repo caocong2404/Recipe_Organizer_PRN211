@@ -25,16 +25,25 @@ namespace Recipe_Organizer_PRN211.Authentication
 
 		private void btnRegister_Click(object sender, EventArgs e)
 		{
-			string usetName = txtUsername.Text;
+			string userName = txtUsername.Text;
 			string email = txtEmail.Text;
 			string password = txtPassword.Text;
+			if (_userRepository.checkUserExisted(userName))
+			{
+                // login fail
+                MessageBox.Show("Username is exist", "Warning", MessageBoxButtons.OK);
+                txtPassword.Text = "";
+                txtUsername.Text = "";
+				return;
+            } 
 			User user = new User();
-			user.Username = usetName;
+			user.Username = userName;
 			user.Email = email;
 			user.Password = password;
 			user.Role = "Cook";
 			_userRepository.Add(user);
 			MessageBox.Show("Registration successful.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
 
 			// Hide the current form
 			this.Hide();
