@@ -40,7 +40,9 @@ namespace Recipe_Organizer_PRN211.Authentication
 			user.Username = userName;
 			user.Email = email;
 			user.Password = password;
-			user.Role = "Cook";
+			//1. admin
+			//2. cook
+			user.Role = 2;
 			_userRepository.Add(user);
 			MessageBox.Show("Registration successful.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
