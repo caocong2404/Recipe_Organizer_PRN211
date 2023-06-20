@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Recipe_Organizer_PRN211.Authentication
 {
-    public partial class UserProfile : Form
+    public partial class AdminProfie : Form
     {
-        public UserProfile()
+        public AdminProfie()
         {
             InitializeComponent();
         }

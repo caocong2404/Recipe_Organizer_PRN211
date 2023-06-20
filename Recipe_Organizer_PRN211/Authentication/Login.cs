@@ -28,9 +28,23 @@ namespace Recipe_Organizer_PRN211.Authentication
 			string password = txtPassword.Text;
 			if (checkLogin(userName, password))
 			{
-				Form userProfile = new UserProfile();
-				userProfile.ShowDialog(); 
-				this.Hide();
+				var user = _userRepository.getUser(userName, password);
+				if (user != null)
+				{
+                    Form adminPage = new AdminPage();
+                    adminPage.ShowDialog();
+                    this.Hide();
+     //               if (user.Role.Equals("admin"))
+					//{
+     //                   Form adminPage = new AdminPage();
+     //                   adminPage.ShowDialog();
+     //                   this.Hide();
+     //               } else if (user.Role.Equals("cook")) {
+     //                   Form userProfile = new UserProfile();
+     //                   userProfile.ShowDialog();
+     //                   this.Hide();
+     //               }
+				}
 			}
 		}
 		private bool checkLogin(string username, string password) {

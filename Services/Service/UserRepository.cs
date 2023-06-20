@@ -24,6 +24,12 @@ namespace Services.Services
             var user = _dbSet.Where(entity => entity.Username == userName && entity.Password == password).FirstOrDefault();
             return user;
         }
+
+        public bool checkUserExisted(string userName)
+        {
+            var user = _dbSet.Where(entity => entity.Username == userName).FirstOrDefault();
+            return user != null;
+        }
         public List<User> getAccountByBrand(string userName)
         {
             var records = _dbSet.Where(entity => entity.Username.Contains(userName)).ToList();
