@@ -42,7 +42,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Montserrat Black", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
             label5.ForeColor = Color.FromArgb(192, 0, 0);
-            label5.Location = new Point(49, 25);
+            label5.Location = new Point(49, 27);
             label5.Name = "label5";
             label5.Size = new Size(190, 37);
             label5.TabIndex = 10;

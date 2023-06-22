@@ -31,9 +31,19 @@
             components = new System.ComponentModel.Container();
             label5 = new Label();
             dgvListUser = new DataGridView();
-            textBox1 = new TextBox();
-            button1 = new Button();
-            button2 = new Button();
+            userIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            usernameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            passwordDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            roleDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            emailDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            firstNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            lastNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            birthdayDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            statusDataGridViewCheckBoxColumn = new DataGridViewCheckBoxColumn();
+            userBindingSource = new BindingSource(components);
+            txtSearch = new TextBox();
+            btnSearch = new Button();
+            btnRefresh = new Button();
             label1 = new Label();
             empty = new Label();
             label2 = new Label();
@@ -52,16 +62,6 @@
             btnDelete = new Button();
             dateBirthday = new DateTimePicker();
             cbRole = new ComboBox();
-            userBindingSource = new BindingSource(components);
-            userIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            usernameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            passwordDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            roleDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            emailDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            firstNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            lastNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            birthdayDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            statusDataGridViewCheckBoxColumn = new DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvListUser).BeginInit();
             ((System.ComponentModel.ISupportInitialize)userBindingSource).BeginInit();
             SuspendLayout();
@@ -90,32 +90,92 @@
             dgvListUser.TabIndex = 13;
             dgvListUser.CellDoubleClick += dgvListUser_CellDoubleClick;
             // 
-            // textBox1
+            // userIdDataGridViewTextBoxColumn
             // 
-            textBox1.Location = new Point(12, 46);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(305, 23);
-            textBox1.TabIndex = 14;
+            userIdDataGridViewTextBoxColumn.DataPropertyName = "UserId";
+            userIdDataGridViewTextBoxColumn.HeaderText = "UserId";
+            userIdDataGridViewTextBoxColumn.Name = "userIdDataGridViewTextBoxColumn";
             // 
-            // button1
+            // usernameDataGridViewTextBoxColumn
             // 
-            button1.Font = new Font("Montserrat Medium", 8.249999F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.Location = new Point(323, 46);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 15;
-            button1.Text = "Search";
-            button1.UseVisualStyleBackColor = true;
+            usernameDataGridViewTextBoxColumn.DataPropertyName = "Username";
+            usernameDataGridViewTextBoxColumn.HeaderText = "Username";
+            usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
             // 
-            // button2
+            // passwordDataGridViewTextBoxColumn
             // 
-            button2.Font = new Font("Montserrat Medium", 8.249999F, FontStyle.Bold, GraphicsUnit.Point);
-            button2.Location = new Point(404, 46);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 16;
-            button2.Text = "Refresh";
-            button2.UseVisualStyleBackColor = true;
+            passwordDataGridViewTextBoxColumn.DataPropertyName = "Password";
+            passwordDataGridViewTextBoxColumn.HeaderText = "Password";
+            passwordDataGridViewTextBoxColumn.Name = "passwordDataGridViewTextBoxColumn";
+            // 
+            // roleDataGridViewTextBoxColumn
+            // 
+            roleDataGridViewTextBoxColumn.DataPropertyName = "Role";
+            roleDataGridViewTextBoxColumn.HeaderText = "Role";
+            roleDataGridViewTextBoxColumn.Name = "roleDataGridViewTextBoxColumn";
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
+            emailDataGridViewTextBoxColumn.HeaderText = "Email";
+            emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            // 
+            // firstNameDataGridViewTextBoxColumn
+            // 
+            firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
+            firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
+            firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            // 
+            // lastNameDataGridViewTextBoxColumn
+            // 
+            lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
+            lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
+            lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            // 
+            // birthdayDataGridViewTextBoxColumn
+            // 
+            birthdayDataGridViewTextBoxColumn.DataPropertyName = "Birthday";
+            birthdayDataGridViewTextBoxColumn.HeaderText = "Birthday";
+            birthdayDataGridViewTextBoxColumn.Name = "birthdayDataGridViewTextBoxColumn";
+            // 
+            // statusDataGridViewCheckBoxColumn
+            // 
+            statusDataGridViewCheckBoxColumn.DataPropertyName = "Status";
+            statusDataGridViewCheckBoxColumn.HeaderText = "Status";
+            statusDataGridViewCheckBoxColumn.Name = "statusDataGridViewCheckBoxColumn";
+            // 
+            // userBindingSource
+            // 
+            userBindingSource.DataSource = typeof(Services.Models.User);
+            // 
+            // txtSearch
+            // 
+            txtSearch.Location = new Point(12, 46);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(305, 23);
+            txtSearch.TabIndex = 14;
+            // 
+            // btnSearch
+            // 
+            btnSearch.Font = new Font("Montserrat Medium", 8.249999F, FontStyle.Bold, GraphicsUnit.Point);
+            btnSearch.Location = new Point(323, 46);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(75, 23);
+            btnSearch.TabIndex = 15;
+            btnSearch.Text = "Search";
+            btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
+            // 
+            // btnRefresh
+            // 
+            btnRefresh.Font = new Font("Montserrat Medium", 8.249999F, FontStyle.Bold, GraphicsUnit.Point);
+            btnRefresh.Location = new Point(404, 46);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(75, 23);
+            btnRefresh.TabIndex = 16;
+            btnRefresh.Text = "Refresh";
+            btnRefresh.UseVisualStyleBackColor = true;
+            btnRefresh.Click += btnRefresh_Click;
             // 
             // label1
             // 
@@ -275,64 +335,6 @@
             cbRole.Size = new Size(229, 23);
             cbRole.TabIndex = 36;
             // 
-            // userBindingSource
-            // 
-            userBindingSource.DataSource = typeof(Services.Models.User);
-            // 
-            // userIdDataGridViewTextBoxColumn
-            // 
-            userIdDataGridViewTextBoxColumn.DataPropertyName = "UserId";
-            userIdDataGridViewTextBoxColumn.HeaderText = "UserId";
-            userIdDataGridViewTextBoxColumn.Name = "userIdDataGridViewTextBoxColumn";
-            // 
-            // usernameDataGridViewTextBoxColumn
-            // 
-            usernameDataGridViewTextBoxColumn.DataPropertyName = "Username";
-            usernameDataGridViewTextBoxColumn.HeaderText = "Username";
-            usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
-            // 
-            // passwordDataGridViewTextBoxColumn
-            // 
-            passwordDataGridViewTextBoxColumn.DataPropertyName = "Password";
-            passwordDataGridViewTextBoxColumn.HeaderText = "Password";
-            passwordDataGridViewTextBoxColumn.Name = "passwordDataGridViewTextBoxColumn";
-            // 
-            // roleDataGridViewTextBoxColumn
-            // 
-            roleDataGridViewTextBoxColumn.DataPropertyName = "Role";
-            roleDataGridViewTextBoxColumn.HeaderText = "Role";
-            roleDataGridViewTextBoxColumn.Name = "roleDataGridViewTextBoxColumn";
-            // 
-            // emailDataGridViewTextBoxColumn
-            // 
-            emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
-            emailDataGridViewTextBoxColumn.HeaderText = "Email";
-            emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            // 
-            // firstNameDataGridViewTextBoxColumn
-            // 
-            firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
-            firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
-            firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
-            // 
-            // lastNameDataGridViewTextBoxColumn
-            // 
-            lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
-            lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
-            lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
-            // 
-            // birthdayDataGridViewTextBoxColumn
-            // 
-            birthdayDataGridViewTextBoxColumn.DataPropertyName = "Birthday";
-            birthdayDataGridViewTextBoxColumn.HeaderText = "Birthday";
-            birthdayDataGridViewTextBoxColumn.Name = "birthdayDataGridViewTextBoxColumn";
-            // 
-            // statusDataGridViewCheckBoxColumn
-            // 
-            statusDataGridViewCheckBoxColumn.DataPropertyName = "Status";
-            statusDataGridViewCheckBoxColumn.HeaderText = "Status";
-            statusDataGridViewCheckBoxColumn.Name = "statusDataGridViewCheckBoxColumn";
-            // 
             // UserList
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -356,9 +358,9 @@
             Controls.Add(label2);
             Controls.Add(empty);
             Controls.Add(label1);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(textBox1);
+            Controls.Add(btnRefresh);
+            Controls.Add(btnSearch);
+            Controls.Add(txtSearch);
             Controls.Add(dgvListUser);
             Controls.Add(label5);
             Name = "UserList";
@@ -373,9 +375,9 @@
 
         private Label label5;
         private DataGridView dgvListUser;
-        private TextBox textBox1;
-        private Button button1;
-        private Button button2;
+        private TextBox txtSearch;
+        private Button btnSearch;
+        private Button btnRefresh;
         private Label label1;
         private Label empty;
         private Label label2;

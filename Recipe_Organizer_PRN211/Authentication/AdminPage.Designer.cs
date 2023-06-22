@@ -60,7 +60,6 @@
             label5.Size = new Size(195, 37);
             label5.TabIndex = 11;
             label5.Text = "Admin page";
-            label5.Click += label5_Click;
             // 
             // flowLayoutPanel1
             // 
@@ -72,7 +71,7 @@
             flowLayoutPanel1.Dock = DockStyle.Left;
             flowLayoutPanel1.Location = new Point(0, 0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(295, 514);
+            flowLayoutPanel1.Size = new Size(295, 540);
             flowLayoutPanel1.TabIndex = 21;
             // 
             // panel3
@@ -94,6 +93,7 @@
             btnAdminProfile.TabIndex = 0;
             btnAdminProfile.Text = "Admin profile";
             btnAdminProfile.UseVisualStyleBackColor = true;
+            btnAdminProfile.Click += btnAdminProfile_Click;
             // 
             // panel2
             // 
@@ -206,14 +206,14 @@
             Pn_body.Dock = DockStyle.Fill;
             Pn_body.Location = new Point(295, 0);
             Pn_body.Name = "Pn_body";
-            Pn_body.Size = new Size(673, 514);
+            Pn_body.Size = new Size(862, 540);
             Pn_body.TabIndex = 22;
             // 
             // AdminPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(968, 514);
+            ClientSize = new Size(1157, 540);
             Controls.Add(label5);
             Controls.Add(Pn_body);
             Controls.Add(flowLayoutPanel1);
