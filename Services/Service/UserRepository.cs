@@ -25,6 +25,12 @@ namespace Services.Services
             return user;
         }
 
+        public User getUser(string userName)
+        {
+            var user = _dbSet.Where(entity => entity.Username == userName).FirstOrDefault();
+            return user;
+        }
+
         public bool checkUserExisted(string userName)
         {
             var user = _dbSet.Where(entity => entity.Username == userName).FirstOrDefault();

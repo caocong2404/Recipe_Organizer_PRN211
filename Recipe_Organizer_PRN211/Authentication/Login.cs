@@ -31,19 +31,22 @@ namespace Recipe_Organizer_PRN211.Authentication
 				var user = _userRepository.getUser(userName, password);
 				if (user != null)
 				{
-                    Form adminPage = new AdminPage();
-                    this.Hide();
-                    adminPage.ShowDialog();
-     //               if (user.Role.Equals("admin"))
-					//{
-     //                   Form adminPage = new AdminPage();
-     //                   adminPage.ShowDialog();
-     //                   this.Hide();
-     //               } else if (user.Role.Equals("cook")) {
-     //                   Form userProfile = new UserProfile();
-     //                   userProfile.ShowDialog();
-     //                   this.Hide();
-     //               }
+                    AppContext.CurrentUser = user;
+                    //Form adminPage = new AdminPage();
+                    //this.Hide();
+                    //adminPage.ShowDialog();
+					if (user.Role == 1)
+					{
+						Form adminPage = new AdminPage();
+                        this.Hide();
+                        adminPage.ShowDialog();
+					}
+					else if (user.Role == 2)
+					{
+						Form userProfile = new UserProfile();
+						this.Hide();
+                        userProfile.ShowDialog();
+					}
 				}
 			}
 		}

@@ -47,12 +47,19 @@ namespace Recipe_Organizer_PRN211.Authentication
 
         private void AdminPage_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnAdminProfile_Click(object sender, EventArgs e)
         {
             openChildForm(new AdminProfie());
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            Form login = new Login();
+            this.Hide();
+            login.Show();
         }
     }
 }
