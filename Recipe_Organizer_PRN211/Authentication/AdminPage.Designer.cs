@@ -37,9 +37,9 @@
             panel6 = new Panel();
             btnCategory = new Button();
             panel7 = new Panel();
-            button2 = new Button();
-            button1 = new Button();
             btnLogout = new Button();
+            button1 = new Button();
+            adu = new Button();
             button3 = new Button();
             panel5 = new Panel();
             Pn_body = new Panel();
@@ -60,7 +60,6 @@
             label5.Size = new Size(195, 37);
             label5.TabIndex = 11;
             label5.Text = "Admin page";
-            label5.Click += label5_Click;
             // 
             // flowLayoutPanel1
             // 
@@ -72,7 +71,7 @@
             flowLayoutPanel1.Dock = DockStyle.Left;
             flowLayoutPanel1.Location = new Point(0, 0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(295, 514);
+            flowLayoutPanel1.Size = new Size(295, 540);
             flowLayoutPanel1.TabIndex = 21;
             // 
             // panel3
@@ -94,6 +93,7 @@
             btnAdminProfile.TabIndex = 0;
             btnAdminProfile.Text = "Admin profile";
             btnAdminProfile.UseVisualStyleBackColor = true;
+            btnAdminProfile.Click += btnAdminProfile_Click;
             // 
             // panel2
             // 
@@ -138,25 +138,26 @@
             // 
             // panel7
             // 
-            panel7.Controls.Add(button2);
-            panel7.Controls.Add(button1);
             panel7.Controls.Add(btnLogout);
+            panel7.Controls.Add(button1);
+            panel7.Controls.Add(adu);
             panel7.Location = new Point(3, 198);
             panel7.Name = "panel7";
             panel7.Size = new Size(280, 56);
             panel7.TabIndex = 2;
             // 
-            // button2
+            // btnLogout
             // 
-            button2.Dock = DockStyle.Fill;
-            button2.Font = new Font("Montserrat Black", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            button2.ForeColor = Color.Coral;
-            button2.Location = new Point(0, 0);
-            button2.Name = "button2";
-            button2.Size = new Size(280, 56);
-            button2.TabIndex = 3;
-            button2.Text = "Logout";
-            button2.UseVisualStyleBackColor = true;
+            btnLogout.Dock = DockStyle.Fill;
+            btnLogout.Font = new Font("Montserrat Black", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btnLogout.ForeColor = Color.Coral;
+            btnLogout.Location = new Point(0, 0);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(280, 56);
+            btnLogout.TabIndex = 3;
+            btnLogout.Text = "Logout";
+            btnLogout.UseVisualStyleBackColor = true;
+            btnLogout.Click += btnLogout_Click;
             // 
             // button1
             // 
@@ -170,17 +171,17 @@
             button1.Text = "Logout";
             button1.UseVisualStyleBackColor = true;
             // 
-            // btnLogout
+            // adu
             // 
-            btnLogout.Dock = DockStyle.Fill;
-            btnLogout.Font = new Font("Montserrat Black", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btnLogout.ForeColor = Color.Coral;
-            btnLogout.Location = new Point(0, 0);
-            btnLogout.Name = "btnLogout";
-            btnLogout.Size = new Size(280, 56);
-            btnLogout.TabIndex = 1;
-            btnLogout.Text = "Logout";
-            btnLogout.UseVisualStyleBackColor = true;
+            adu.Dock = DockStyle.Fill;
+            adu.Font = new Font("Montserrat Black", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            adu.ForeColor = Color.Coral;
+            adu.Location = new Point(0, 0);
+            adu.Name = "adu";
+            adu.Size = new Size(280, 56);
+            adu.TabIndex = 1;
+            adu.Text = "Logout";
+            adu.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
@@ -206,14 +207,14 @@
             Pn_body.Dock = DockStyle.Fill;
             Pn_body.Location = new Point(295, 0);
             Pn_body.Name = "Pn_body";
-            Pn_body.Size = new Size(673, 514);
+            Pn_body.Size = new Size(862, 540);
             Pn_body.TabIndex = 22;
             // 
             // AdminPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(968, 514);
+            ClientSize = new Size(1157, 540);
             Controls.Add(label5);
             Controls.Add(Pn_body);
             Controls.Add(flowLayoutPanel1);
@@ -241,9 +242,9 @@
         private Panel panel5;
         private Button btnAdminProfile;
         private Button btnUserList;
-        private Button btnLogout;
+        private Button adu;
         private Button btnCategory;
-        private Button button2;
+        private Button btnLogout;
         private Button button1;
         private Button button3;
         private Panel Pn_body;
