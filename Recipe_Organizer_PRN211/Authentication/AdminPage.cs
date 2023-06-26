@@ -57,7 +57,7 @@ namespace Recipe_Organizer_PRN211.Authentication
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            Form login = new Login();
+            Form login = new Homepage();
             this.Hide();
             login.Show();
         }

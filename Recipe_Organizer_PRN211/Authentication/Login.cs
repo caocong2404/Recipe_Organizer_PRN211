@@ -12,52 +12,53 @@ using System.Windows.Forms;
 
 namespace Recipe_Organizer_PRN211.Authentication
 {
-	public partial class Login : Form
-	{
-		UserRepository _userRepository;
-		public Login()
-		{
-			_userRepository = new UserRepository();
-			InitializeComponent();
-		}
-		
+    public partial class Login : Form
+    {
+        UserRepository _userRepository;
+        public Login()
+        {
+            _userRepository = new UserRepository();
+            InitializeComponent();
+        }
 
-		private void btnLogin_Click(object sender, EventArgs e)
-		{
-			string userName = txtUsername.Text;
-			string password = txtPassword.Text;
-			if (checkLogin(userName, password))
-			{
-				var user = _userRepository.getUser(userName, password);
-				if (user != null)
-				{
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            string userName = txtUsername.Text;
+            string password = txtPassword.Text;
+            if (checkLogin(userName, password))
+            {
+                var user = _userRepository.getUser(userName, password);
+                if (user != null)
+                {
                     AppContext.CurrentUser = user;
                     //Form adminPage = new AdminPage();
                     //this.Hide();
                     //adminPage.ShowDialog();
-					if (user.Role == 1)
-					{
-						Form adminPage = new AdminPage();
+                    if (user.Role == 1)
+                    {
+                        Form adminPage = new AdminPage();
                         this.Hide();
                         adminPage.ShowDialog();
-					}
-					else if (user.Role == 2)
-					{
-						Form userProfile = new UserProfile();
-						this.Hide();
+                    }
+                    else if (user.Role == 2)
+                    {
+                        Form userProfile = new UserProfile();
+                        this.Hide();
                         userProfile.ShowDialog();
-					}
-				}
-			}
-		}
-		private bool checkLogin(string username, string password) {
-			bool result = false;
-			var user = _userRepository.getUser(username, password);
-			if (user != null)
-			{
-				result = true;
-			}
-			return result;
-		}
-	}
+                    }
+                }
+            }
+        }
+        private bool checkLogin(string username, string password)
+        {
+            bool result = false;
+            var user = _userRepository.getUser(username, password);
+            if (user != null)
+            {
+                result = true;
+            }
+            return result;
+        }
+    }
 }
