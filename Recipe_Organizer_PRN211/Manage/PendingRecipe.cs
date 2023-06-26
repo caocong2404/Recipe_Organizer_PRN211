@@ -16,7 +16,7 @@ namespace Recipe_Organizer_PRN211.Manage
     public partial class PendingRecipe : Form
     {
         RecipeRepository _recipeRepository;
-        Recipe recipe;
+        //Recipe recipe;
         public PendingRecipe()
         {
             _recipeRepository = new RecipeRepository();
@@ -31,15 +31,15 @@ namespace Recipe_Organizer_PRN211.Manage
         private void dgvPendingRecipe_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             //chuột đang click ở dòng nào
-            var recipeID = dgvPendingRecipe[0, e.RowIndex].Value;
-            var recipe = _recipeRepository.GetAll().Where(entity => entity.UserId.Equals(recipeID)).FirstOrDefault();
-            this.recipe = recipe;
-            if (recipe == null)
-                return;
+            //var recipeID = dgvPendingRecipe[0, e.RowIndex].Value;
+            //var recipe = _recipeRepository.GetAll().Where(entity => entity.UserId.Equals(recipeID)).FirstOrDefault();
+            //this.recipe = recipe;
+            //if (recipe == null)
+            //    return;
 
-            txtTitle.Text = recipe.Title;
-            txtDescription.Text = recipe.Description;
-            dateCreate.Text = recipe.Date.ToString();
+            //txtTitle.Text = recipe.Title;
+            //txtDescription.Text = recipe.Description;
+            //dateCreate.Text = recipe.Date.ToString();
         }
 
         private void btnApprove_Click(object sender, EventArgs e)
