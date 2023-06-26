@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminPage));
             label5 = new Label();
             flowLayoutPanel1 = new FlowLayoutPanel();
             panel3 = new Panel();
@@ -35,7 +36,7 @@
             panel2 = new Panel();
             btnUserList = new Button();
             panel6 = new Panel();
-            btnCategory = new Button();
+            btnPendingRecipe = new Button();
             panel7 = new Panel();
             btnLogout = new Button();
             button1 = new Button();
@@ -118,23 +119,24 @@
             // 
             // panel6
             // 
-            panel6.Controls.Add(btnCategory);
+            panel6.Controls.Add(btnPendingRecipe);
             panel6.Location = new Point(3, 127);
             panel6.Name = "panel6";
             panel6.Size = new Size(280, 65);
             panel6.TabIndex = 2;
             // 
-            // btnCategory
+            // btnPendingRecipe
             // 
-            btnCategory.Dock = DockStyle.Fill;
-            btnCategory.Font = new Font("Montserrat Black", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCategory.ForeColor = Color.Coral;
-            btnCategory.Location = new Point(0, 0);
-            btnCategory.Name = "btnCategory";
-            btnCategory.Size = new Size(280, 65);
-            btnCategory.TabIndex = 0;
-            btnCategory.Text = "Category settings";
-            btnCategory.UseVisualStyleBackColor = true;
+            btnPendingRecipe.Dock = DockStyle.Fill;
+            btnPendingRecipe.Font = new Font("Montserrat Black", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btnPendingRecipe.ForeColor = Color.Coral;
+            btnPendingRecipe.Location = new Point(0, 0);
+            btnPendingRecipe.Name = "btnPendingRecipe";
+            btnPendingRecipe.Size = new Size(280, 65);
+            btnPendingRecipe.TabIndex = 0;
+            btnPendingRecipe.Text = "Pending recipe";
+            btnPendingRecipe.UseVisualStyleBackColor = true;
+            btnPendingRecipe.Click += btnPendingRecipe_Click;
             // 
             // panel7
             // 
@@ -204,6 +206,7 @@
             // 
             // Pn_body
             // 
+            Pn_body.BackColor = Color.Silver;
             Pn_body.Dock = DockStyle.Fill;
             Pn_body.Location = new Point(295, 0);
             Pn_body.Name = "Pn_body";
@@ -219,7 +222,9 @@
             Controls.Add(Pn_body);
             Controls.Add(flowLayoutPanel1);
             Controls.Add(panel5);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "AdminPage";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "AdminPage";
             Load += AdminPage_Load;
             flowLayoutPanel1.ResumeLayout(false);
@@ -243,7 +248,7 @@
         private Button btnAdminProfile;
         private Button btnUserList;
         private Button adu;
-        private Button btnCategory;
+        private Button btnPendingRecipe;
         private Button btnLogout;
         private Button button1;
         private Button button3;

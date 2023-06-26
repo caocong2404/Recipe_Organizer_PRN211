@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             label5 = new Label();
             label3 = new Label();
             label1 = new Label();
             btnLogin = new Button();
             txtUsername = new TextBox();
             txtPassword = new TextBox();
+            btnBack = new Button();
             SuspendLayout();
             // 
             // label5
@@ -41,7 +43,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Montserrat Black", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
             label5.ForeColor = Color.FromArgb(192, 0, 0);
-            label5.Location = new Point(270, 55);
+            label5.Location = new Point(251, 87);
             label5.Name = "label5";
             label5.Size = new Size(99, 37);
             label5.TabIndex = 10;
@@ -52,7 +54,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Montserrat", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(191, 197);
+            label3.Location = new Point(188, 229);
             label3.Name = "label3";
             label3.Size = new Size(86, 21);
             label3.TabIndex = 17;
@@ -62,7 +64,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Montserrat", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(191, 118);
+            label1.Location = new Point(188, 150);
             label1.Name = "label1";
             label1.Size = new Size(89, 21);
             label1.TabIndex = 15;
@@ -71,7 +73,7 @@
             // btnLogin
             // 
             btnLogin.Font = new Font("Montserrat", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btnLogin.Location = new Point(191, 266);
+            btnLogin.Location = new Point(188, 298);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(245, 36);
             btnLogin.TabIndex = 14;
@@ -81,31 +83,52 @@
             // 
             // txtUsername
             // 
-            txtUsername.Location = new Point(191, 142);
+            txtUsername.Location = new Point(188, 174);
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(245, 23);
             txtUsername.TabIndex = 13;
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(191, 221);
+            txtPassword.Location = new Point(188, 253);
             txtPassword.Name = "txtPassword";
+            txtPassword.PasswordChar = '*';
             txtPassword.Size = new Size(245, 23);
             txtPassword.TabIndex = 12;
             // 
+            // btnBack
+            // 
+            btnBack.BackColor = Color.Transparent;
+            btnBack.BackgroundImage = Properties.Resources.left_arrow;
+            btnBack.BackgroundImageLayout = ImageLayout.Zoom;
+            btnBack.Location = new Point(12, 21);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(91, 38);
+            btnBack.TabIndex = 18;
+            btnBack.TextAlign = ContentAlignment.MiddleLeft;
+            btnBack.UseVisualStyleBackColor = false;
+            btnBack.Click += btnBack_Click;
+            // 
             // Login
             // 
+            AcceptButton = btnLogin;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources.login_background;
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(626, 450);
+            Controls.Add(btnBack);
             Controls.Add(label3);
             Controls.Add(label1);
             Controls.Add(btnLogin);
             Controls.Add(txtUsername);
             Controls.Add(txtPassword);
             Controls.Add(label5);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Login";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";
+            Load += Login_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -118,5 +141,6 @@
         private Button btnLogin;
         private TextBox txtUsername;
         private TextBox txtPassword;
+        private Button btnBack;
     }
 }

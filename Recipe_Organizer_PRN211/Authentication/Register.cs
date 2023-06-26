@@ -26,7 +26,6 @@ namespace Recipe_Organizer_PRN211.Authentication
         private void btnRegister_Click(object sender, EventArgs e)
         {
             string userName = txtUsername.Text;
-            string email = txtEmail.Text;
             string password = txtPassword.Text;
             string confirmPassword = txtConfirmPassword.Text;
             if (_userRepository.checkUserExisted(userName))
@@ -45,13 +44,18 @@ namespace Recipe_Organizer_PRN211.Authentication
             }
             User user = new User();
             user.Username = userName;
-            user.Email = email;
             user.Password = password;
             //1. admin
             //2. cook
             user.Role = 2;
             _userRepository.Add(user);
-            MessageBox.Show("Registration successful.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            //show notify
+            notifyRegister.BalloonTipText = "You are successfulregister account in Recipe Organizer";
+            notifyRegister.BalloonTipTitle = "Register Success";
+            notifyRegister.Icon = SystemIcons.Application;
+            notifyRegister.ShowBalloonTip(1000);
+            //MessageBox.Show("Registration successful.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
             // Hide the current form
@@ -69,6 +73,13 @@ namespace Recipe_Organizer_PRN211.Authentication
         private void Register_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Form loginForm = new Homepage();
+            this.Hide();
+            loginForm.ShowDialog();
         }
     }
 }
