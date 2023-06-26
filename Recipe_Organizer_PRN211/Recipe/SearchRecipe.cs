@@ -16,6 +16,7 @@ namespace Recipe_Organizer_PRN211.Recipe
     public partial class SearchRecipe : Form
     {
         private RecipeRepository _recipeRepository;
+        private RecipeDetail _recipeDetailForm;
         public SearchRecipe()
         {
             InitializeComponent();
@@ -54,11 +55,8 @@ namespace Recipe_Organizer_PRN211.Recipe
         private void dgvRecipeList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             var recipeID = dgvRecipeList[0, e.RowIndex].Value;
-            var recipe = _recipeRepository.GetAll().Where(entity => entity.UserId.Equals(recipeID)).FirstOrDefault();
-            if (recipe != null)
-            {
-                return;
-            }
+            AppContext.RecipeId = (int)recipeID;
+            _recipeDetailForm.ShowDialog();
         }
     }
 }
