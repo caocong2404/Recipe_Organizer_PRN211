@@ -21,7 +21,6 @@ namespace Services.Models
         public virtual DbSet<Feedback> Feedbacks { get; set; } = null!;
         public virtual DbSet<MealPlanning> MealPlannings { get; set; } = null!;
         public virtual DbSet<Recipe> Recipes { get; set; } = null!;
-        public virtual DbSet<Role> Roles { get; set; } = null!;
         public virtual DbSet<Session> Sessions { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
 
@@ -156,23 +155,18 @@ namespace Services.Models
                     .HasColumnType("datetime")
                     .HasColumnName("date");
 
-                entity.Property(e => e.Description)
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("description");
+                entity.Property(e => e.Description).HasColumnName("description");
 
-                entity.Property(e => e.Ingredient)
-                    .HasMaxLength(50)
+                entity.Property(e => e.Img)
                     .IsUnicode(false)
-                    .HasColumnName("ingredient");
+                    .HasColumnName("img");
 
-                entity.Property(e => e.Status)
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("status");
+                entity.Property(e => e.Ingredient).HasColumnName("ingredient");
+
+                entity.Property(e => e.Status).HasColumnName("status");
 
                 entity.Property(e => e.Title)
-                    .HasMaxLength(50)
+                    .HasMaxLength(100)
                     .IsUnicode(false)
                     .HasColumnName("title");
 
@@ -200,18 +194,6 @@ namespace Services.Models
 
                             j.IndexerProperty<int>("UserId").HasColumnName("user_id");
                         });
-            });
-
-            modelBuilder.Entity<Role>(entity =>
-            {
-                entity.ToTable("Role");
-
-                entity.Property(e => e.RoleId).HasColumnName("role_id");
-
-                entity.Property(e => e.RoleName)
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("role_name");
             });
 
             modelBuilder.Entity<Session>(entity =>
@@ -286,7 +268,10 @@ namespace Services.Models
                     .IsUnicode(false)
                     .HasColumnName("password");
 
-                entity.Property(e => e.Role).HasColumnName("role");
+                entity.Property(e => e.Role)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("role");
 
                 entity.Property(e => e.Status).HasColumnName("status");
 
@@ -294,12 +279,6 @@ namespace Services.Models
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("username");
-
-                entity.HasOne(d => d.RoleNavigation)
-                    .WithMany(p => p.Users)
-                    .HasForeignKey(d => d.Role)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_User_Role");
             });
 
             OnModelCreatingPartial(modelBuilder);
