@@ -60,5 +60,10 @@ namespace Recipe_Organizer_PRN211.Authentication
             }
             return result;
         }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

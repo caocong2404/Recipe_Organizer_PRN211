@@ -24,5 +24,11 @@ namespace Services.Service
 			var recipe = _dbSet.Where(entity => entity.RecipeId == recipeId).FirstOrDefault();
 			return recipe;
 		}
-	}
+
+        public List<Recipe> getRecipe(string keyword)
+        {
+            var records = _dbSet.Where(entity => entity.Title.Contains(keyword)).ToList();
+            return records;
+        }
+    }
 }
