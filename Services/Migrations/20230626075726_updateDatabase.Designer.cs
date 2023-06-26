@@ -3,17 +3,19 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Recipe_Organizer_PRN211.Models;
+using Services.Models;
 
 #nullable disable
 
-namespace Recipe_Organizer_PRN211.Migrations
+namespace Services.Migrations
 {
     [DbContext(typeof(Recipe_Organizer_PRN211Context))]
-    partial class Recipe_Organizer_PRN211ContextModelSnapshot : ModelSnapshot
+    [Migration("20230626075726_updateDatabase")]
+    partial class updateDatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -39,7 +41,24 @@ namespace Recipe_Organizer_PRN211.Migrations
                     b.ToTable("Collection", (string)null);
                 });
 
-            modelBuilder.Entity("Recipe_Organizer_PRN211.Models.Category", b =>
+            modelBuilder.Entity("RecipeHasCategory", b =>
+                {
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int")
+                        .HasColumnName("category_id");
+
+                    b.Property<int>("RecipeId")
+                        .HasColumnType("int")
+                        .HasColumnName("recipe_id");
+
+                    b.HasKey("CategoryId", "RecipeId");
+
+                    b.HasIndex("RecipeId");
+
+                    b.ToTable("Recipe_has_Categories", (string)null);
+                });
+
+            modelBuilder.Entity("Services.Models.Category", b =>
                 {
                     b.Property<int>("CategoryId")
                         .ValueGeneratedOnAdd()
@@ -71,7 +90,7 @@ namespace Recipe_Organizer_PRN211.Migrations
                     b.ToTable("Category", (string)null);
                 });
 
-            modelBuilder.Entity("Recipe_Organizer_PRN211.Models.Day", b =>
+            modelBuilder.Entity("Services.Models.Day", b =>
                 {
                     b.Property<int>("DayId")
                         .ValueGeneratedOnAdd()
@@ -98,7 +117,7 @@ namespace Recipe_Organizer_PRN211.Migrations
                     b.ToTable("Day", (string)null);
                 });
 
-            modelBuilder.Entity("Recipe_Organizer_PRN211.Models.Feedback", b =>
+            modelBuilder.Entity("Services.Models.Feedback", b =>
                 {
                     b.Property<int>("FeedbackId")
                         .ValueGeneratedOnAdd()
@@ -144,7 +163,7 @@ namespace Recipe_Organizer_PRN211.Migrations
                     b.ToTable("Feedback", (string)null);
                 });
 
-            modelBuilder.Entity("Recipe_Organizer_PRN211.Models.MealPlanning", b =>
+            modelBuilder.Entity("Services.Models.MealPlanning", b =>
                 {
                     b.Property<int>("PlanId")
                         .ValueGeneratedOnAdd()
@@ -168,7 +187,7 @@ namespace Recipe_Organizer_PRN211.Migrations
                     b.ToTable("MealPlanning", (string)null);
                 });
 
-            modelBuilder.Entity("Recipe_Organizer_PRN211.Models.Recipe", b =>
+            modelBuilder.Entity("Services.Models.Recipe", b =>
                 {
                     b.Property<int>("RecipeId")
                         .ValueGeneratedOnAdd()
@@ -218,7 +237,7 @@ namespace Recipe_Organizer_PRN211.Migrations
                     b.ToTable("Recipe", (string)null);
                 });
 
-            modelBuilder.Entity("Recipe_Organizer_PRN211.Models.Role", b =>
+            modelBuilder.Entity("Services.Models.Role", b =>
                 {
                     b.Property<int>("RoleId")
                         .ValueGeneratedOnAdd()
@@ -239,7 +258,7 @@ namespace Recipe_Organizer_PRN211.Migrations
                     b.ToTable("Role", (string)null);
                 });
 
-            modelBuilder.Entity("Recipe_Organizer_PRN211.Models.Session", b =>
+            modelBuilder.Entity("Services.Models.Session", b =>
                 {
                     b.Property<int>("SessionId")
                         .ValueGeneratedOnAdd()
@@ -266,7 +285,7 @@ namespace Recipe_Organizer_PRN211.Migrations
                     b.ToTable("Session", (string)null);
                 });
 
-            modelBuilder.Entity("Recipe_Organizer_PRN211.Models.User", b =>
+            modelBuilder.Entity("Services.Models.User", b =>
                 {
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
@@ -332,23 +351,6 @@ namespace Recipe_Organizer_PRN211.Migrations
                     b.ToTable("User", (string)null);
                 });
 
-            modelBuilder.Entity("RecipeHasCategory", b =>
-                {
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int")
-                        .HasColumnName("category_id");
-
-                    b.Property<int>("RecipeId")
-                        .HasColumnType("int")
-                        .HasColumnName("recipe_id");
-
-                    b.HasKey("CategoryId", "RecipeId");
-
-                    b.HasIndex("RecipeId");
-
-                    b.ToTable("Recipe_has_Categories", (string)null);
-                });
-
             modelBuilder.Entity("SessionHasRecipe", b =>
                 {
                     b.Property<int>("SessionId")
@@ -368,22 +370,37 @@ namespace Recipe_Organizer_PRN211.Migrations
 
             modelBuilder.Entity("Collection", b =>
                 {
-                    b.HasOne("Recipe_Organizer_PRN211.Models.Recipe", null)
+                    b.HasOne("Services.Models.Recipe", null)
                         .WithMany()
                         .HasForeignKey("RecipeId")
                         .IsRequired()
                         .HasConstraintName("FK_Collection_Recipe");
 
-                    b.HasOne("Recipe_Organizer_PRN211.Models.User", null)
+                    b.HasOne("Services.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .IsRequired()
                         .HasConstraintName("FK_Collection_User");
                 });
 
-            modelBuilder.Entity("Recipe_Organizer_PRN211.Models.Day", b =>
+            modelBuilder.Entity("RecipeHasCategory", b =>
                 {
-                    b.HasOne("Recipe_Organizer_PRN211.Models.MealPlanning", "Plan")
+                    b.HasOne("Services.Models.Category", null)
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .IsRequired()
+                        .HasConstraintName("FK_Recipe_has_Categories_Category");
+
+                    b.HasOne("Services.Models.Recipe", null)
+                        .WithMany()
+                        .HasForeignKey("RecipeId")
+                        .IsRequired()
+                        .HasConstraintName("FK_Recipe_has_Categories_Recipe");
+                });
+
+            modelBuilder.Entity("Services.Models.Day", b =>
+                {
+                    b.HasOne("Services.Models.MealPlanning", "Plan")
                         .WithMany("Days")
                         .HasForeignKey("PlanId")
                         .IsRequired()
@@ -392,9 +409,9 @@ namespace Recipe_Organizer_PRN211.Migrations
                     b.Navigation("Plan");
                 });
 
-            modelBuilder.Entity("Recipe_Organizer_PRN211.Models.Feedback", b =>
+            modelBuilder.Entity("Services.Models.Feedback", b =>
                 {
-                    b.HasOne("Recipe_Organizer_PRN211.Models.User", "User")
+                    b.HasOne("Services.Models.User", "User")
                         .WithMany("Feedbacks")
                         .HasForeignKey("UserId")
                         .IsRequired()
@@ -403,9 +420,9 @@ namespace Recipe_Organizer_PRN211.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Recipe_Organizer_PRN211.Models.MealPlanning", b =>
+            modelBuilder.Entity("Services.Models.MealPlanning", b =>
                 {
-                    b.HasOne("Recipe_Organizer_PRN211.Models.User", "User")
+                    b.HasOne("Services.Models.User", "User")
                         .WithMany("MealPlannings")
                         .HasForeignKey("UserId")
                         .IsRequired()
@@ -414,9 +431,9 @@ namespace Recipe_Organizer_PRN211.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Recipe_Organizer_PRN211.Models.Recipe", b =>
+            modelBuilder.Entity("Services.Models.Recipe", b =>
                 {
-                    b.HasOne("Recipe_Organizer_PRN211.Models.User", "User")
+                    b.HasOne("Services.Models.User", "User")
                         .WithMany("RecipesNavigation")
                         .HasForeignKey("UserId")
                         .IsRequired()
@@ -425,9 +442,9 @@ namespace Recipe_Organizer_PRN211.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Recipe_Organizer_PRN211.Models.Session", b =>
+            modelBuilder.Entity("Services.Models.Session", b =>
                 {
-                    b.HasOne("Recipe_Organizer_PRN211.Models.Day", "Day")
+                    b.HasOne("Services.Models.Day", "Day")
                         .WithMany("Sessions")
                         .HasForeignKey("DayId")
                         .IsRequired()
@@ -436,9 +453,9 @@ namespace Recipe_Organizer_PRN211.Migrations
                     b.Navigation("Day");
                 });
 
-            modelBuilder.Entity("Recipe_Organizer_PRN211.Models.User", b =>
+            modelBuilder.Entity("Services.Models.User", b =>
                 {
-                    b.HasOne("Recipe_Organizer_PRN211.Models.Role", "RoleNavigation")
+                    b.HasOne("Services.Models.Role", "RoleNavigation")
                         .WithMany("Users")
                         .HasForeignKey("Role")
                         .IsRequired()
@@ -447,52 +464,37 @@ namespace Recipe_Organizer_PRN211.Migrations
                     b.Navigation("RoleNavigation");
                 });
 
-            modelBuilder.Entity("RecipeHasCategory", b =>
-                {
-                    b.HasOne("Recipe_Organizer_PRN211.Models.Category", null)
-                        .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .IsRequired()
-                        .HasConstraintName("FK_Recipe_has_Categories_Category");
-
-                    b.HasOne("Recipe_Organizer_PRN211.Models.Recipe", null)
-                        .WithMany()
-                        .HasForeignKey("RecipeId")
-                        .IsRequired()
-                        .HasConstraintName("FK_Recipe_has_Categories_Recipe");
-                });
-
             modelBuilder.Entity("SessionHasRecipe", b =>
                 {
-                    b.HasOne("Recipe_Organizer_PRN211.Models.Recipe", null)
+                    b.HasOne("Services.Models.Recipe", null)
                         .WithMany()
                         .HasForeignKey("RecipeId")
                         .IsRequired()
                         .HasConstraintName("FK_Session_has_Recipe_Recipe");
 
-                    b.HasOne("Recipe_Organizer_PRN211.Models.Session", null)
+                    b.HasOne("Services.Models.Session", null)
                         .WithMany()
                         .HasForeignKey("SessionId")
                         .IsRequired()
                         .HasConstraintName("FK_Session_has_Recipe_Session");
                 });
 
-            modelBuilder.Entity("Recipe_Organizer_PRN211.Models.Day", b =>
+            modelBuilder.Entity("Services.Models.Day", b =>
                 {
                     b.Navigation("Sessions");
                 });
 
-            modelBuilder.Entity("Recipe_Organizer_PRN211.Models.MealPlanning", b =>
+            modelBuilder.Entity("Services.Models.MealPlanning", b =>
                 {
                     b.Navigation("Days");
                 });
 
-            modelBuilder.Entity("Recipe_Organizer_PRN211.Models.Role", b =>
+            modelBuilder.Entity("Services.Models.Role", b =>
                 {
                     b.Navigation("Users");
                 });
 
-            modelBuilder.Entity("Recipe_Organizer_PRN211.Models.User", b =>
+            modelBuilder.Entity("Services.Models.User", b =>
                 {
                     b.Navigation("Feedbacks");
 
