@@ -8,15 +8,27 @@ using System.Threading.Tasks;
 
 namespace Services.Service
 {
-    public class RecipeRepository : RepositoryBase<Recipe>
-    {
-        Recipe_Organizer_PRN211Context _context;
-        DbSet<Recipe> _dbSet;
+	public class RecipeRepository : RepositoryBase<Recipe>
+	{
+		Recipe_Organizer_PRN211Context _context;
+		DbSet<Recipe> _dbSet;
 
-        public RecipeRepository()
+		public RecipeRepository()
+		{
+			_context = new Recipe_Organizer_PRN211Context();
+			_dbSet = _context.Set<Recipe>();
+		}
+
+		public Recipe GetRecipe(int recipeId)
+		{
+			var recipe = _dbSet.Where(entity => entity.RecipeId == recipeId).FirstOrDefault();
+			return recipe;
+		}
+
+        public List<Recipe> getRecipe(string keyword)
         {
-            _context = new Recipe_Organizer_PRN211Context();
-            _dbSet = _context.Set<Recipe>();
+            var records = _dbSet.Where(entity => entity.Title.Contains(keyword)).ToList();
+            return records;
         }
     }
 }
