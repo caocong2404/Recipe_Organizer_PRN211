@@ -40,7 +40,7 @@
             btnLogin.BackColor = Color.Yellow;
             btnLogin.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnLogin.ForeColor = Color.Black;
-            btnLogin.Location = new Point(42, 123);
+            btnLogin.Location = new Point(509, 105);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(130, 48);
             btnLogin.TabIndex = 0;
@@ -54,7 +54,7 @@
             btnRegister.BackColor = Color.Yellow;
             btnRegister.BackgroundImageLayout = ImageLayout.Stretch;
             btnRegister.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btnRegister.Location = new Point(42, 201);
+            btnRegister.Location = new Point(509, 193);
             btnRegister.Name = "btnRegister";
             btnRegister.Size = new Size(130, 48);
             btnRegister.TabIndex = 1;
@@ -69,7 +69,7 @@
             label5.Cursor = Cursors.SizeNWSE;
             label5.Font = new Font("Montserrat ExtraBold", 35.9999962F, FontStyle.Bold, GraphicsUnit.Point);
             label5.ForeColor = Color.FromArgb(192, 0, 0);
-            label5.Location = new Point(19, 12);
+            label5.Location = new Point(167, 9);
             label5.Name = "label5";
             label5.Size = new Size(472, 68);
             label5.TabIndex = 12;
