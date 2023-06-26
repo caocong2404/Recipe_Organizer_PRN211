@@ -183,5 +183,10 @@ namespace Recipe_Organizer_PRN211.Authentication
                 DataSource = listUser
             };
         }
+
+        private void dgvListUser_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

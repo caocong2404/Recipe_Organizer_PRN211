@@ -61,5 +61,10 @@ namespace Recipe_Organizer_PRN211.Authentication
             this.Hide();
             login.Show();
         }
+
+        private void btnPendingRecipe_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

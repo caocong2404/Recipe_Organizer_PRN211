@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserProfile));
             label5 = new Label();
             txtWelcome = new Label();
             dateBirthday = new DateTimePicker();
@@ -43,6 +44,8 @@
             empty = new Label();
             btnChangePassword = new Button();
             btnLogout = new Button();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // label5
@@ -68,7 +71,7 @@
             // 
             // dateBirthday
             // 
-            dateBirthday.Location = new Point(129, 251);
+            dateBirthday.Location = new Point(136, 294);
             dateBirthday.Name = "dateBirthday";
             dateBirthday.Size = new Size(229, 23);
             dateBirthday.TabIndex = 52;
@@ -76,7 +79,7 @@
             // btnUpdate
             // 
             btnUpdate.Font = new Font("Montserrat", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btnUpdate.Location = new Point(423, 174);
+            btnUpdate.Location = new Point(430, 217);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(325, 45);
             btnUpdate.TabIndex = 50;
@@ -86,28 +89,28 @@
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(129, 211);
+            txtEmail.Location = new Point(136, 254);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(229, 23);
             txtEmail.TabIndex = 45;
             // 
             // txtLastname
             // 
-            txtLastname.Location = new Point(524, 132);
+            txtLastname.Location = new Point(531, 175);
             txtLastname.Name = "txtLastname";
-            txtLastname.Size = new Size(229, 23);
+            txtLastname.Size = new Size(222, 23);
             txtLastname.TabIndex = 44;
             // 
             // txtFirstname
             // 
-            txtFirstname.Location = new Point(129, 174);
+            txtFirstname.Location = new Point(136, 217);
             txtFirstname.Name = "txtFirstname";
             txtFirstname.Size = new Size(229, 23);
             txtFirstname.TabIndex = 43;
             // 
             // txtUsername
             // 
-            txtUsername.Location = new Point(129, 137);
+            txtUsername.Location = new Point(136, 180);
             txtUsername.Name = "txtUsername";
             txtUsername.ReadOnly = true;
             txtUsername.Size = new Size(229, 23);
@@ -117,7 +120,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Montserrat SemiBold", 9.749999F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(42, 250);
+            label6.Location = new Point(49, 293);
             label6.Name = "label6";
             label6.Size = new Size(67, 18);
             label6.TabIndex = 41;
@@ -127,7 +130,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Montserrat SemiBold", 9.749999F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(42, 212);
+            label4.Location = new Point(49, 255);
             label4.Name = "label4";
             label4.Size = new Size(47, 18);
             label4.TabIndex = 40;
@@ -137,7 +140,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Montserrat SemiBold", 9.749999F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(423, 137);
+            label3.Location = new Point(430, 180);
             label3.Name = "label3";
             label3.Size = new Size(80, 18);
             label3.TabIndex = 39;
@@ -147,7 +150,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Montserrat SemiBold", 9.749999F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(42, 179);
+            label2.Location = new Point(49, 222);
             label2.Name = "label2";
             label2.Size = new Size(81, 18);
             label2.TabIndex = 38;
@@ -157,7 +160,7 @@
             // 
             empty.AutoSize = true;
             empty.Font = new Font("Montserrat SemiBold", 9.749999F, FontStyle.Bold, GraphicsUnit.Point);
-            empty.Location = new Point(42, 137);
+            empty.Location = new Point(49, 180);
             empty.Name = "empty";
             empty.Size = new Size(81, 18);
             empty.TabIndex = 37;
@@ -166,7 +169,7 @@
             // btnChangePassword
             // 
             btnChangePassword.Font = new Font("Montserrat", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btnChangePassword.Location = new Point(423, 236);
+            btnChangePassword.Location = new Point(430, 279);
             btnChangePassword.Name = "btnChangePassword";
             btnChangePassword.Size = new Size(325, 45);
             btnChangePassword.TabIndex = 53;
@@ -185,11 +188,23 @@
             btnLogout.UseVisualStyleBackColor = true;
             btnLogout.Click += btnLogout_Click;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = SystemColors.ActiveCaption;
+            pictureBox1.Image = Properties.Resources.chef_avt_default;
+            pictureBox1.Location = new Point(232, 18);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(133, 123);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 55;
+            pictureBox1.TabStop = false;
+            // 
             // UserProfile
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(799, 373);
+            Controls.Add(pictureBox1);
             Controls.Add(btnLogout);
             Controls.Add(btnChangePassword);
             Controls.Add(dateBirthday);
@@ -205,9 +220,12 @@
             Controls.Add(empty);
             Controls.Add(txtWelcome);
             Controls.Add(label5);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "UserProfile";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "UserProfile";
             Load += UserProfile_Load;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -229,5 +247,6 @@
         private Label empty;
         private Button btnChangePassword;
         private Button btnLogout;
+        private PictureBox pictureBox1;
     }
 }

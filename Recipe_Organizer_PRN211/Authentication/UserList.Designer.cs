@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserList));
             label5 = new Label();
             dgvListUser = new DataGridView();
             userIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -86,8 +87,9 @@
             dgvListUser.Location = new Point(12, 86);
             dgvListUser.Name = "dgvListUser";
             dgvListUser.RowTemplate.Height = 25;
-            dgvListUser.Size = new Size(864, 145);
+            dgvListUser.Size = new Size(776, 145);
             dgvListUser.TabIndex = 13;
+            dgvListUser.CellContentClick += dgvListUser_CellContentClick;
             dgvListUser.CellDoubleClick += dgvListUser_CellDoubleClick;
             // 
             // userIdDataGridViewTextBoxColumn
@@ -152,7 +154,7 @@
             // 
             txtSearch.Location = new Point(12, 46);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(305, 23);
+            txtSearch.Size = new Size(299, 23);
             txtSearch.TabIndex = 14;
             // 
             // btnSearch
@@ -160,7 +162,7 @@
             btnSearch.Font = new Font("Montserrat Medium", 8.249999F, FontStyle.Bold, GraphicsUnit.Point);
             btnSearch.Location = new Point(323, 46);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(75, 23);
+            btnSearch.Size = new Size(69, 23);
             btnSearch.TabIndex = 15;
             btnSearch.Text = "Search";
             btnSearch.UseVisualStyleBackColor = true;
@@ -171,7 +173,7 @@
             btnRefresh.Font = new Font("Montserrat Medium", 8.249999F, FontStyle.Bold, GraphicsUnit.Point);
             btnRefresh.Location = new Point(404, 46);
             btnRefresh.Name = "btnRefresh";
-            btnRefresh.Size = new Size(75, 23);
+            btnRefresh.Size = new Size(69, 23);
             btnRefresh.TabIndex = 16;
             btnRefresh.Text = "Refresh";
             btnRefresh.UseVisualStyleBackColor = true;
@@ -239,35 +241,35 @@
             // 
             txtUsername.Location = new Point(99, 262);
             txtUsername.Name = "txtUsername";
-            txtUsername.Size = new Size(229, 23);
+            txtUsername.Size = new Size(223, 23);
             txtUsername.TabIndex = 23;
             // 
             // txtFirstname
             // 
             txtFirstname.Location = new Point(99, 299);
             txtFirstname.Name = "txtFirstname";
-            txtFirstname.Size = new Size(229, 23);
+            txtFirstname.Size = new Size(223, 23);
             txtFirstname.TabIndex = 24;
             // 
             // txtLastname
             // 
             txtLastname.Location = new Point(500, 295);
             txtLastname.Name = "txtLastname";
-            txtLastname.Size = new Size(229, 23);
+            txtLastname.Size = new Size(223, 23);
             txtLastname.TabIndex = 25;
             // 
             // txtEmail
             // 
             txtEmail.Location = new Point(99, 336);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(229, 23);
+            txtEmail.Size = new Size(223, 23);
             txtEmail.TabIndex = 26;
             // 
             // txtPassword
             // 
             txtPassword.Location = new Point(500, 263);
             txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(229, 23);
+            txtPassword.Size = new Size(223, 23);
             txtPassword.TabIndex = 28;
             // 
             // label7
@@ -294,7 +296,7 @@
             // 
             btnCreate.Location = new Point(500, 375);
             btnCreate.Name = "btnCreate";
-            btnCreate.Size = new Size(75, 29);
+            btnCreate.Size = new Size(69, 29);
             btnCreate.TabIndex = 32;
             btnCreate.Text = "Create";
             btnCreate.UseVisualStyleBackColor = true;
@@ -304,7 +306,7 @@
             // 
             btnUpdate.Location = new Point(581, 375);
             btnUpdate.Name = "btnUpdate";
-            btnUpdate.Size = new Size(75, 29);
+            btnUpdate.Size = new Size(69, 29);
             btnUpdate.TabIndex = 33;
             btnUpdate.Text = "Update";
             btnUpdate.UseVisualStyleBackColor = true;
@@ -314,7 +316,7 @@
             // 
             btnDelete.Location = new Point(662, 375);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(75, 29);
+            btnDelete.Size = new Size(69, 29);
             btnDelete.TabIndex = 34;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = true;
@@ -324,7 +326,7 @@
             // 
             dateBirthday.Location = new Point(99, 376);
             dateBirthday.Name = "dateBirthday";
-            dateBirthday.Size = new Size(229, 23);
+            dateBirthday.Size = new Size(223, 23);
             dateBirthday.TabIndex = 35;
             // 
             // cbRole
@@ -332,14 +334,14 @@
             cbRole.FormattingEnabled = true;
             cbRole.Location = new Point(500, 337);
             cbRole.Name = "cbRole";
-            cbRole.Size = new Size(229, 23);
+            cbRole.Size = new Size(223, 23);
             cbRole.TabIndex = 36;
             // 
             // UserList
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 461);
+            ClientSize = new Size(805, 461);
             Controls.Add(cbRole);
             Controls.Add(dateBirthday);
             Controls.Add(btnDelete);
@@ -363,6 +365,7 @@
             Controls.Add(txtSearch);
             Controls.Add(dgvListUser);
             Controls.Add(label5);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "UserList";
             Text = "UserList";
             ((System.ComponentModel.ISupportInitialize)dgvListUser).EndInit();

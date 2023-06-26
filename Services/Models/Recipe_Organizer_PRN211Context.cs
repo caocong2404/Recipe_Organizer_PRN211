@@ -164,7 +164,10 @@ namespace Services.Models
 
                 entity.Property(e => e.Ingredient).HasColumnName("ingredient");
 
-                entity.Property(e => e.Status).HasColumnName("status");
+                entity.Property(e => e.Status)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("status");
 
                 entity.Property(e => e.Title)
                     .HasMaxLength(100)
