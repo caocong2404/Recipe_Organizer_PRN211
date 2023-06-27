@@ -65,7 +65,9 @@ namespace Recipe_Organizer_PRN211.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap _2707banhxeo {
             get {
+
                 object obj = ResourceManager.GetObject("_2707banhxeo", resourceCulture);
+
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
