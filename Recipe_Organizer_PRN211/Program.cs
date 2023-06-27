@@ -1,3 +1,5 @@
+using Recipe_Organizer_PRN211.Authentication;
+
 namespace Recipe_Organizer_PRN211
 {
     internal static class Program
@@ -11,7 +13,7 @@ namespace Recipe_Organizer_PRN211
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Homepage());
+            Application.Run(new AddRecipe());
             //Application.Run(new Recipe.RecipeDetail());
         }
     }
