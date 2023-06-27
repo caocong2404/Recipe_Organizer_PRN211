@@ -159,7 +159,7 @@ namespace Services.Models
                 entity.Property(e => e.Description).HasColumnName("description");
 
                 entity.Property(e => e.Img)
-                    .IsUnicode(false)
+                    .HasColumnType("text")
                     .HasColumnName("img");
 
                 entity.Property(e => e.Ingredient).HasColumnName("ingredient");
@@ -256,8 +256,7 @@ namespace Services.Models
                 entity.Property(e => e.UserId).HasColumnName("user_id");
 
                 entity.Property(e => e.Avatar)
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
+                    .HasColumnType("text")
                     .HasColumnName("avatar");
 
                 entity.Property(e => e.Birthday)
