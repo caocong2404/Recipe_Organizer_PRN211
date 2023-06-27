@@ -60,12 +60,14 @@ namespace Recipe_Organizer_PRN211.Authentication
             }
             return result;
         }
+
         
         private void btnBack_Click(object sender, EventArgs e)
         {
             Form loginForm = new Homepage();
             this.Hide();
             loginForm.ShowDialog();
+
         }
     }
 }
