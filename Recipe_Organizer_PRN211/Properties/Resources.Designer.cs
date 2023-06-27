@@ -63,6 +63,7 @@ namespace Recipe_Organizer_PRN211.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+
         internal static System.Drawing.Bitmap _404 {
             get {
                 object obj = ResourceManager.GetObject("404", resourceCulture);
@@ -86,6 +87,7 @@ namespace Recipe_Organizer_PRN211.Properties {
         internal static System.Drawing.Bitmap access_denied {
             get {
                 object obj = ResourceManager.GetObject("access-denied", resourceCulture);
+
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
