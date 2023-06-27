@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChangePassword));
             label3 = new Label();
             btnChangePassword = new Button();
             txtOldPassword = new TextBox();
@@ -100,7 +101,9 @@
             // 
             // btnUserProfile
             // 
+            btnUserProfile.BackgroundImageLayout = ImageLayout.Stretch;
             btnUserProfile.Font = new Font("Montserrat Medium", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btnUserProfile.ForeColor = Color.Black;
             btnUserProfile.Location = new Point(12, 12);
             btnUserProfile.Name = "btnUserProfile";
             btnUserProfile.Size = new Size(151, 51);
@@ -141,7 +144,9 @@
             Controls.Add(btnChangePassword);
             Controls.Add(txtOldPassword);
             Controls.Add(label5);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ChangePassword";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "ChangePassword";
             ResumeLayout(false);
             PerformLayout();

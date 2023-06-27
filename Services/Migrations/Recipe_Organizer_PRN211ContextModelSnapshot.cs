@@ -204,8 +204,7 @@ namespace Services.Migrations
                         .HasColumnName("description");
 
                     b.Property<string>("Img")
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("img");
 
                     b.Property<string>("Ingredient")
@@ -213,8 +212,11 @@ namespace Services.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("ingredient");
 
-                    b.Property<bool>("Status")
-                        .HasColumnType("bit")
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(50)")
                         .HasColumnName("status");
 
                     b.Property<string>("Title")
@@ -293,9 +295,7 @@ namespace Services.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"), 1L, 1);
 
                     b.Property<string>("Avatar")
-                        .HasMaxLength(50)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(50)")
+                        .HasColumnType("text")
                         .HasColumnName("avatar");
 
                     b.Property<DateTime?>("Birthday")
