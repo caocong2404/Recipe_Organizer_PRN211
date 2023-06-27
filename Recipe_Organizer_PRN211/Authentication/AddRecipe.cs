@@ -34,7 +34,7 @@ namespace Recipe_Organizer_PRN211.Authentication
             recipe.Ingredient = txtIngredient.Text.ToString();
             txtImport.Text = ImageToBase64(url);
             recipe.Img = txtImport.Text.ToString();
-            recipe.UserId = 1;
+            recipe.UserId = "n ";
             recipe.Status = true;
             recipe.Date = DateTime.Now;
            // txtImport.Text = ImageToBase64(url);
