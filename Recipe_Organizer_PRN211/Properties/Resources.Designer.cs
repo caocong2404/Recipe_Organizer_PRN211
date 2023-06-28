@@ -283,6 +283,16 @@ namespace Recipe_Organizer_PRN211.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap love_yourself {
+            get {
+                object obj = ResourceManager.GetObject("love-yourself", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap raspberry_good_fruit_plant_4k_um_1600x900 {
             get {
                 object obj = ResourceManager.GetObject("raspberry-good-fruit-plant-4k-um-1600x900", resourceCulture);
