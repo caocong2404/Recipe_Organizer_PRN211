@@ -39,8 +39,8 @@ namespace Recipe_Organizer_PRN211.Authentication
             recipe.Status = "Pending";
 
             recipe.Date = DateTime.Now;
-           // txtImport.Text = ImageToBase64(url);
-              _recipeRepository.Add(recipe);
+            // txtImport.Text = ImageToBase64(url);
+            _recipeRepository.Add(recipe);
 
 
         }
@@ -63,7 +63,7 @@ namespace Recipe_Organizer_PRN211.Authentication
 
                     url = dlg.FileName;
 
-                  //  txtImport.Text = ImageToBase64(url);
+                    //  txtImport.Text = ImageToBase64(url);
 
                 }
             }
