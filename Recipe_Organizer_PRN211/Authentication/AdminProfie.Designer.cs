@@ -47,8 +47,10 @@
             menuStrip1 = new MenuStrip();
             editToolStripMenuItem = new ToolStripMenuItem();
             formatToolStripMenuItem = new ToolStripMenuItem();
+            pictureBox2 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // label5
@@ -64,7 +66,7 @@
             // 
             // dateBirthday
             // 
-            dateBirthday.Location = new Point(143, 355);
+            dateBirthday.Location = new Point(143, 391);
             dateBirthday.Name = "dateBirthday";
             dateBirthday.Size = new Size(229, 23);
             dateBirthday.TabIndex = 67;
@@ -72,7 +74,7 @@
             // btnUpdate
             // 
             btnUpdate.Font = new Font("Montserrat", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btnUpdate.Location = new Point(437, 278);
+            btnUpdate.Location = new Point(437, 314);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(325, 45);
             btnUpdate.TabIndex = 66;
@@ -82,28 +84,28 @@
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(143, 315);
+            txtEmail.Location = new Point(143, 351);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(229, 23);
             txtEmail.TabIndex = 65;
             // 
             // txtLastname
             // 
-            txtLastname.Location = new Point(538, 236);
+            txtLastname.Location = new Point(538, 272);
             txtLastname.Name = "txtLastname";
-            txtLastname.Size = new Size(229, 23);
+            txtLastname.Size = new Size(223, 23);
             txtLastname.TabIndex = 64;
             // 
             // txtFirstname
             // 
-            txtFirstname.Location = new Point(143, 278);
+            txtFirstname.Location = new Point(143, 314);
             txtFirstname.Name = "txtFirstname";
             txtFirstname.Size = new Size(229, 23);
             txtFirstname.TabIndex = 63;
             // 
             // txtUsername
             // 
-            txtUsername.Location = new Point(143, 241);
+            txtUsername.Location = new Point(143, 277);
             txtUsername.Name = "txtUsername";
             txtUsername.ReadOnly = true;
             txtUsername.Size = new Size(229, 23);
@@ -113,7 +115,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Montserrat SemiBold", 9.749999F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(56, 354);
+            label6.Location = new Point(56, 390);
             label6.Name = "label6";
             label6.Size = new Size(67, 18);
             label6.TabIndex = 61;
@@ -123,7 +125,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Montserrat SemiBold", 9.749999F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(56, 316);
+            label4.Location = new Point(56, 352);
             label4.Name = "label4";
             label4.Size = new Size(47, 18);
             label4.TabIndex = 60;
@@ -133,7 +135,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Montserrat SemiBold", 9.749999F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(437, 241);
+            label3.Location = new Point(437, 277);
             label3.Name = "label3";
             label3.Size = new Size(80, 18);
             label3.TabIndex = 59;
@@ -143,7 +145,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Montserrat SemiBold", 9.749999F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(56, 283);
+            label2.Location = new Point(56, 319);
             label2.Name = "label2";
             label2.Size = new Size(81, 18);
             label2.TabIndex = 58;
@@ -153,7 +155,7 @@
             // 
             empty.AutoSize = true;
             empty.Font = new Font("Montserrat SemiBold", 9.749999F, FontStyle.Bold, GraphicsUnit.Point);
-            empty.Location = new Point(56, 241);
+            empty.Location = new Point(56, 277);
             empty.Name = "empty";
             empty.Size = new Size(81, 18);
             empty.TabIndex = 57;
@@ -172,7 +174,7 @@
             // btnChangePassword
             // 
             btnChangePassword.Font = new Font("Montserrat", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btnChangePassword.Location = new Point(437, 340);
+            btnChangePassword.Location = new Point(437, 376);
             btnChangePassword.Name = "btnChangePassword";
             btnChangePassword.Size = new Size(325, 45);
             btnChangePassword.TabIndex = 68;
@@ -184,7 +186,7 @@
             // 
             pictureBox1.BackColor = Color.FromArgb(255, 255, 128);
             pictureBox1.Image = Properties.Resources.chef_avt_default;
-            pictureBox1.Location = new Point(143, 67);
+            pictureBox1.Location = new Point(143, 103);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(140, 138);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -210,14 +212,25 @@
             // formatToolStripMenuItem
             // 
             formatToolStripMenuItem.Name = "formatToolStripMenuItem";
-            formatToolStripMenuItem.Size = new Size(180, 22);
+            formatToolStripMenuItem.Size = new Size(112, 22);
             formatToolStripMenuItem.Text = "Format";
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = Properties.Resources.love_yourself;
+            pictureBox2.Location = new Point(538, 101);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(212, 140);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 71;
+            pictureBox2.TabStop = false;
             // 
             // AdminProfie
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
             Controls.Add(btnChangePassword);
             Controls.Add(dateBirthday);
@@ -243,6 +256,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -267,5 +281,6 @@
         private MenuStrip menuStrip1;
         private ToolStripMenuItem editToolStripMenuItem;
         private ToolStripMenuItem formatToolStripMenuItem;
+        private PictureBox pictureBox2;
     }
 }

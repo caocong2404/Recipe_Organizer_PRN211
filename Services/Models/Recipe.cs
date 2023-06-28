@@ -17,9 +17,9 @@ namespace Services.Models
         public string Title { get; set; } = null!;
         public string Description { get; set; } = null!;
         public string Ingredient { get; set; } = null!;
-        public string? Img { get; set; }
         public DateTime Date { get; set; }
-        public string Status { get; set; }
+        public string Status { get; set; } = null!;
+        public string? Img { get; set; }
 
         public virtual User User { get; set; } = null!;
 
