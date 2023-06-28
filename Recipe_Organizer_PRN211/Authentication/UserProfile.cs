@@ -1,4 +1,5 @@
-﻿using Services.Models;
+﻿using Recipe_Organizer_PRN211.Recipe;
+using Services.Models;
 using Services.Services;
 using System;
 using System.Collections.Generic;
@@ -92,6 +93,13 @@ namespace Recipe_Organizer_PRN211.Authentication
             Form login = new Homepage();
             this.Hide();
             login.Show();
+        }
+
+        private void btnLogo_Click(object sender, EventArgs e)
+        {
+            Form listRecipe = new SearchRecipe();
+            this.Hide();
+            listRecipe.ShowDialog();
         }
     }
 }
