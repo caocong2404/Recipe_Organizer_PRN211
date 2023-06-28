@@ -13,50 +13,108 @@ using System.Windows.Forms;
 
 namespace Recipe_Organizer_PRN211.Recipe
 {
-    public partial class SearchRecipe : Form
-    {
-        private RecipeRepository _recipeRepository;
-        private RecipeDetail _recipeDetailForm;
-        public SearchRecipe()
-        {
-            InitializeComponent();
-            _recipeRepository = new RecipeRepository();
-            var recipeList = _recipeRepository.GetAll();
-            dgvRecipeList.DataSource = new BindingSource()
-            {
-                DataSource = recipeList
-            };
+	public partial class SearchRecipe : Form
+	{
+		private RecipeRepository _recipeRepository;
+		private RecipeDetail _recipeDetailForm;
+		public SearchRecipe()
+		{
+			InitializeComponent();
+			_recipeRepository = new RecipeRepository();
+			RefreshRecipeList();
+		}
 
-        }
+		private void btnSearch_Click(object sender, EventArgs e)
+		{
+			string searchValue = txtSearch.Text;
+			if (searchValue.Length > 0)
+			{
+				var recipeList = _recipeRepository.getRecipe(searchValue);
 
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            string searchValue = txtSearch.Text;
-            if (searchValue.Length > 0)
-            {
-                var recipeList = _recipeRepository.getRecipe(searchValue);
+				// Update DataGridView
+				//dgvRecipeList.DataSource = new BindingSource()
+				//{
+				//	DataSource = recipeList.Select(r => new
+				//	{
+				//		r.RecipeId,
+				//		r.Title,
+				//		r.Date
+				//	})
+				//};
 
-                dgvRecipeList.DataSource = new BindingSource()
-                {
-                    DataSource = recipeList
-                };
-            }
-        }
+				// Update ListBox
+				lstRecipes.Items.Clear();
+				foreach (var recipe in recipeList)
+				{
+					lstRecipes.Items.Add($"{recipe.RecipeId} - {recipe.Title} - {recipe.Date}");
+				}
+			}
+		}
 
-        private void btnRefresh_Click(object sender, EventArgs e)
-        {
-            var recipeList = _recipeRepository.GetAll();
-            dgvRecipeList.DataSource = new BindingSource()
-            {
-                DataSource = recipeList
-            };
-        }
+		private void btnRefresh_Click(object sender, EventArgs e)
+		{
+			RefreshRecipeList();
 
-        private void dgvRecipeList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            var recipeID = dgvRecipeList[0, e.RowIndex].Value;
-            AppContext.RecipeId = (int)recipeID;
-            _recipeDetailForm.ShowDialog();
-        }
-    }
+		}
+
+		private void RefreshRecipeList()
+		{
+			var recipeList = _recipeRepository.GetAll();
+			//dgvRecipeList.DataSource = new BindingSource()
+			//{
+			//	DataSource = recipeList.Select(r => new
+			//	{
+			//		r.RecipeId,
+			//		r.Title,
+			//		r.Date
+			//	})
+			//};
+
+			lstRecipes.Items.Clear();
+			foreach (var recipe in recipeList)
+			{
+				lstRecipes.Items.Add($"{recipe.RecipeId} - {recipe.Title} - Update on {recipe.Date}");
+			}
+
+		}
+
+		//private void dgvRecipeList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+		//{
+		//	if (e.RowIndex >= 0 && e.RowIndex < dgvRecipeList.Rows.Count)
+		//	{
+		//		var recipeID = dgvRecipeList[0, e.RowIndex].Value;
+		//		if (recipeID != null && int.TryParse(recipeID.ToString(), out int recipeId))
+		//		{
+		//			AppContext.RecipeId = recipeId;
+		//			this.Hide();
+		//			RecipeDetail recipeDetailForm = new RecipeDetail();
+		//			recipeDetailForm.ShowDialog();
+		//		}
+		//		else
+		//		{
+		//			MessageBox.Show("Sorry, Recipe is not found", "Message", MessageBoxButtons.OK);
+		//		}
+		//	}
+		//}
+
+		private void lstRecipes_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			var selectedRecipe = lstRecipes.SelectedItem?.ToString();
+			if (selectedRecipe != null)
+			{
+				int recipeId;
+				if (int.TryParse(selectedRecipe.Split('-')[0].Trim(), out recipeId))
+				{
+					AppContext.RecipeId = recipeId;
+					this.Hide();
+					RecipeDetail recipeDetailForm = new RecipeDetail();
+					recipeDetailForm.ShowDialog();
+				}
+				else
+				{
+					MessageBox.Show("Sorry, Recipe is not found", "Message", MessageBoxButtons.OK);
+				}
+			}
+		}
+	}
 }
