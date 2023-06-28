@@ -50,6 +50,8 @@
             // 
             groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             groupBox1.AutoSize = true;
+            groupBox1.BackColor = SystemColors.ButtonFace;
+            groupBox1.BackgroundImage = Properties.Resources.login_background;
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(btnAdd);
@@ -63,7 +65,7 @@
             groupBox1.Controls.Add(Discription);
             groupBox1.Location = new Point(115, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(786, 512);
+            groupBox1.Size = new Size(786, 516);
             groupBox1.TabIndex = 11;
             groupBox1.TabStop = false;
             groupBox1.Text = "groupBox1";
@@ -80,7 +82,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(28, 346);
+            label4.Location = new Point(72, 331);
             label4.Name = "label4";
             label4.Size = new Size(51, 20);
             label4.TabIndex = 3;
@@ -88,7 +90,7 @@
             // 
             // btnAdd
             // 
-            btnAdd.Location = new Point(336, 412);
+            btnAdd.Location = new Point(337, 461);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(94, 29);
             btnAdd.TabIndex = 9;
@@ -103,6 +105,7 @@
             txtImport.Name = "txtImport";
             txtImport.Size = new Size(125, 27);
             txtImport.TabIndex = 10;
+            txtImport.Visible = false;
             // 
             // txtDescription
             // 
@@ -115,7 +118,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(6, 63);
+            label1.Location = new Point(72, 70);
             label1.Name = "label1";
             label1.Size = new Size(38, 20);
             label1.TabIndex = 0;
@@ -126,7 +129,7 @@
             imgImage.BackColor = SystemColors.ActiveCaption;
             imgImage.Location = new Point(227, 331);
             imgImage.Name = "imgImage";
-            imgImage.Size = new Size(125, 62);
+            imgImage.Size = new Size(306, 107);
             imgImage.TabIndex = 4;
             imgImage.TabStop = false;
             imgImage.Click += btImport_Click;
@@ -149,7 +152,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(19, 261);
+            label3.Location = new Point(51, 244);
             label3.Name = "label3";
             label3.Size = new Size(77, 20);
             label3.TabIndex = 2;
@@ -158,7 +161,7 @@
             // Discription
             // 
             Discription.AutoSize = true;
-            Discription.Location = new Point(15, 152);
+            Discription.Location = new Point(47, 130);
             Discription.Name = "Discription";
             Discription.Size = new Size(81, 20);
             Discription.TabIndex = 1;
