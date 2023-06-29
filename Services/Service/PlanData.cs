@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Services.Service
 {
-    [Serializable]
+    
     public class PlanData
     {
         private List<PlanItem> job;

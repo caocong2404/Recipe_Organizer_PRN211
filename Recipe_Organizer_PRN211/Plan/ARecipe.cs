@@ -47,7 +47,7 @@ namespace Recipe_Organizer_PRN211.Plan
 
         void ShowInfo()
         {
-            txbJob.Text = Job.Job;
+            txbJob.Text = Job.Recipe.Title;
 
             cbStatus.SelectedIndex = PlanItem.ListStatus.IndexOf(Job.Status);
             
@@ -61,7 +61,7 @@ namespace Recipe_Organizer_PRN211.Plan
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            Job.Job = txbJob.Text;
+            Job.Recipe.Title = txbJob.Text;
 
             Job.Status = PlanItem.ListStatus[cbStatus.SelectedIndex];
 
