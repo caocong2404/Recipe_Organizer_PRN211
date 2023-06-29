@@ -66,6 +66,8 @@ namespace Services.Models
 
                             j.ToTable("Recipe_has_Categories");
 
+                            j.HasIndex(new[] { "RecipeId" }, "IX_Recipe_has_Categories_recipe_id");
+
                             j.IndexerProperty<int>("CategoryId").HasColumnName("category_id");
 
                             j.IndexerProperty<int>("RecipeId").HasColumnName("recipe_id");
@@ -75,6 +77,8 @@ namespace Services.Models
             modelBuilder.Entity<Day>(entity =>
             {
                 entity.ToTable("Day");
+
+                entity.HasIndex(e => e.PlanId, "IX_Day_plan_id");
 
                 entity.Property(e => e.DayId).HasColumnName("day_id");
 
@@ -95,6 +99,8 @@ namespace Services.Models
             modelBuilder.Entity<Feedback>(entity =>
             {
                 entity.ToTable("Feedback");
+
+                entity.HasIndex(e => e.UserId, "IX_Feedback_user_id");
 
                 entity.Property(e => e.FeedbackId).HasColumnName("feedback_id");
 
@@ -131,6 +137,8 @@ namespace Services.Models
 
                 entity.ToTable("MealPlanning");
 
+                entity.HasIndex(e => e.UserId, "IX_MealPlanning_user_id");
+
                 entity.Property(e => e.PlanId).HasColumnName("plan_id");
 
                 entity.Property(e => e.UserId).HasColumnName("user_id");
@@ -150,21 +158,19 @@ namespace Services.Models
             {
                 entity.ToTable("Recipe");
 
+                entity.HasIndex(e => e.UserId, "IX_Recipe_user_id");
+
                 entity.Property(e => e.RecipeId).HasColumnName("recipe_id");
 
                 entity.Property(e => e.Date)
                     .HasColumnType("datetime")
                     .HasColumnName("date");
 
-                entity.Property(e => e.Description)
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("description");
+                entity.Property(e => e.Description).HasColumnName("description");
 
-                entity.Property(e => e.Ingredient)
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("ingredient");
+                entity.Property(e => e.Img).HasColumnName("img");
+
+                entity.Property(e => e.Ingredient).HasColumnName("ingredient");
 
                 entity.Property(e => e.Status)
                     .HasMaxLength(50)
@@ -172,7 +178,7 @@ namespace Services.Models
                     .HasColumnName("status");
 
                 entity.Property(e => e.Title)
-                    .HasMaxLength(50)
+                    .HasMaxLength(100)
                     .IsUnicode(false)
                     .HasColumnName("title");
 
@@ -196,6 +202,8 @@ namespace Services.Models
 
                             j.ToTable("Collection");
 
+                            j.HasIndex(new[] { "UserId" }, "IX_Collection_user_id");
+
                             j.IndexerProperty<int>("RecipeId").HasColumnName("recipe_id");
 
                             j.IndexerProperty<int>("UserId").HasColumnName("user_id");
@@ -217,6 +225,8 @@ namespace Services.Models
             modelBuilder.Entity<Session>(entity =>
             {
                 entity.ToTable("Session");
+
+                entity.HasIndex(e => e.DayId, "IX_Session_day_id");
 
                 entity.Property(e => e.SessionId).HasColumnName("session_id");
 
@@ -245,6 +255,8 @@ namespace Services.Models
 
                             j.ToTable("Session_has_Recipe");
 
+                            j.HasIndex(new[] { "RecipeId" }, "IX_Session_has_Recipe_recipe_id");
+
                             j.IndexerProperty<int>("SessionId").HasColumnName("session_id");
 
                             j.IndexerProperty<int>("RecipeId").HasColumnName("recipe_id");
@@ -255,12 +267,11 @@ namespace Services.Models
             {
                 entity.ToTable("User");
 
+                entity.HasIndex(e => e.Role, "IX_User_role");
+
                 entity.Property(e => e.UserId).HasColumnName("user_id");
 
-                entity.Property(e => e.Avatar)
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("avatar");
+                entity.Property(e => e.Avatar).HasColumnName("avatar");
 
                 entity.Property(e => e.Birthday)
                     .HasColumnType("datetime")

@@ -10,11 +10,21 @@ using System.Windows.Forms;
 
 namespace Recipe_Organizer_PRN211.Authentication
 {
-    public partial class ForgotPassword : Form
+    public partial class Home : Form
     {
-        public ForgotPassword()
+        public Home()
         {
             InitializeComponent();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Home_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

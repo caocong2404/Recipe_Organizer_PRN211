@@ -34,7 +34,7 @@ namespace Services.Migrations
 
                     b.HasKey("RecipeId", "UserId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex(new[] { "UserId" }, "IX_Collection_user_id");
 
                     b.ToTable("Collection", (string)null);
                 });
@@ -51,7 +51,7 @@ namespace Services.Migrations
 
                     b.HasKey("CategoryId", "RecipeId");
 
-                    b.HasIndex("RecipeId");
+                    b.HasIndex(new[] { "RecipeId" }, "IX_Recipe_has_Categories_recipe_id");
 
                     b.ToTable("Recipe_has_Categories", (string)null);
                 });
@@ -110,7 +110,7 @@ namespace Services.Migrations
 
                     b.HasKey("DayId");
 
-                    b.HasIndex("PlanId");
+                    b.HasIndex(new[] { "PlanId" }, "IX_Day_plan_id");
 
                     b.ToTable("Day", (string)null);
                 });
@@ -156,7 +156,7 @@ namespace Services.Migrations
 
                     b.HasKey("FeedbackId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex(new[] { "UserId" }, "IX_Feedback_user_id");
 
                     b.ToTable("Feedback", (string)null);
                 });
@@ -180,7 +180,7 @@ namespace Services.Migrations
 
                     b.HasKey("PlanId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex(new[] { "UserId" }, "IX_MealPlanning_user_id");
 
                     b.ToTable("MealPlanning", (string)null);
                 });
@@ -200,16 +200,16 @@ namespace Services.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(50)")
+                        .HasColumnType("nvarchar(max)")
                         .HasColumnName("description");
+
+                    b.Property<string>("Img")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("img");
 
                     b.Property<string>("Ingredient")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(50)")
+                        .HasColumnType("nvarchar(max)")
                         .HasColumnName("ingredient");
 
                     b.Property<string>("Status")
@@ -221,9 +221,9 @@ namespace Services.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasMaxLength(50)
+                        .HasMaxLength(100)
                         .IsUnicode(false)
-                        .HasColumnType("varchar(50)")
+                        .HasColumnType("varchar(100)")
                         .HasColumnName("title");
 
                     b.Property<int>("UserId")
@@ -232,9 +232,30 @@ namespace Services.Migrations
 
                     b.HasKey("RecipeId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex(new[] { "UserId" }, "IX_Recipe_user_id");
 
                     b.ToTable("Recipe", (string)null);
+                });
+
+            modelBuilder.Entity("Services.Models.Role", b =>
+                {
+                    b.Property<int>("RoleId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("role_id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RoleId"), 1L, 1);
+
+                    b.Property<string>("RoleName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(50)")
+                        .HasColumnName("role_name");
+
+                    b.HasKey("RoleId");
+
+                    b.ToTable("Role", (string)null);
                 });
 
             modelBuilder.Entity("Services.Models.Session", b =>
@@ -259,7 +280,7 @@ namespace Services.Migrations
 
                     b.HasKey("SessionId");
 
-                    b.HasIndex("DayId");
+                    b.HasIndex(new[] { "DayId" }, "IX_Session_day_id");
 
                     b.ToTable("Session", (string)null);
                 });
@@ -274,9 +295,7 @@ namespace Services.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"), 1L, 1);
 
                     b.Property<string>("Avatar")
-                        .HasMaxLength(50)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(50)")
+                        .HasColumnType("nvarchar(max)")
                         .HasColumnName("avatar");
 
                     b.Property<DateTime?>("Birthday")
@@ -308,11 +327,8 @@ namespace Services.Migrations
                         .HasColumnType("varchar(50)")
                         .HasColumnName("password");
 
-                    b.Property<string>("Role")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(50)")
+                    b.Property<int>("Role")
+                        .HasColumnType("int")
                         .HasColumnName("role");
 
                     b.Property<bool>("Status")
@@ -327,6 +343,8 @@ namespace Services.Migrations
                         .HasColumnName("username");
 
                     b.HasKey("UserId");
+
+                    b.HasIndex(new[] { "Role" }, "IX_User_role");
 
                     b.ToTable("User", (string)null);
                 });
@@ -343,7 +361,7 @@ namespace Services.Migrations
 
                     b.HasKey("SessionId", "RecipeId");
 
-                    b.HasIndex("RecipeId");
+                    b.HasIndex(new[] { "RecipeId" }, "IX_Session_has_Recipe_recipe_id");
 
                     b.ToTable("Session_has_Recipe", (string)null);
                 });
@@ -433,6 +451,17 @@ namespace Services.Migrations
                     b.Navigation("Day");
                 });
 
+            modelBuilder.Entity("Services.Models.User", b =>
+                {
+                    b.HasOne("Services.Models.Role", "RoleNavigation")
+                        .WithMany("Users")
+                        .HasForeignKey("Role")
+                        .IsRequired()
+                        .HasConstraintName("FK_User_Role");
+
+                    b.Navigation("RoleNavigation");
+                });
+
             modelBuilder.Entity("SessionHasRecipe", b =>
                 {
                     b.HasOne("Services.Models.Recipe", null)
@@ -456,6 +485,11 @@ namespace Services.Migrations
             modelBuilder.Entity("Services.Models.MealPlanning", b =>
                 {
                     b.Navigation("Days");
+                });
+
+            modelBuilder.Entity("Services.Models.Role", b =>
+                {
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("Services.Models.User", b =>

@@ -134,7 +134,7 @@ namespace Recipe_Organizer_PRN211.Authentication
             txtEmail.Text = "";
         }
 
-        
+
         private void dgvListUser_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             //chuột đang click ở dòng nào
@@ -159,6 +159,34 @@ namespace Recipe_Organizer_PRN211.Authentication
             txtPassword.Text = user.Password.ToString();
             if (user.Birthday != null)
                 dateBirthday.Text = user.Birthday.ToString();
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string searchValue = txtSearch.Text;
+            if (searchValue.Length > 0)
+            {
+                var userList = _userRepository.getUserByUserName(searchValue);
+
+                dgvListUser.DataSource = new BindingSource()
+                {
+                    DataSource = userList
+                };
+            }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            var listUser = _userRepository.GetAll();
+            dgvListUser.DataSource = new BindingSource()
+            {
+                DataSource = listUser
+            };
+        }
+
+        private void dgvListUser_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

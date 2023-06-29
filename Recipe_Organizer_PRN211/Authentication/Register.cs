@@ -12,58 +12,74 @@ using System.Windows.Forms;
 
 namespace Recipe_Organizer_PRN211.Authentication
 {
-	public partial class Register : Form
-	{
-		UserRepository _userRepository;
-		public Register()
-		{
+    public partial class Register : Form
+    {
+        UserRepository _userRepository;
+        public Register()
+        {
 
 
-			_userRepository = new UserRepository();
-			InitializeComponent();
-		}
+            _userRepository = new UserRepository();
+            InitializeComponent();
+        }
 
-		private void btnRegister_Click(object sender, EventArgs e)
-		{
-			string userName = txtUsername.Text;
-			string email = txtEmail.Text;
-			string password = txtPassword.Text;
-			string confirmPassword = txtConfirmPassword.Text;
-			if (_userRepository.checkUserExisted(userName))
-			{
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            string userName = txtUsername.Text;
+            string password = txtPassword.Text;
+            string confirmPassword = txtConfirmPassword.Text;
+            if (_userRepository.checkUserExisted(userName))
+            {
                 // login fail
                 MessageBox.Show("Username is exist", "Warning", MessageBoxButtons.OK);
                 txtPassword.Text = "";
                 txtUsername.Text = "";
-				return;
-            } 
-			if (!password.Equals(confirmPassword))
-			{
+                return;
+            }
+            if (!password.Equals(confirmPassword))
+            {
                 MessageBox.Show("Password and confirm password not match", "Warning", MessageBoxButtons.OK);
                 txtPassword.Text = "";
-				return;
+                return;
             }
-			User user = new User();
-			user.Username = userName;
-			user.Email = email;
-			user.Password = password;
-			//1. admin
-			//2. cook
-			user.Role = 2;
-			_userRepository.Add(user);
-			MessageBox.Show("Registration successful.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            User user = new User();
+            user.Username = userName;
+            user.Password = password;
+            //1. admin
+            //2. cook
+            user.Role = 2;
+            _userRepository.Add(user);
+
+            //show notify
+            notifyRegister.BalloonTipText = "You are successfulregister account in Recipe Organizer";
+            notifyRegister.BalloonTipTitle = "Register Success";
+            notifyRegister.Icon = SystemIcons.Application;
+            notifyRegister.ShowBalloonTip(1000);
+            //MessageBox.Show("Registration successful.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
-			// Hide the current form
-			this.Hide();
+            // Hide the current form
+            this.Hide();
 
-			// Show the login form
-			Form login = new Login();
-			login.ShowDialog();
+            // Show the login form
+            Form login = new Homepage();
+            login.ShowDialog();
 
-			// Close the current form
-			this.Close();
+            // Close the current form
+            this.Close();
 
-		}
-	}
+        }
+
+        private void Register_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Form loginForm = new Homepage();
+            this.Hide();
+            loginForm.ShowDialog();
+        }
+    }
 }
