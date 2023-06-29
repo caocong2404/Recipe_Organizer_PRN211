@@ -71,6 +71,7 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "groupBox1";
             groupBox1.Visible = false;
+
             // 
             // label5
             // 
@@ -78,6 +79,7 @@
             label5.Location = new Point(367, 23);
             label5.Name = "label5";
             label5.Size = new Size(91, 20);
+
             label5.TabIndex = 8;
             label5.Text = "ADD RECIPE";
             // 
@@ -87,6 +89,7 @@
             label4.Location = new Point(27, 347);
             label4.Name = "label4";
             label4.Size = new Size(51, 20);
+
             label4.TabIndex = 3;
             label4.Text = "Image";
             // 
@@ -95,6 +98,7 @@
             btnAdd.Location = new Point(336, 412);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(94, 29);
+
             btnAdd.TabIndex = 9;
             btnAdd.Text = "SAVE";
             btnAdd.UseVisualStyleBackColor = true;
@@ -106,6 +110,7 @@
             txtImport.Multiline = true;
             txtImport.Name = "txtImport";
             txtImport.Size = new Size(125, 27);
+
             txtImport.TabIndex = 10;
             txtImport.Visible = false;
             // 
@@ -115,6 +120,7 @@
             txtDescription.Multiline = true;
             txtDescription.Name = "txtDescription";
             txtDescription.Size = new Size(313, 80);
+
             txtDescription.TabIndex = 6;
             // 
             // label1
@@ -123,6 +129,7 @@
             label1.Location = new Point(6, 63);
             label1.Name = "label1";
             label1.Size = new Size(38, 20);
+
             label1.TabIndex = 0;
             label1.Text = "Title";
             // 
@@ -132,6 +139,7 @@
             imgImage.Location = new Point(227, 331);
             imgImage.Name = "imgImage";
             imgImage.Size = new Size(125, 61);
+
             imgImage.TabIndex = 4;
             imgImage.TabStop = false;
             imgImage.Click += btImport_Click;
@@ -141,6 +149,7 @@
             txtTitle.Location = new Point(227, 63);
             txtTitle.Name = "txtTitle";
             txtTitle.Size = new Size(310, 27);
+
             txtTitle.TabIndex = 5;
             // 
             // txtIngredient
@@ -149,6 +158,7 @@
             txtIngredient.Multiline = true;
             txtIngredient.Name = "txtIngredient";
             txtIngredient.Size = new Size(306, 60);
+
             txtIngredient.TabIndex = 7;
             // 
             // label3
@@ -157,6 +167,7 @@
             label3.Location = new Point(19, 261);
             label3.Name = "label3";
             label3.Size = new Size(77, 20);
+
             label3.TabIndex = 2;
             label3.Text = "Ingredient";
             // 
@@ -166,6 +177,7 @@
             Discription.Location = new Point(15, 152);
             Discription.Name = "Discription";
             Discription.Size = new Size(81, 20);
+
             Discription.TabIndex = 1;
             Discription.Text = "Discription";
             // 
@@ -200,6 +212,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1043, 555);
             Controls.Add(panel1);
+
             Name = "AddRecipe";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AddRecipe";
@@ -227,5 +240,6 @@
         private Label Discription;
         private Panel panel1;
         private Button btnBack;
+
     }
 }

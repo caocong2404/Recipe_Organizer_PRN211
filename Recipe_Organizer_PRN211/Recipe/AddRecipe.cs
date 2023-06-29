@@ -14,6 +14,7 @@ using Services.Models;
 using System.Xml.Linq;
 using Recipe_Organizer_PRN211.Recipe;
 
+
 namespace Recipe_Organizer_PRN211.Authentication
 {
     public partial class AddRecipe : Form
@@ -33,6 +34,7 @@ namespace Recipe_Organizer_PRN211.Authentication
             txtImport.Text = ImageToBase64(url);
             if ((txtDescription.Text.Length > 0) && (txtIngredient.Text.Length > 0) && (txtTitle.Text.Length > 0) && (txtImport.Text.Length > 0)
                 && (txtDescription.Text.Trim() != "") && (txtIngredient.Text.Trim() != "") && (txtTitle.Text.Trim() != "") && (txtImport.Text.Trim() != ""))
+
             {
                 var recipe = new Services.Models.Recipe();
                 recipe.Title = txtTitle.Text.ToString();
@@ -42,6 +44,7 @@ namespace Recipe_Organizer_PRN211.Authentication
                 //recipe.Img = txtImport.Text.ToString();
                 recipe.Img = (txtImport.Text = ImageToBase64(url));
                 recipe.UserId = AppContext.CurrentUser.UserId;
+
                 recipe.Status = "Pending";
 
 
@@ -116,6 +119,7 @@ namespace Recipe_Organizer_PRN211.Authentication
             this.Hide();
             searchForm.ShowDialog(); 
         }
+
     }
 }
 
