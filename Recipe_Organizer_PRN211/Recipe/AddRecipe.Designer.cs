@@ -50,6 +50,8 @@
             // 
             groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             groupBox1.AutoSize = true;
+            groupBox1.BackColor = SystemColors.ButtonFace;
+            groupBox1.BackgroundImage = Properties.Resources.login_background;
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(btnAdd);
@@ -64,8 +66,10 @@
             groupBox1.Location = new Point(101, 9);
             groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
+
             groupBox1.Padding = new Padding(3, 2, 3, 2);
             groupBox1.Size = new Size(688, 384);
+
             groupBox1.TabIndex = 11;
             groupBox1.TabStop = false;
             groupBox1.Text = "groupBox1";
@@ -82,7 +86,9 @@
             // label4
             // 
             label4.AutoSize = true;
+
             label4.Location = new Point(24, 260);
+
             label4.Name = "label4";
             label4.Size = new Size(40, 15);
             label4.TabIndex = 3;
@@ -90,8 +96,10 @@
             // 
             // btnAdd
             // 
+
             btnAdd.Location = new Point(294, 309);
             btnAdd.Margin = new Padding(3, 2, 3, 2);
+
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(82, 22);
             btnAdd.TabIndex = 9;
@@ -107,6 +115,7 @@
             txtImport.Name = "txtImport";
             txtImport.Size = new Size(110, 21);
             txtImport.TabIndex = 10;
+            txtImport.Visible = false;
             // 
             // txtDescription
             // 
@@ -120,7 +129,9 @@
             // label1
             // 
             label1.AutoSize = true;
+
             label1.Location = new Point(5, 47);
+
             label1.Name = "label1";
             label1.Size = new Size(29, 15);
             label1.TabIndex = 0;
@@ -132,7 +143,9 @@
             imgImage.Location = new Point(199, 248);
             imgImage.Margin = new Padding(3, 2, 3, 2);
             imgImage.Name = "imgImage";
+
             imgImage.Size = new Size(109, 46);
+
             imgImage.TabIndex = 4;
             imgImage.TabStop = false;
             imgImage.Click += btImport_Click;

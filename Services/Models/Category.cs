@@ -13,7 +13,6 @@ namespace Services.Models
         public int CategoryId { get; set; }
         public string Title { get; set; } = null!;
         public string Description { get; set; } = null!;
-        public int ParentCategoryId { get; set; }
 
         public virtual ICollection<Recipe> Recipes { get; set; }
     }
