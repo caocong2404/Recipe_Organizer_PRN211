@@ -266,9 +266,10 @@ namespace Recipe_Organizer_PRN211.Plan
 
         }
 
-
-
-
+        private void btnQuit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
 
