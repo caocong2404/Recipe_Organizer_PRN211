@@ -7,8 +7,8 @@ namespace Services.Models
     {
         public Recipe()
         {
+            MealPlannings = new HashSet<MealPlanning>();
             Categories = new HashSet<Category>();
-            Sessions = new HashSet<Session>();
             Users = new HashSet<User>();
         }
 
@@ -22,9 +22,9 @@ namespace Services.Models
         public string? Img { get; set; }
 
         public virtual User User { get; set; } = null!;
+        public virtual ICollection<MealPlanning> MealPlannings { get; set; }
 
         public virtual ICollection<Category> Categories { get; set; }
-        public virtual ICollection<Session> Sessions { get; set; }
         public virtual ICollection<User> Users { get; set; }
     }
 }
