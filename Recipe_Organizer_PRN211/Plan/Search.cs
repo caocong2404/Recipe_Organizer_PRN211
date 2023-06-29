@@ -70,7 +70,7 @@ namespace Recipe_Organizer_PRN211.Plan
 				int recipeId;
 				if (int.TryParse(selectedRecipe.Split('-')[0].Trim(), out recipeId))
 				{
-                    Plan.AppContext.planItem.RecipeId = recipeId;
+                    Plan.AppContext.planItem = new PlanItem() { RecipeId = recipeId };
 					//var data = Plan.AppContext.planData;
 
      //               if (data.Job == null)

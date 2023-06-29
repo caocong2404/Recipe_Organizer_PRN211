@@ -31,6 +31,7 @@ namespace Recipe_Organizer_PRN211.Plan
         {
             add { edited += value; }
             remove { edited -= value; }
+
         }
 
         private event EventHandler deleted;
@@ -60,7 +61,7 @@ namespace Recipe_Organizer_PRN211.Plan
             {
                 txbJob.Text = "";
             }
-            else 
+            else
             {
 
 
@@ -90,15 +91,28 @@ namespace Recipe_Organizer_PRN211.Plan
 
         private void btnOpenSearch_Click(object sender, EventArgs e)
         {
-            Plan.AppContext.planItem = job;
 
-            
+
+
+
             Search search = new Search();
             search.ShowDialog();
-            Job = Plan.AppContext.planItem;
-            txbJob.Text = _recipeRepository.GetTitle(Job.RecipeId);
+
+
+
             if (edited != null)
                 edited(this, new EventArgs());
+            ShowInfo();
+
+        }
+
+        private void btnDetail_Click(object sender, EventArgs e)
+        {
+            Recipe.AppContext.RecipeId = Job.RecipeId;
+            this.Hide();
+            RecipeDetail recipeDetailForm = new RecipeDetail(2);
+            recipeDetailForm.ShowDialog();
+            this.Show();
 
         }
     }

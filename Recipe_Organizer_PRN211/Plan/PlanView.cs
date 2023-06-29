@@ -51,11 +51,11 @@ namespace Recipe_Organizer_PRN211.Plan
             int userId = Recipe_Organizer_PRN211.Authentication.AppContext.CurrentUser.UserId;
 
             Job = DeserializeFromXML(userId);
-            if (Job == null)
+            if (job == null)
             {
-                Job = new PlanData();
-                Job.Job = new List<PlanItem>();
+                Plan.AppContext.planData = new PlanData();
             }
+
 
         }
 
@@ -102,7 +102,9 @@ namespace Recipe_Organizer_PRN211.Plan
             if (string.IsNullOrEmpty((sender as Button).Text))
                 return;
             DailyPlan daily = new DailyPlan(new DateTime(dtpkDate.Value.Year, dtpkDate.Value.Month, Convert.ToInt32((sender as Button).Text)), Job);
+            this.Hide();
             daily.ShowDialog();
+            this.Show();
         }
 
         int DayOfMonth(DateTime date)
@@ -207,6 +209,7 @@ namespace Recipe_Organizer_PRN211.Plan
             List<MealPlanning> mealPlannings = _mealPlanningRepository.getListRecipesByUserId(userId);
 
             PlanData data = new PlanData();
+            data.Job = new List<PlanItem>();
             if (mealPlannings.Count > 0)
             {
                 foreach (MealPlanning item in mealPlannings)
@@ -228,41 +231,50 @@ namespace Recipe_Organizer_PRN211.Plan
         {
             List<MealPlanning> mealPlannings = new List<MealPlanning>();
             int userId = Recipe_Organizer_PRN211.Authentication.AppContext.CurrentUser.UserId;
-            if (Job.Job != null)
+            if (Job.Job == null)
+
             {
-                if (Job.Job.Count > 0)
-                {
-                    foreach (PlanItem item in Job.Job)
-                    {
-                        if (item.RecipeId != -1)
-                        {
-                            mealPlannings.Add(new MealPlanning()
-                            {
-                                RecipeId = item.RecipeId,
-                                UserId = item.UserId,
-                                Session = item.Status,
-                                WeekStartDate = item.Date
-                            });
-                        }
-                    }
-
-
-                    _mealPlanningRepository.SavePlan(mealPlannings, userId);
-                }
-                _mealPlanningRepository.DeleteAllPlan(userId);
-
-
+                Job = Plan.AppContext.planData;
             }
-            
+            if (Job.Job == null)
+            {
+                _mealPlanningRepository.DeleteAllPlan(userId);
+            }
+            else
+
+            if (Job.Job.Count > 0)
+            {
+                foreach (PlanItem item in Job.Job)
+                {
+                    if (item.RecipeId != -1)
+                    {
+                        mealPlannings.Add(new MealPlanning()
+                        {
+                            RecipeId = item.RecipeId,
+                            UserId = item.UserId,
+                            Session = item.Status,
+                            WeekStartDate = item.Date
+                        });
+                    }
+                }
+
+
+                _mealPlanningRepository.SavePlan(mealPlannings, userId);
+            }
 
 
 
         }
+
+
+
+
     }
 }
 
 
 
-    
-	
+
+
+
 
