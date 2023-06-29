@@ -29,8 +29,10 @@ namespace Recipe_Organizer_PRN211.Authentication
             InitializeComponent();
         }
         public static string url = "";
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
+
             txtImport.Text = ImageToBase64(url);
             if ((txtDescription.Text.Length > 0) && (txtIngredient.Text.Length > 0) && (txtTitle.Text.Length > 0) && (txtImport.Text.Length > 0)
                 && (txtDescription.Text.Trim() != "") && (txtIngredient.Text.Trim() != "") && (txtTitle.Text.Trim() != "") && (txtImport.Text.Trim() != ""))
@@ -117,9 +119,13 @@ namespace Recipe_Organizer_PRN211.Authentication
         {
             Form searchForm = new SearchRecipe();
             this.Hide();
-            searchForm.ShowDialog(); 
+            searchForm.ShowDialog();
         }
 
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
 
