@@ -51,7 +51,12 @@ namespace Recipe_Organizer_PRN211.Authentication
             }
             if (confirmPassword.Equals(newPassword))
             {
-                var user = _userRepository.getUser(AppContext.CurrentUser.Username);
+                var user = _userRepository.getUser(AppContext.CurrentUser.Username, oldPassword);
+                if (user == null)
+                {
+					MessageBox.Show("Wrong password", "Warning", MessageBoxButtons.OK);
+					return;
+				}
                 user.Password = newPassword;
                 _userRepository.Update(user);
                 MessageBox.Show("Change password successfully", "Success");
@@ -61,8 +66,7 @@ namespace Recipe_Organizer_PRN211.Authentication
             }
             else
             {
-                MessageBox.Show("New password and confirm password not match", "Warning");
-                return;
+                
             }
         }
     }

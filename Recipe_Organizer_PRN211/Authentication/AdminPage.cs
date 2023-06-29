@@ -68,5 +68,10 @@ namespace Recipe_Organizer_PRN211.Authentication
 		{
 			openChildForm(new PendingRecipe());
 		}
+
+		private void btnCategory_Click(object sender, EventArgs e)
+		{
+			openChildForm(new CategoryCRUD());
+		}
 	}
 }

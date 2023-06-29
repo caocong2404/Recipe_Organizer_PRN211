@@ -37,9 +37,9 @@
 			lbTitle = new Label();
 			btnReject = new Button();
 			btnApprove = new Button();
-			pictureBox1 = new PictureBox();
+			recipePicture = new PictureBox();
 			lbDate = new Label();
-			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+			((System.ComponentModel.ISupportInitialize)recipePicture).BeginInit();
 			SuspendLayout();
 			// 
 			// btnBack
@@ -143,14 +143,15 @@
 			btnApprove.UseVisualStyleBackColor = false;
 			btnApprove.Click += btnApprove_Click;
 			// 
-			// pictureBox1
+			// recipePicture
 			// 
-			pictureBox1.Location = new Point(545, 139);
-			pictureBox1.Margin = new Padding(3, 2, 3, 2);
-			pictureBox1.Name = "pictureBox1";
-			pictureBox1.Size = new Size(431, 209);
-			pictureBox1.TabIndex = 32;
-			pictureBox1.TabStop = false;
+			recipePicture.Location = new Point(545, 139);
+			recipePicture.Margin = new Padding(3, 2, 3, 2);
+			recipePicture.Name = "recipePicture";
+			recipePicture.Size = new Size(431, 209);
+			recipePicture.SizeMode = PictureBoxSizeMode.Zoom;
+			recipePicture.TabIndex = 32;
+			recipePicture.TabStop = false;
 			// 
 			// lbDate
 			// 
@@ -172,7 +173,7 @@
 			Controls.Add(btnBack);
 			Controls.Add(tlpDirection);
 			Controls.Add(tlpIngredients);
-			Controls.Add(pictureBox1);
+			Controls.Add(recipePicture);
 			Controls.Add(lbDate);
 			Controls.Add(label2);
 			Controls.Add(label1);
@@ -180,7 +181,7 @@
 			Icon = (Icon)resources.GetObject("$this.Icon");
 			Name = "RecipeDetailPending";
 			Text = "RecipeDetailPending";
-			((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+			((System.ComponentModel.ISupportInitialize)recipePicture).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -195,7 +196,7 @@
 		private Label lbTitle;
 		private Button btnReject;
 		private Button btnApprove;
-		private PictureBox pictureBox1;
+		private PictureBox recipePicture;
 		private Label lbDate;
 	}
 }
