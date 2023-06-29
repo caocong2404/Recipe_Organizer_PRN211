@@ -49,7 +49,7 @@ namespace Recipe_Organizer_PRN211.Authentication
 					else if (user.Role == 2)
 					{
 						//Form userProfile = new UserProfile();
-						Form recipeList = new PlanView();
+						Form recipeList = new SearchRecipe();
 						this.Hide();
 						recipeList.ShowDialog();
 					}

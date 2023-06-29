@@ -34,7 +34,7 @@ namespace Recipe_Organizer_PRN211.Recipe
 			string searchValue = txtSearch.Text;
 			if (searchValue.Length > 0)
 			{
-				var recipeList = _recipeRepository.getRecipe(searchValue);
+				var recipeList = _recipeRepository.searchRecipeWithStatus(searchValue, "public");
 
 				// Update DataGridView
 				//dgvRecipeList.DataSource = new BindingSource()
@@ -64,7 +64,7 @@ namespace Recipe_Organizer_PRN211.Recipe
 
 		private void RefreshRecipeList()
 		{
-			var recipeList = _recipeRepository.GetAll();
+			var recipeList = _recipeRepository.GetRecipeWithStatus("public");
 			//dgvRecipeList.DataSource = new BindingSource()
 			//{
 			//	DataSource = recipeList.Select(r => new

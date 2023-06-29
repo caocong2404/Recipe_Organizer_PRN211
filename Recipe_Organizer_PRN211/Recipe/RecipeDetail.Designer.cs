@@ -34,16 +34,13 @@
 			label1 = new Label();
 			label2 = new Label();
 			lbDate = new Label();
-
 			pictureBox = new PictureBox();
-
 			tlpIngredients = new TableLayoutPanel();
 			tlpDirection = new TableLayoutPanel();
 			btnBack = new Button();
 			button1 = new Button();
-
 			btnAddFeedback = new Button();
-
+			((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
 			SuspendLayout();
 			// 
 			// label5
@@ -98,9 +95,13 @@
 			lbDate.TabIndex = 21;
 			lbDate.Text = "label4";
 			// 
-
-
-
+			// pictureBox
+			// 
+			pictureBox.Location = new Point(584, 134);
+			pictureBox.Name = "pictureBox";
+			pictureBox.Size = new Size(527, 355);
+			pictureBox.TabIndex = 28;
+			pictureBox.TabStop = false;
 			// 
 			// tlpIngredients
 			// 
@@ -133,9 +134,7 @@
 			// 
 			// btnBack
 			// 
-
 			btnBack.Location = new Point(291, 732);
-
 			btnBack.Name = "btnBack";
 			btnBack.Size = new Size(194, 59);
 			btnBack.TabIndex = 25;
@@ -157,7 +156,6 @@
 			button1.UseVisualStyleBackColor = false;
 			button1.Click += button1_Click;
 			// 
-
 			// btnAddFeedback
 			// 
 			btnAddFeedback.Location = new Point(80, 732);
@@ -168,22 +166,17 @@
 			btnAddFeedback.UseVisualStyleBackColor = true;
 			btnAddFeedback.Click += btnAddFeedback_Click;
 			// 
-
 			// RecipeDetail
 			// 
 			AutoScaleDimensions = new SizeF(8F, 20F);
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(1202, 819);
-
 			Controls.Add(btnAddFeedback);
-
 			Controls.Add(button1);
 			Controls.Add(btnBack);
 			Controls.Add(tlpDirection);
 			Controls.Add(tlpIngredients);
-
 			Controls.Add(pictureBox);
-
 			Controls.Add(lbDate);
 			Controls.Add(label2);
 			Controls.Add(label1);
@@ -194,9 +187,7 @@
 			Name = "RecipeDetail";
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "RecipeDetail";
-
 			((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
-
 			ResumeLayout(false);
 			PerformLayout();
 		}
