@@ -24,10 +24,7 @@ namespace Services.Service
         {
             List<MealPlanning> mealPlannings = getListRecipesByUserId(userId);
             if (listRecipes.Count == 0) {
-                foreach (var plan in mealPlannings)
-                {
-                    Delete(plan);
-                }
+                DeleteAllPlan(userId);
             } else
             {
                 if (mealPlannings.Count == 0)
@@ -98,7 +95,18 @@ namespace Services.Service
                     }
 
 
-
+                    
+                }
+            }
+        }
+        public void DeleteAllPlan (int userId)
+        {
+            List<MealPlanning> mealPlannings = getListRecipesByUserId(userId);
+            if (mealPlannings.Count > 0)
+            {
+                foreach (var plan in mealPlannings)
+                {
+                    Delete(plan);
                 }
             }
         }

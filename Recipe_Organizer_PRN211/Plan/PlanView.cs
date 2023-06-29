@@ -23,6 +23,7 @@ namespace Recipe_Organizer_PRN211.Plan
         private MealPlanningRepository _mealPlanningRepository = new MealPlanningRepository();
         private RecipeRepository _recipeRepository = new RecipeRepository();
         private List<List<Button>> matrix;
+        
 
         public List<List<Button>> Matrix
         {
@@ -45,9 +46,9 @@ namespace Recipe_Organizer_PRN211.Plan
             InitializeComponent();
 
             LoadMatrix();
+            int userId = Recipe_Organizer_PRN211.Authentication.AppContext.CurrentUser.UserId;
 
-            
-                Job = DeserializeFromXML(1);
+            Job = DeserializeFromXML(userId);
             
         }
 
@@ -218,6 +219,7 @@ namespace Recipe_Organizer_PRN211.Plan
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             List<MealPlanning> mealPlannings = new List<MealPlanning>();
+            int userId = Recipe_Organizer_PRN211.Authentication.AppContext.CurrentUser.UserId;
             if (Job.Job.Count > 0)
             {
                 foreach( PlanItem item in Job.Job)
@@ -230,8 +232,9 @@ namespace Recipe_Organizer_PRN211.Plan
                     });
                 }
 
-                _mealPlanningRepository.SavePlan(mealPlannings, mealPlannings.FirstOrDefault().UserId);
+                _mealPlanningRepository.SavePlan(mealPlannings, userId);
             }
+            _mealPlanningRepository.DeleteAllPlan(userId);
             
 
         }
