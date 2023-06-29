@@ -53,7 +53,6 @@ namespace Recipe_Organizer_PRN211.Authentication
             var category = new Category();
             category.Title = txtUsername.Text;
             category.Description = txtPassword.Text;
-            category.ParentCategoryId = 1;
 
 
             _categoryRepository.Add(category);
@@ -88,7 +87,6 @@ namespace Recipe_Organizer_PRN211.Authentication
             var category = new Category();
             category.Title = txtUsername.Text;
             category.Description = txtPassword.Text;
-            category.ParentCategoryId = 1;
 
             _categoryRepository.Update(category);
 

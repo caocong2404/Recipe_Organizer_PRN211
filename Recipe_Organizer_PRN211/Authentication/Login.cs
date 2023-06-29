@@ -54,6 +54,8 @@ namespace Recipe_Organizer_PRN211.Authentication
 					}
 				}
 			}
+			MessageBox.Show("User not valid", "Warning", MessageBoxButtons.OK);
+			return;
 		}
 		private bool checkLogin(string username, string password)
 		{
