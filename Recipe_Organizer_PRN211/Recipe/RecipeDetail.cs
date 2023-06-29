@@ -1,4 +1,5 @@
-﻿using Services.Models;
+﻿using Recipe_Organizer_PRN211.Feedback;
+using Services.Models;
 using Services.Service;
 using Services.Services;
 using System;
@@ -84,11 +85,13 @@ namespace Recipe_Organizer_PRN211.Recipe
 
 					lbDate.Text = "Date: " + recipe.Date.ToString();
 
+
 					// Convert the base64 string to an Image
 					Image image = Base64ToImage(recipe.Img);
 
 					// Set the image to the PictureBox
 					pictureBox.Image = image;
+
 				}
 			}
 		}
@@ -106,6 +109,14 @@ namespace Recipe_Organizer_PRN211.Recipe
 			this.Hide();
 			searhRecipe.ShowDialog();
 		}
+
+
+		private void btnAddFeedback_Click(object sender, EventArgs e)
+		{
+			FeedbackForm feedbackForm = new FeedbackForm();
+			feedbackForm.ShowDialog();
+		}
+
 		public Image Base64ToImage(string base64String)
 		{
 			try
