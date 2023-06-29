@@ -13,6 +13,10 @@ namespace Services.Service
 		Recipe_Organizer_PRN211Context _context;
 		DbSet<Recipe> _dbSet;
 
+		public string GetTitle (int recipeId)
+		{
+			return GetRecipe(recipeId).Title;
+		}
 		public RecipeRepository()
 		{
 			_context = new Recipe_Organizer_PRN211Context();

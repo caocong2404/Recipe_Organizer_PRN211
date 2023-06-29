@@ -13,78 +13,93 @@ using System.Windows.Forms;
 
 namespace Recipe_Organizer_PRN211.Plan
 {
-	public partial class ARecipe : UserControl
-	{
-		private PlanItem job;
-		private RecipeRepository _recipeRepository;
+    public partial class ARecipe : UserControl
+    {
+        private PlanItem job;
+        private RecipeRepository _recipeRepository = new RecipeRepository();
 
-		public PlanItem Job
-		{
-			get { return job; }
-			set { job = value; }
-		}
 
-		private event EventHandler edited;
-		public event EventHandler Edited
-		{
-			add { edited += value; }
-			remove { edited -= value; }
-		}
 
-		private event EventHandler deleted;
-		public event EventHandler Deleted
-		{
-			add { deleted += value; }
-			remove { deleted -= value; }
-		}
-		public ARecipe(PlanItem job)
-		{
-			InitializeComponent();
+        public PlanItem Job
+        {
+            get { return job; }
+            set { job = value; }
+        }
 
-			cbStatus.DataSource = PlanItem.ListStatus;
+        private event EventHandler edited;
+        public event EventHandler Edited
+        {
+            add { edited += value; }
+            remove { edited -= value; }
+        }
 
-			this.Job = job;
+        private event EventHandler deleted;
+        public event EventHandler Deleted
+        {
+            add { deleted += value; }
+            remove { deleted -= value; }
+        }
+        public ARecipe(PlanItem job)
+        {
+            InitializeComponent();
 
-			ShowInfo();
-		}
+            cbStatus.DataSource = PlanItem.ListStatus;
 
-		public ARecipe()
-		{
-		}
+            this.Job = job;
 
-		void ShowInfo()
-		{
-			if(Job.RecipeId == -1) {
-				txbJob.Text = "";
-			}else
-			{ txbJob.Text = _recipeRepository.GetRecipe(Job.RecipeId).Title; }
-			
+            ShowInfo();
+        }
 
-			cbStatus.SelectedIndex = PlanItem.ListStatus.IndexOf(Job.Status);
+        public ARecipe()
+        {
+        }
 
-		}
+        void ShowInfo()
+        {
+            if (Job.RecipeId == -1)
+            {
+                txbJob.Text = "";
+            }
+            else 
+            {
 
-		private void btnDelete_Click(object sender, EventArgs e)
-		{
-			if (deleted != null)
-				deleted(this, new EventArgs());
-		}
 
-		private void btnEdit_Click(object sender, EventArgs e)
-		{
-			//Job.Recipe.Title = txbJob.Text;
 
-			Job.Status = PlanItem.ListStatus[cbStatus.SelectedIndex];
+                txbJob.Text = _recipeRepository.GetTitle(Job.RecipeId);
 
-			if (edited != null)
-				edited(this, new EventArgs());
-		}
+            }
 
-		private void btnOpenSearch_Click(object sender, EventArgs e)
-		{
-			this.Hide();
-			SearchRecipe searchRecipeForm = new SearchRecipe();
-			searchRecipeForm.ShowDialog();
-		}
-	}
+            cbStatus.SelectedIndex = PlanItem.ListStatus.IndexOf(Job.Status);
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (deleted != null)
+                deleted(this, new EventArgs());
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            //Job.Recipe.Title = txbJob.Text;
+
+            Job.Status = PlanItem.ListStatus[cbStatus.SelectedIndex];
+
+            if (edited != null)
+                edited(this, new EventArgs());
+        }
+
+        private void btnOpenSearch_Click(object sender, EventArgs e)
+        {
+            Plan.AppContext.planItem = job;
+
+            
+            Search search = new Search();
+            search.ShowDialog();
+            Job = Plan.AppContext.planItem;
+            txbJob.Text = _recipeRepository.GetTitle(Job.RecipeId);
+            if (edited != null)
+                edited(this, new EventArgs());
+
+        }
+    }
 }

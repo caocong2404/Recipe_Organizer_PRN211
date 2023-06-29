@@ -1,4 +1,5 @@
-﻿using Recipe_Organizer_PRN211.Recipe;
+﻿using Recipe_Organizer_PRN211.Authentication;
+using Recipe_Organizer_PRN211.Recipe;
 using Services.Models;
 using Services.Service;
 using System;
@@ -20,11 +21,11 @@ namespace Recipe_Organizer_PRN211.Plan
 
 
         #region Peoperties
-        
+
         private MealPlanningRepository _mealPlanningRepository = new MealPlanningRepository();
         private RecipeRepository _recipeRepository = new RecipeRepository();
         private List<List<Button>> matrix;
-        
+
 
         public List<List<Button>> Matrix
         {
@@ -50,11 +51,12 @@ namespace Recipe_Organizer_PRN211.Plan
             int userId = Recipe_Organizer_PRN211.Authentication.AppContext.CurrentUser.UserId;
 
             Job = DeserializeFromXML(userId);
-            if (Job == null ) {
+            if (Job == null)
+            {
                 Job = new PlanData();
                 Job.Job = new List<PlanItem>();
             }
-            
+
         }
 
         void SetDefaultJob()
@@ -67,7 +69,7 @@ namespace Recipe_Organizer_PRN211.Plan
 
                 RecipeId = -1,
                 Status = PlanItem.ListStatus[(int)EPlanItem.Breakfast]
-            }) ;
+            });
         }
 
         void LoadMatrix()
@@ -198,14 +200,15 @@ namespace Recipe_Organizer_PRN211.Plan
             SetDefaultDate();
         }
 
-        
+
 
         private PlanData DeserializeFromXML(int userId)
         {
             List<MealPlanning> mealPlannings = _mealPlanningRepository.getListRecipesByUserId(userId);
-            
+
             PlanData data = new PlanData();
-            if (mealPlannings.Count > 0) {
+            if (mealPlannings.Count > 0)
+            {
                 foreach (MealPlanning item in mealPlannings)
                 {
                     data.Job.Add(new PlanItem()
@@ -217,7 +220,7 @@ namespace Recipe_Organizer_PRN211.Plan
                     });
                 }
             }
-            
+
             return data;
         }
 
@@ -225,7 +228,7 @@ namespace Recipe_Organizer_PRN211.Plan
         {
             List<MealPlanning> mealPlannings = new List<MealPlanning>();
             int userId = Recipe_Organizer_PRN211.Authentication.AppContext.CurrentUser.UserId;
-            if (Job.Job != null) 
+            if (Job.Job != null)
             {
                 if (Job.Job.Count > 0)
                 {
@@ -247,18 +250,16 @@ namespace Recipe_Organizer_PRN211.Plan
                     _mealPlanningRepository.SavePlan(mealPlannings, userId);
                 }
                 _mealPlanningRepository.DeleteAllPlan(userId);
-                
-                
-            } else             
-                this.Close();
-                Homepage searchRecipeForm = new Homepage();
-                searchRecipeForm.ShowDialog();
+
+
             }
+            
 
 
 
         }
     }
+}
 
 
 

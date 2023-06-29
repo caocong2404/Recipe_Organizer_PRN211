@@ -44,6 +44,7 @@ namespace Recipe_Organizer_PRN211.Plan
             pnlJob.Controls.Add(fPanel);
 
             dtpkDate.Value = Date;
+            Plan.AppContext.planData = Job;
         }
 
         void ShowJobByDate(DateTime date)
@@ -57,6 +58,7 @@ namespace Recipe_Organizer_PRN211.Plan
                     AddJob(todayJob[i]);
                 }
             }
+            
         }
 
         void AddJob(PlanItem job)
@@ -66,6 +68,7 @@ namespace Recipe_Organizer_PRN211.Plan
             ARecipe.Deleted += ARecipe_Deleteed;
 
             fPanel.Controls.Add(ARecipe);
+
         }
 
         void ARecipe_Deleteed(object sender, EventArgs e)
