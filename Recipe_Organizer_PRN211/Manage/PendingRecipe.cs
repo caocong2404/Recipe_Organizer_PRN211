@@ -13,66 +13,79 @@ using System.Windows.Forms;
 
 namespace Recipe_Organizer_PRN211.Manage
 {
-    public partial class PendingRecipe : Form
-    {
-        RecipeRepository _recipeRepository;
-        //Recipe recipe;
-        public PendingRecipe()
-        {
-            _recipeRepository = new RecipeRepository();
-            InitializeComponent();
-            var recipeList = _recipeRepository.GetAll();
-            dgvPendingRecipe.DataSource = new BindingSource()
-            {
-                DataSource = recipeList
-            };
-        }
+	public partial class PendingRecipe : Form
+	{
+		RecipeRepository _recipeRepository;
+		//Recipe recipe;
+		public PendingRecipe()
+		{
+			_recipeRepository = new RecipeRepository();
+			InitializeComponent();
+			var recipeList = _recipeRepository.GetAll();
+			dgvPendingRecipe.DataSource = new BindingSource()
+			{
+				DataSource = recipeList
+			};
+		}
 
-        private void dgvPendingRecipe_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //chuột đang click ở dòng nào
-            //var recipeID = dgvPendingRecipe[0, e.RowIndex].Value;
-            //var recipe = _recipeRepository.GetAll().Where(entity => entity.UserId.Equals(recipeID)).FirstOrDefault();
-            //this.recipe = recipe;
-            //if (recipe == null)
-            //    return;
+		private void dgvPendingRecipe_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+		{
+			//chuột đang click ở dòng nào
+			var recipeID = dgvPendingRecipe[0, e.RowIndex].Value;
+			Recipe_Organizer_PRN211.Authentication.AppContext.RecipeId = (int)recipeID;
+			Form pendingRecipe = new RecipeDetailPending();
+			pendingRecipe.ShowDialog();
+			//var recipe = _recipeRepository.GetAll().Where(entity => entity.UserId.Equals(recipeID)).FirstOrDefault();
+			//this.recipe = recipe;
+			//if (recipe == null)
+			//    return;
 
-            //txtTitle.Text = recipe.Title;
-            //txtDescription.Text = recipe.Description;
-            //dateCreate.Text = recipe.Date.ToString();
-        }
+			//txtTitle.Text = recipe.Title;
+			//txtDescription.Text = recipe.Description;
+			//dateCreate.Text = recipe.Date.ToString();
+		}
 
-        private void btnApprove_Click(object sender, EventArgs e)
-        {
+		private void btnApprove_Click(object sender, EventArgs e)
+		{
 
-        }
+		}
 
-        private void btnReject_Click(object sender, EventArgs e)
-        {
+		private void btnReject_Click(object sender, EventArgs e)
+		{
 
-        }
+		}
 
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            string searchValue = txtSearch.Text;
-            if (searchValue.Length > 0)
-            {
-                //var listRecipe = _recipeRepository.getUserByUserName(searchValue);
+		private void btnSearch_Click(object sender, EventArgs e)
+		{
+			string searchValue = txtSearch.Text;
+			if (searchValue.Length > 0)
+			{
+				var listRecipe = _recipeRepository.getRecipe(searchValue);
 
-                //dgvPendingRecipe.DataSource = new BindingSource()
-                //{
-                //    DataSource = listRecipe
-                //};
-            }
-        }
+				dgvPendingRecipe.DataSource = new BindingSource()
+				{
+				    DataSource = listRecipe
+				};
+			}
+		}
 
-        private void btnRefresh_Click(object sender, EventArgs e)
-        {
-            var listRecipe = _recipeRepository.GetAll();
-            dgvPendingRecipe.DataSource = new BindingSource()
-            {
-                DataSource = listRecipe
-            };
-        }
-    }
+		private void btnRefresh_Click(object sender, EventArgs e)
+		{
+			var listRecipe = _recipeRepository.GetAll();
+			dgvPendingRecipe.DataSource = new BindingSource()
+			{
+				DataSource = listRecipe
+			};
+		}
+
+		private void dgvPendingRecipe_CellContentClick(object sender, DataGridViewCellEventArgs e)
+		{
+
+		}
+
+		private void dgvPendingRecipe_SelectionChanged(object sender, EventArgs e)
+		{
+
+		}
+	}
 }

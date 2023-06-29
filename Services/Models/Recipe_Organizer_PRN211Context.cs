@@ -17,12 +17,10 @@ namespace Services.Models
         }
 
         public virtual DbSet<Category> Categories { get; set; } = null!;
-        public virtual DbSet<Day> Days { get; set; } = null!;
         public virtual DbSet<Feedback> Feedbacks { get; set; } = null!;
         public virtual DbSet<MealPlanning> MealPlannings { get; set; } = null!;
         public virtual DbSet<Recipe> Recipes { get; set; } = null!;
         public virtual DbSet<Role> Roles { get; set; } = null!;
-        public virtual DbSet<Session> Sessions { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -47,8 +45,6 @@ namespace Services.Models
                     .IsUnicode(false)
                     .HasColumnName("description");
 
-                entity.Property(e => e.ParentCategoryId).HasColumnName("parent_category_id");
-
                 entity.Property(e => e.Title)
                     .HasMaxLength(50)
                     .IsUnicode(false)
@@ -66,34 +62,10 @@ namespace Services.Models
 
                             j.ToTable("Recipe_has_Categories");
 
-                            j.HasIndex(new[] { "RecipeId" }, "IX_Recipe_has_Categories_recipe_id");
-
                             j.IndexerProperty<int>("CategoryId").HasColumnName("category_id");
 
                             j.IndexerProperty<int>("RecipeId").HasColumnName("recipe_id");
                         });
-            });
-
-            modelBuilder.Entity<Day>(entity =>
-            {
-                entity.ToTable("Day");
-
-                entity.HasIndex(e => e.PlanId, "IX_Day_plan_id");
-
-                entity.Property(e => e.DayId).HasColumnName("day_id");
-
-                entity.Property(e => e.DayOfWeek)
-                    .HasMaxLength(20)
-                    .IsUnicode(false)
-                    .HasColumnName("day_of_week");
-
-                entity.Property(e => e.PlanId).HasColumnName("plan_id");
-
-                entity.HasOne(d => d.Plan)
-                    .WithMany(p => p.Days)
-                    .HasForeignKey(d => d.PlanId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Day_MealPlanning");
             });
 
             modelBuilder.Entity<Feedback>(entity =>
@@ -141,11 +113,23 @@ namespace Services.Models
 
                 entity.Property(e => e.PlanId).HasColumnName("plan_id");
 
+                entity.Property(e => e.RecipeId).HasColumnName("recipe_id");
+
+                entity.Property(e => e.Session)
+                    .HasMaxLength(10)
+                    .HasColumnName("session");
+
                 entity.Property(e => e.UserId).HasColumnName("user_id");
 
                 entity.Property(e => e.WeekStartDate)
                     .HasColumnType("datetime")
                     .HasColumnName("week_start_date");
+
+                entity.HasOne(d => d.Recipe)
+                    .WithMany(p => p.MealPlannings)
+                    .HasForeignKey(d => d.RecipeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_MealPlanning_Recipe");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.MealPlannings)
@@ -220,47 +204,6 @@ namespace Services.Models
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("role_name");
-            });
-
-            modelBuilder.Entity<Session>(entity =>
-            {
-                entity.ToTable("Session");
-
-                entity.HasIndex(e => e.DayId, "IX_Session_day_id");
-
-                entity.Property(e => e.SessionId).HasColumnName("session_id");
-
-                entity.Property(e => e.DayId).HasColumnName("day_id");
-
-                entity.Property(e => e.SessionName)
-                    .HasMaxLength(10)
-                    .IsUnicode(false)
-                    .HasColumnName("session_name");
-
-                entity.HasOne(d => d.Day)
-                    .WithMany(p => p.Sessions)
-                    .HasForeignKey(d => d.DayId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Session_Day");
-
-                entity.HasMany(d => d.Recipes)
-                    .WithMany(p => p.Sessions)
-                    .UsingEntity<Dictionary<string, object>>(
-                        "SessionHasRecipe",
-                        l => l.HasOne<Recipe>().WithMany().HasForeignKey("RecipeId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_Session_has_Recipe_Recipe"),
-                        r => r.HasOne<Session>().WithMany().HasForeignKey("SessionId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_Session_has_Recipe_Session"),
-                        j =>
-                        {
-                            j.HasKey("SessionId", "RecipeId");
-
-                            j.ToTable("Session_has_Recipe");
-
-                            j.HasIndex(new[] { "RecipeId" }, "IX_Session_has_Recipe_recipe_id");
-
-                            j.IndexerProperty<int>("SessionId").HasColumnName("session_id");
-
-                            j.IndexerProperty<int>("RecipeId").HasColumnName("recipe_id");
-                        });
             });
 
             modelBuilder.Entity<User>(entity =>

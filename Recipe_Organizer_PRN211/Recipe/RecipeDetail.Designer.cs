@@ -34,13 +34,17 @@
 			label1 = new Label();
 			label2 = new Label();
 			lbDate = new Label();
-			pictureBox1 = new PictureBox();
+
+			pictureBox = new PictureBox();
+
 			tlpIngredients = new TableLayoutPanel();
 			tlpDirection = new TableLayoutPanel();
 			btnBack = new Button();
 			button1 = new Button();
+
 			btnAddFeedback = new Button();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+
 			SuspendLayout();
 			// 
 			// label5
@@ -95,6 +99,7 @@
 			lbDate.TabIndex = 21;
 			lbDate.Text = "label4";
 			// 
+
 			// pictureBox1
 			// 
 			pictureBox1.Location = new Point(618, 163);
@@ -102,6 +107,7 @@
 			pictureBox1.Size = new Size(493, 279);
 			pictureBox1.TabIndex = 22;
 			pictureBox1.TabStop = false;
+
 			// 
 			// tlpIngredients
 			// 
@@ -134,7 +140,9 @@
 			// 
 			// btnBack
 			// 
+
 			btnBack.Location = new Point(291, 732);
+
 			btnBack.Name = "btnBack";
 			btnBack.Size = new Size(194, 59);
 			btnBack.TabIndex = 25;
@@ -156,6 +164,7 @@
 			button1.UseVisualStyleBackColor = false;
 			button1.Click += button1_Click;
 			// 
+
 			// btnAddFeedback
 			// 
 			btnAddFeedback.Location = new Point(80, 732);
@@ -166,17 +175,22 @@
 			btnAddFeedback.UseVisualStyleBackColor = true;
 			btnAddFeedback.Click += btnAddFeedback_Click;
 			// 
+
 			// RecipeDetail
 			// 
 			AutoScaleDimensions = new SizeF(8F, 20F);
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(1202, 819);
+
 			Controls.Add(btnAddFeedback);
+
 			Controls.Add(button1);
 			Controls.Add(btnBack);
 			Controls.Add(tlpDirection);
 			Controls.Add(tlpIngredients);
-			Controls.Add(pictureBox1);
+
+			Controls.Add(pictureBox);
+
 			Controls.Add(lbDate);
 			Controls.Add(label2);
 			Controls.Add(label1);
@@ -187,7 +201,9 @@
 			Name = "RecipeDetail";
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "RecipeDetail";
-			((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+
+			((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
+
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -199,11 +215,15 @@
 		private Label label1;
 		private Label label2;
 		private Label lbDate;
-		private PictureBox pictureBox1;
+
+		private PictureBox pictureBox;
+
 		private TableLayoutPanel tlpIngredients;
 		private TableLayoutPanel tlpDirection;
 		private Button btnBack;
 		private Button button1;
+
 		private Button btnAddFeedback;
+
 	}
 }

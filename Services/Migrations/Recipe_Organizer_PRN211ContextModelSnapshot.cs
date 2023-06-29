@@ -51,7 +51,7 @@ namespace Services.Migrations
 
                     b.HasKey("CategoryId", "RecipeId");
 
-                    b.HasIndex(new[] { "RecipeId" }, "IX_Recipe_has_Categories_recipe_id");
+                    b.HasIndex("RecipeId");
 
                     b.ToTable("Recipe_has_Categories", (string)null);
                 });
@@ -72,10 +72,6 @@ namespace Services.Migrations
                         .HasColumnType("varchar(50)")
                         .HasColumnName("description");
 
-                    b.Property<int>("ParentCategoryId")
-                        .HasColumnType("int")
-                        .HasColumnName("parent_category_id");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -86,33 +82,6 @@ namespace Services.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Category", (string)null);
-                });
-
-            modelBuilder.Entity("Services.Models.Day", b =>
-                {
-                    b.Property<int>("DayId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("day_id");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DayId"), 1L, 1);
-
-                    b.Property<string>("DayOfWeek")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(20)")
-                        .HasColumnName("day_of_week");
-
-                    b.Property<int>("PlanId")
-                        .HasColumnType("int")
-                        .HasColumnName("plan_id");
-
-                    b.HasKey("DayId");
-
-                    b.HasIndex(new[] { "PlanId" }, "IX_Day_plan_id");
-
-                    b.ToTable("Day", (string)null);
                 });
 
             modelBuilder.Entity("Services.Models.Feedback", b =>
@@ -170,6 +139,16 @@ namespace Services.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PlanId"), 1L, 1);
 
+                    b.Property<int>("RecipeId")
+                        .HasColumnType("int")
+                        .HasColumnName("recipe_id");
+
+                    b.Property<string>("Session")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)")
+                        .HasColumnName("session");
+
                     b.Property<int>("UserId")
                         .HasColumnType("int")
                         .HasColumnName("user_id");
@@ -179,6 +158,8 @@ namespace Services.Migrations
                         .HasColumnName("week_start_date");
 
                     b.HasKey("PlanId");
+
+                    b.HasIndex("RecipeId");
 
                     b.HasIndex(new[] { "UserId" }, "IX_MealPlanning_user_id");
 
@@ -258,33 +239,6 @@ namespace Services.Migrations
                     b.ToTable("Role", (string)null);
                 });
 
-            modelBuilder.Entity("Services.Models.Session", b =>
-                {
-                    b.Property<int>("SessionId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("session_id");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SessionId"), 1L, 1);
-
-                    b.Property<int>("DayId")
-                        .HasColumnType("int")
-                        .HasColumnName("day_id");
-
-                    b.Property<string>("SessionName")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(10)")
-                        .HasColumnName("session_name");
-
-                    b.HasKey("SessionId");
-
-                    b.HasIndex(new[] { "DayId" }, "IX_Session_day_id");
-
-                    b.ToTable("Session", (string)null);
-                });
-
             modelBuilder.Entity("Services.Models.User", b =>
                 {
                     b.Property<int>("UserId")
@@ -349,23 +303,6 @@ namespace Services.Migrations
                     b.ToTable("User", (string)null);
                 });
 
-            modelBuilder.Entity("SessionHasRecipe", b =>
-                {
-                    b.Property<int>("SessionId")
-                        .HasColumnType("int")
-                        .HasColumnName("session_id");
-
-                    b.Property<int>("RecipeId")
-                        .HasColumnType("int")
-                        .HasColumnName("recipe_id");
-
-                    b.HasKey("SessionId", "RecipeId");
-
-                    b.HasIndex(new[] { "RecipeId" }, "IX_Session_has_Recipe_recipe_id");
-
-                    b.ToTable("Session_has_Recipe", (string)null);
-                });
-
             modelBuilder.Entity("Collection", b =>
                 {
                     b.HasOne("Services.Models.Recipe", null)
@@ -396,17 +333,6 @@ namespace Services.Migrations
                         .HasConstraintName("FK_Recipe_has_Categories_Recipe");
                 });
 
-            modelBuilder.Entity("Services.Models.Day", b =>
-                {
-                    b.HasOne("Services.Models.MealPlanning", "Plan")
-                        .WithMany("Days")
-                        .HasForeignKey("PlanId")
-                        .IsRequired()
-                        .HasConstraintName("FK_Day_MealPlanning");
-
-                    b.Navigation("Plan");
-                });
-
             modelBuilder.Entity("Services.Models.Feedback", b =>
                 {
                     b.HasOne("Services.Models.User", "User")
@@ -420,11 +346,19 @@ namespace Services.Migrations
 
             modelBuilder.Entity("Services.Models.MealPlanning", b =>
                 {
+                    b.HasOne("Services.Models.Recipe", "Recipe")
+                        .WithMany("MealPlannings")
+                        .HasForeignKey("RecipeId")
+                        .IsRequired()
+                        .HasConstraintName("FK_MealPlanning_Recipe");
+
                     b.HasOne("Services.Models.User", "User")
                         .WithMany("MealPlannings")
                         .HasForeignKey("UserId")
                         .IsRequired()
                         .HasConstraintName("FK_MealPlanning_User");
+
+                    b.Navigation("Recipe");
 
                     b.Navigation("User");
                 });
@@ -440,17 +374,6 @@ namespace Services.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Services.Models.Session", b =>
-                {
-                    b.HasOne("Services.Models.Day", "Day")
-                        .WithMany("Sessions")
-                        .HasForeignKey("DayId")
-                        .IsRequired()
-                        .HasConstraintName("FK_Session_Day");
-
-                    b.Navigation("Day");
-                });
-
             modelBuilder.Entity("Services.Models.User", b =>
                 {
                     b.HasOne("Services.Models.Role", "RoleNavigation")
@@ -462,29 +385,9 @@ namespace Services.Migrations
                     b.Navigation("RoleNavigation");
                 });
 
-            modelBuilder.Entity("SessionHasRecipe", b =>
+            modelBuilder.Entity("Services.Models.Recipe", b =>
                 {
-                    b.HasOne("Services.Models.Recipe", null)
-                        .WithMany()
-                        .HasForeignKey("RecipeId")
-                        .IsRequired()
-                        .HasConstraintName("FK_Session_has_Recipe_Recipe");
-
-                    b.HasOne("Services.Models.Session", null)
-                        .WithMany()
-                        .HasForeignKey("SessionId")
-                        .IsRequired()
-                        .HasConstraintName("FK_Session_has_Recipe_Session");
-                });
-
-            modelBuilder.Entity("Services.Models.Day", b =>
-                {
-                    b.Navigation("Sessions");
-                });
-
-            modelBuilder.Entity("Services.Models.MealPlanning", b =>
-                {
-                    b.Navigation("Days");
+                    b.Navigation("MealPlannings");
                 });
 
             modelBuilder.Entity("Services.Models.Role", b =>

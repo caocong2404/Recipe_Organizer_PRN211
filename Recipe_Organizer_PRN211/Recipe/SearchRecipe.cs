@@ -58,7 +58,7 @@ namespace Recipe_Organizer_PRN211.Recipe
 		private void btnRefresh_Click(object sender, EventArgs e)
 		{
 			RefreshRecipeList();
-
+			txtSearch.Text = "";
 		}
 
 		private void RefreshRecipeList()
@@ -143,6 +143,13 @@ namespace Recipe_Organizer_PRN211.Recipe
 				txtWelcome.Text = "Hello " + user.FirstName;
 			else
 				txtWelcome.Text = "Hello " + user.Username;
+		}
+
+		private void btnAddRecipe_Click(object sender, EventArgs e)
+		{
+			Form addReipce = new AddRecipe();
+			this.Hide();
+			addReipce.Show();
 		}
 	}
 }

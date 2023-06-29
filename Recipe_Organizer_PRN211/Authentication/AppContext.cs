@@ -10,5 +10,6 @@ namespace Recipe_Organizer_PRN211.Authentication
     public static class AppContext
     {
         public static User CurrentUser { get; set; }
+        public static int RecipeId { get; set; }
     }
 }

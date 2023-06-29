@@ -1,7 +1,5 @@
-﻿using Recipe_Organizer_PRN211.Feedback;
-using Services.Models;
+﻿using Recipe_Organizer_PRN211.Authentication;
 using Services.Service;
-using Services.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,13 +10,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Recipe_Organizer_PRN211.Recipe
+namespace Recipe_Organizer_PRN211.Manage
 {
-	public partial class RecipeDetail : Form
+	public partial class RecipeDetailPending : Form
 	{
 		private RecipeRepository _recipeRepository;
 
-		public RecipeDetail()
+		public RecipeDetailPending()
 		{
 			InitializeComponent();
 			_recipeRepository = new RecipeRepository();
@@ -26,10 +24,10 @@ namespace Recipe_Organizer_PRN211.Recipe
 		protected override void OnLoad(EventArgs e)
 		{
 			base.OnLoad(e);
-			if (AppContext.RecipeId > 0)
+			if (Recipe_Organizer_PRN211.Authentication.AppContext.RecipeId > 0)
 			{
 				// Get the recipe from the database
-				int recipeId = AppContext.RecipeId;
+				int recipeId = Recipe_Organizer_PRN211.Recipe.AppContext.RecipeId;
 				Services.Models.Recipe recipe = _recipeRepository.GetRecipe(recipeId);
 
 				if (recipe != null)
@@ -84,14 +82,6 @@ namespace Recipe_Organizer_PRN211.Recipe
 					}
 
 					lbDate.Text = "Date: " + recipe.Date.ToString();
-
-
-					// Convert the base64 string to an Image
-					Image image = Base64ToImage(recipe.Img);
-
-					// Set the image to the PictureBox
-					pictureBox.Image = image;
-
 				}
 			}
 		}
@@ -99,42 +89,8 @@ namespace Recipe_Organizer_PRN211.Recipe
 		private void btnBack_Click(object sender, EventArgs e)
 		{
 			this.Hide();
-			SearchRecipe recipeListForm = new SearchRecipe();
+			PendingRecipe recipeListForm = new PendingRecipe();
 			recipeListForm.ShowDialog();
 		}
-
-		private void button1_Click(object sender, EventArgs e)
-		{
-			Form searhRecipe = new SearchRecipe();
-			this.Hide();
-			searhRecipe.ShowDialog();
-		}
-
-
-		private void btnAddFeedback_Click(object sender, EventArgs e)
-		{
-			FeedbackForm feedbackForm = new FeedbackForm();
-			feedbackForm.ShowDialog();
-		}
-
-		public Image Base64ToImage(string base64String)
-		{
-			try
-			{
-				byte[] imageBytes = Convert.FromBase64String(base64String);
-				using (MemoryStream ms = new MemoryStream(imageBytes))
-				{
-					Image image = Image.FromStream(ms);
-					return image;
-				}
-			}
-			catch (FormatException ex)
-			{
-				// Handle the exception, e.g., logging, displaying an error message
-				Console.WriteLine("Invalid Base64 string: " + ex.Message);
-				return null; // or throw an exception, depending on your requirements
-			}
-		}
-
 	}
 }

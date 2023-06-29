@@ -37,6 +37,8 @@
 			btnLogout = new Button();
 			btnUserProfile = new Button();
 			txtWelcome = new Label();
+			btnAddRecipe = new PictureBox();
+			((System.ComponentModel.ISupportInitialize)btnAddRecipe).BeginInit();
 			SuspendLayout();
 			// 
 			// btnRefresh
@@ -125,12 +127,25 @@
 			txtWelcome.TabIndex = 57;
 			txtWelcome.Text = "Hello";
 			// 
+			// btnAddRecipe
+			// 
+			btnAddRecipe.BackgroundImageLayout = ImageLayout.None;
+			btnAddRecipe.Image = Properties.Resources.add_button;
+			btnAddRecipe.Location = new Point(683, 12);
+			btnAddRecipe.Name = "btnAddRecipe";
+			btnAddRecipe.Size = new Size(42, 38);
+			btnAddRecipe.SizeMode = PictureBoxSizeMode.StretchImage;
+			btnAddRecipe.TabIndex = 58;
+			btnAddRecipe.TabStop = false;
+			btnAddRecipe.Click += btnAddRecipe_Click;
+			// 
 			// SearchRecipe
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackgroundImageLayout = ImageLayout.Center;
 			ClientSize = new Size(974, 608);
+			Controls.Add(btnAddRecipe);
 			Controls.Add(txtWelcome);
 			Controls.Add(btnUserProfile);
 			Controls.Add(btnLogout);
@@ -145,6 +160,7 @@
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "RecipeList";
 			Load += SearchRecipe_Load;
+			((System.ComponentModel.ISupportInitialize)btnAddRecipe).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -158,5 +174,6 @@
 		private Button btnLogout;
 		private Button btnUserProfile;
 		private Label txtWelcome;
+		private PictureBox btnAddRecipe;
 	}
 }
