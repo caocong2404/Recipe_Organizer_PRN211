@@ -86,8 +86,8 @@ namespace Recipe_Organizer_PRN211.Feedback
 			feedback.Title = txtTitle.Text;
 			feedback.Description = txtDescription.Text;
 			feedback.Date = DateTime.Now;
-			feedback.FeedbackType = rbComment.Checked ? "Comment" : "Report";
-			feedback.FeedbackLevel = rbVSatisfied.Checked ? "Very satisfied" : rbSatisfied.Checked ? "Satisfied" : rbNeutral.Checked ? "Normal" : rbUnsatisfied.Checked ? "Unsatisfied" : "Very Unsatisfied";
+			//feedback.FeedbackType = rbComment.Checked ? "Comment" : "Report";
+			//feedback.FeedbackLevel = rbVSatisfied.Checked ? "Very satisfied" : rbSatisfied.Checked ? "Satisfied" : rbNeutral.Checked ? "Normal" : rbUnsatisfied.Checked ? "Unsatisfied" : "Very Unsatisfied";
 			_feedbackRepository.Add(feedback);
 
 			// Optional: Display a message to the user that the feedback was submitted successfully

@@ -43,7 +43,6 @@
 			button1 = new Button();
 
 			btnAddFeedback = new Button();
-			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
 
 			SuspendLayout();
 			// 
@@ -100,13 +99,7 @@
 			lbDate.Text = "label4";
 			// 
 
-			// pictureBox1
-			// 
-			pictureBox1.Location = new Point(618, 163);
-			pictureBox1.Name = "pictureBox1";
-			pictureBox1.Size = new Size(493, 279);
-			pictureBox1.TabIndex = 22;
-			pictureBox1.TabStop = false;
+
 
 			// 
 			// tlpIngredients
