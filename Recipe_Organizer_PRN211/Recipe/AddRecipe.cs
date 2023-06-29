@@ -53,6 +53,10 @@ namespace Recipe_Organizer_PRN211.Authentication
                 recipe.Date = DateTime.Now;
                 // txtImport.Text = ImageToBase64(url);
                 _recipeRepository.Add(recipe);
+                Form searchForm = new SearchRecipe();
+                this.Hide();
+                searchForm.ShowDialog();
+
             }
             else
             {
