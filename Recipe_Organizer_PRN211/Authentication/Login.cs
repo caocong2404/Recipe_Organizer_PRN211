@@ -1,4 +1,5 @@
-﻿using Services.Models;
+﻿using Recipe_Organizer_PRN211.Recipe;
+using Services.Models;
 using Services.Services;
 using System;
 using System.Collections.Generic;
@@ -43,9 +44,10 @@ namespace Recipe_Organizer_PRN211.Authentication
                     }
                     else if (user.Role == 2)
                     {
-                        Form userProfile = new UserProfile();
+                        //Form userProfile = new UserProfile();
+                        Form recipeList = new SearchRecipe();
                         this.Hide();
-                        userProfile.ShowDialog();
+                        recipeList.ShowDialog();
                     }
                 }
             }
@@ -61,7 +63,7 @@ namespace Recipe_Organizer_PRN211.Authentication
             return result;
         }
 
-        
+
         private void btnBack_Click(object sender, EventArgs e)
         {
             //push update

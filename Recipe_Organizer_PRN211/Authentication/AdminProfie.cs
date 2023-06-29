@@ -85,5 +85,6 @@ namespace Recipe_Organizer_PRN211.Authentication
             else
                 txtWelcome.Text = "Hello " + user.Username;
         }
+
     }
 }
