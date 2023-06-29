@@ -62,6 +62,8 @@ namespace Services.Models
 
                             j.ToTable("Recipe_has_Categories");
 
+                            j.HasIndex(new[] { "RecipeId" }, "IX_Recipe_has_Categories_recipe_id");
+
                             j.IndexerProperty<int>("CategoryId").HasColumnName("category_id");
 
                             j.IndexerProperty<int>("RecipeId").HasColumnName("recipe_id");
@@ -108,6 +110,8 @@ namespace Services.Models
                 entity.HasKey(e => e.PlanId);
 
                 entity.ToTable("MealPlanning");
+
+                entity.HasIndex(e => e.RecipeId, "IX_MealPlanning_recipe_id");
 
                 entity.HasIndex(e => e.UserId, "IX_MealPlanning_user_id");
 

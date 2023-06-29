@@ -28,15 +28,17 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RecipeDetailPending));
 			btnBack = new Button();
 			tlpDirection = new TableLayoutPanel();
 			tlpIngredients = new TableLayoutPanel();
-			pictureBox1 = new PictureBox();
-			lbDate = new Label();
 			label2 = new Label();
 			label1 = new Label();
 			lbTitle = new Label();
-			label5 = new Label();
+			btnReject = new Button();
+			btnApprove = new Button();
+			pictureBox1 = new PictureBox();
+			lbDate = new Label();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
 			SuspendLayout();
 			// 
@@ -51,6 +53,7 @@
 			btnBack.TabIndex = 35;
 			btnBack.TextAlign = ContentAlignment.MiddleLeft;
 			btnBack.UseVisualStyleBackColor = false;
+			btnBack.Click += btnBack_Click_1;
 			// 
 			// tlpDirection
 			// 
@@ -60,7 +63,7 @@
 			tlpDirection.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
 			tlpDirection.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
 			tlpDirection.GrowStyle = TableLayoutPanelGrowStyle.FixedSize;
-			tlpDirection.Location = new Point(56, 376);
+			tlpDirection.Location = new Point(76, 407);
 			tlpDirection.Margin = new Padding(3, 2, 3, 2);
 			tlpDirection.Name = "tlpDirection";
 			tlpDirection.RowCount = 2;
@@ -74,7 +77,7 @@
 			tlpIngredients.ColumnCount = 2;
 			tlpIngredients.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
 			tlpIngredients.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-			tlpIngredients.Location = new Point(56, 164);
+			tlpIngredients.Location = new Point(76, 195);
 			tlpIngredients.Margin = new Padding(3, 2, 3, 2);
 			tlpIngredients.Name = "tlpIngredients";
 			tlpIngredients.RowCount = 2;
@@ -83,29 +86,11 @@
 			tlpIngredients.Size = new Size(387, 153);
 			tlpIngredients.TabIndex = 33;
 			// 
-			// pictureBox1
-			// 
-			pictureBox1.Location = new Point(525, 108);
-			pictureBox1.Margin = new Padding(3, 2, 3, 2);
-			pictureBox1.Name = "pictureBox1";
-			pictureBox1.Size = new Size(431, 209);
-			pictureBox1.TabIndex = 32;
-			pictureBox1.TabStop = false;
-			// 
-			// lbDate
-			// 
-			lbDate.AutoSize = true;
-			lbDate.Location = new Point(35, 78);
-			lbDate.Name = "lbDate";
-			lbDate.Size = new Size(38, 15);
-			lbDate.TabIndex = 31;
-			lbDate.Text = "label4";
-			// 
 			// label2
 			// 
 			label2.AutoSize = true;
 			label2.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-			label2.Location = new Point(35, 341);
+			label2.Location = new Point(55, 372);
 			label2.Name = "label2";
 			label2.Size = new Size(80, 20);
 			label2.TabIndex = 30;
@@ -115,7 +100,7 @@
 			// 
 			label1.AutoSize = true;
 			label1.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-			label1.Location = new Point(35, 122);
+			label1.Location = new Point(55, 153);
 			label1.Name = "label1";
 			label1.Size = new Size(89, 20);
 			label1.TabIndex = 29;
@@ -126,29 +111,64 @@
 			lbTitle.AutoSize = true;
 			lbTitle.Font = new Font("Montserrat Black", 18F, FontStyle.Regular, GraphicsUnit.Point);
 			lbTitle.ForeColor = Color.FromArgb(255, 128, 0);
-			lbTitle.Location = new Point(395, 40);
+			lbTitle.Location = new Point(144, 58);
 			lbTitle.Name = "lbTitle";
 			lbTitle.Size = new Size(226, 33);
 			lbTitle.TabIndex = 28;
 			lbTitle.Text = "TITLE HEREEEEE";
 			lbTitle.TextAlign = ContentAlignment.TopCenter;
 			// 
-			// label5
+			// btnReject
 			// 
-			label5.AutoSize = true;
-			label5.Font = new Font("Montserrat Black", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-			label5.ForeColor = Color.FromArgb(192, 0, 0);
-			label5.Location = new Point(791, 23);
-			label5.Name = "label5";
-			label5.Size = new Size(210, 37);
-			label5.TabIndex = 27;
-			label5.Text = "Recipe detail";
+			btnReject.BackColor = Color.Red;
+			btnReject.Font = new Font("Montserrat", 8.999999F, FontStyle.Bold, GraphicsUnit.Point);
+			btnReject.ForeColor = Color.White;
+			btnReject.Location = new Point(848, 5);
+			btnReject.Name = "btnReject";
+			btnReject.Size = new Size(141, 50);
+			btnReject.TabIndex = 63;
+			btnReject.Text = "Reject";
+			btnReject.UseVisualStyleBackColor = false;
+			btnReject.Click += btnReject_Click;
+			// 
+			// btnApprove
+			// 
+			btnApprove.BackColor = Color.Lime;
+			btnApprove.Font = new Font("Montserrat", 8.999999F, FontStyle.Bold, GraphicsUnit.Point);
+			btnApprove.Location = new Point(701, 5);
+			btnApprove.Name = "btnApprove";
+			btnApprove.Size = new Size(141, 50);
+			btnApprove.TabIndex = 62;
+			btnApprove.Text = "Approve";
+			btnApprove.UseVisualStyleBackColor = false;
+			btnApprove.Click += btnApprove_Click;
+			// 
+			// pictureBox1
+			// 
+			pictureBox1.Location = new Point(545, 139);
+			pictureBox1.Margin = new Padding(3, 2, 3, 2);
+			pictureBox1.Name = "pictureBox1";
+			pictureBox1.Size = new Size(431, 209);
+			pictureBox1.TabIndex = 32;
+			pictureBox1.TabStop = false;
+			// 
+			// lbDate
+			// 
+			lbDate.AutoSize = true;
+			lbDate.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+			lbDate.Location = new Point(55, 109);
+			lbDate.Name = "lbDate";
+			lbDate.Size = new Size(63, 25);
+			lbDate.TabIndex = 31;
+			lbDate.Text = "label4";
 			// 
 			// RecipeDetailPending
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(1032, 526);
+			ClientSize = new Size(1041, 555);
+			Controls.Add(btnReject);
+			Controls.Add(btnApprove);
 			Controls.Add(btnBack);
 			Controls.Add(tlpDirection);
 			Controls.Add(tlpIngredients);
@@ -157,7 +177,7 @@
 			Controls.Add(label2);
 			Controls.Add(label1);
 			Controls.Add(lbTitle);
-			Controls.Add(label5);
+			Icon = (Icon)resources.GetObject("$this.Icon");
 			Name = "RecipeDetailPending";
 			Text = "RecipeDetailPending";
 			((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -170,11 +190,12 @@
 		private Button btnBack;
 		private TableLayoutPanel tlpDirection;
 		private TableLayoutPanel tlpIngredients;
-		private PictureBox pictureBox1;
-		private Label lbDate;
 		private Label label2;
 		private Label label1;
 		private Label lbTitle;
-		private Label label5;
+		private Button btnReject;
+		private Button btnApprove;
+		private PictureBox pictureBox1;
+		private Label lbDate;
 	}
 }

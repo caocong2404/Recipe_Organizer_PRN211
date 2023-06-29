@@ -27,7 +27,7 @@ namespace Recipe_Organizer_PRN211.Manage
 			if (Recipe_Organizer_PRN211.Authentication.AppContext.RecipeId > 0)
 			{
 				// Get the recipe from the database
-				int recipeId = Recipe_Organizer_PRN211.Recipe.AppContext.RecipeId;
+				int recipeId = Recipe_Organizer_PRN211.Authentication.AppContext.RecipeId;
 				Services.Models.Recipe recipe = _recipeRepository.GetRecipe(recipeId);
 
 				if (recipe != null)
@@ -88,9 +88,49 @@ namespace Recipe_Organizer_PRN211.Manage
 
 		private void btnBack_Click(object sender, EventArgs e)
 		{
-			this.Hide();
-			PendingRecipe recipeListForm = new PendingRecipe();
-			recipeListForm.ShowDialog();
+			
+		}
+
+		private void lbDate_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void btnApprove_Click(object sender, EventArgs e)
+		{
+			if (Recipe_Organizer_PRN211.Authentication.AppContext.RecipeId > 0)
+			{
+				// Get the recipe from the database
+				int recipeId = Recipe_Organizer_PRN211.Authentication.AppContext.RecipeId;
+				_recipeRepository.updateRecipeStatus(recipeId, "Approve");
+				this.DialogResult = DialogResult.OK;
+				this.Close();
+			}
+			else
+			{
+				MessageBox.Show("Cannot approve pending recipe", "Error", MessageBoxButtons.OK);
+			}
+		}
+
+		private void btnReject_Click(object sender, EventArgs e)
+		{
+			if (Recipe_Organizer_PRN211.Authentication.AppContext.RecipeId > 0)
+			{
+				// Get the recipe from the database
+				int recipeId = Recipe_Organizer_PRN211.Authentication.AppContext.RecipeId;
+				_recipeRepository.updateRecipeStatus(recipeId, "Reject");
+				this.DialogResult = DialogResult.OK;
+				this.Close();
+			}
+			else
+			{
+				MessageBox.Show("Cannot reject pending recipe", "Error", MessageBoxButtons.OK);
+			}
+		}
+
+		private void btnBack_Click_1(object sender, EventArgs e)
+		{
+			this.Close();
 		}
 	}
 }
