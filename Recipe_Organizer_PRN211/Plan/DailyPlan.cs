@@ -1,4 +1,5 @@
-﻿using Services.Service;
+﻿using Services.Models;
+using Services.Service;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -102,7 +103,13 @@ namespace Recipe_Organizer_PRN211.Plan
 
         private void mnsiAddJob_Click(object sender, EventArgs e)
         {
-            PlanItem item = new PlanItem() { Date = dtpkDate.Value };
+            int userId = Recipe_Organizer_PRN211.Authentication.AppContext.CurrentUser.UserId;
+            
+            PlanItem item = new PlanItem() { Date = dtpkDate.Value, RecipeId = -1, UserId = userId, Status = "Breakfast" };
+            if (Job.Job == null) {
+                Job = new PlanData();
+                Job.Job = new List<PlanItem> { item };
+            }
             Job.Job.Add(item);
             AddJob(item);
         }

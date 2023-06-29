@@ -54,7 +54,11 @@ namespace Recipe_Organizer_PRN211.Plan
 
 		void ShowInfo()
 		{
-			txbJob.Text = Job.Recipe.Title;
+			if(Job.RecipeId == -1) {
+				txbJob.Text = "";
+			}else
+			{ txbJob.Text = _recipeRepository.GetRecipe(Job.RecipeId).Title; }
+			
 
 			cbStatus.SelectedIndex = PlanItem.ListStatus.IndexOf(Job.Status);
 
@@ -68,7 +72,7 @@ namespace Recipe_Organizer_PRN211.Plan
 
 		private void btnEdit_Click(object sender, EventArgs e)
 		{
-			Job.Recipe.Title = txbJob.Text;
+			//Job.Recipe.Title = txbJob.Text;
 
 			Job.Status = PlanItem.ListStatus[cbStatus.SelectedIndex];
 

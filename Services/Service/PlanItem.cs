@@ -26,12 +26,12 @@ namespace Services.Service
             set { userId = value; }
         }
 
-        private Recipe recipe;
+        private int recipeId;
 
-        public Recipe Recipe
+        public int RecipeId
         {
-            get { return recipe; }
-            set { recipe = value; }
+            get { return recipeId; }
+            set { recipeId = value; }
         }
 
         
