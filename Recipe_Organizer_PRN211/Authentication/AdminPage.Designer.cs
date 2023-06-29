@@ -44,6 +44,7 @@
 			button3 = new Button();
 			panel5 = new Panel();
 			Pn_body = new Panel();
+			btnCategory = new Button();
 			flowLayoutPanel1.SuspendLayout();
 			panel3.SuspendLayout();
 			panel2.SuspendLayout();
@@ -64,6 +65,7 @@
 			// 
 			// flowLayoutPanel1
 			// 
+			flowLayoutPanel1.Controls.Add(btnCategory);
 			flowLayoutPanel1.Controls.Add(panel3);
 			flowLayoutPanel1.Controls.Add(panel2);
 			flowLayoutPanel1.Controls.Add(panel6);
@@ -78,7 +80,7 @@
 			// panel3
 			// 
 			panel3.Controls.Add(btnAdminProfile);
-			panel3.Location = new Point(3, 3);
+			panel3.Location = new Point(3, 69);
 			panel3.Name = "panel3";
 			panel3.Size = new Size(280, 56);
 			panel3.TabIndex = 1;
@@ -99,7 +101,7 @@
 			// panel2
 			// 
 			panel2.Controls.Add(btnUserList);
-			panel2.Location = new Point(3, 65);
+			panel2.Location = new Point(3, 131);
 			panel2.Name = "panel2";
 			panel2.Size = new Size(280, 56);
 			panel2.TabIndex = 0;
@@ -120,7 +122,7 @@
 			// panel6
 			// 
 			panel6.Controls.Add(btnPendingRecipe);
-			panel6.Location = new Point(3, 127);
+			panel6.Location = new Point(3, 193);
 			panel6.Name = "panel6";
 			panel6.Size = new Size(280, 65);
 			panel6.TabIndex = 2;
@@ -143,7 +145,7 @@
 			panel7.Controls.Add(btnLogout);
 			panel7.Controls.Add(button1);
 			panel7.Controls.Add(adu);
-			panel7.Location = new Point(3, 198);
+			panel7.Location = new Point(3, 264);
 			panel7.Name = "panel7";
 			panel7.Size = new Size(280, 56);
 			panel7.TabIndex = 2;
@@ -190,7 +192,7 @@
 			button3.Dock = DockStyle.Fill;
 			button3.Font = new Font("Montserrat Black", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
 			button3.ForeColor = Color.Coral;
-			button3.Location = new Point(3, 260);
+			button3.Location = new Point(3, 326);
 			button3.Name = "button3";
 			button3.Size = new Size(280, 0);
 			button3.TabIndex = 4;
@@ -212,6 +214,18 @@
 			Pn_body.Name = "Pn_body";
 			Pn_body.Size = new Size(862, 540);
 			Pn_body.TabIndex = 22;
+			// 
+			// btnCategory
+			// 
+			btnCategory.Font = new Font("Montserrat Black", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+			btnCategory.ForeColor = Color.FromArgb(255, 128, 0);
+			btnCategory.Location = new Point(3, 3);
+			btnCategory.Name = "btnCategory";
+			btnCategory.Size = new Size(299, 60);
+			btnCategory.TabIndex = 0;
+			btnCategory.Text = "Category";
+			btnCategory.UseVisualStyleBackColor = true;
+			btnCategory.Click += btnCategory_Click;
 			// 
 			// AdminPage
 			// 
@@ -253,5 +267,6 @@
 		private Button button1;
 		private Button button3;
 		private Panel Pn_body;
+		private Button btnCategory;
 	}
 }
