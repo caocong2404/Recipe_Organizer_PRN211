@@ -31,6 +31,7 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminPage));
 			label5 = new Label();
 			flowLayoutPanel1 = new FlowLayoutPanel();
+			btnCategory = new Button();
 			panel3 = new Panel();
 			btnAdminProfile = new Button();
 			panel2 = new Panel();
@@ -44,7 +45,6 @@
 			button3 = new Button();
 			panel5 = new Panel();
 			Pn_body = new Panel();
-			btnCategory = new Button();
 			flowLayoutPanel1.SuspendLayout();
 			panel3.SuspendLayout();
 			panel2.SuspendLayout();
@@ -76,6 +76,18 @@
 			flowLayoutPanel1.Name = "flowLayoutPanel1";
 			flowLayoutPanel1.Size = new Size(295, 540);
 			flowLayoutPanel1.TabIndex = 21;
+			// 
+			// btnCategory
+			// 
+			btnCategory.Font = new Font("Montserrat Black", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+			btnCategory.ForeColor = Color.FromArgb(255, 128, 0);
+			btnCategory.Location = new Point(3, 3);
+			btnCategory.Name = "btnCategory";
+			btnCategory.Size = new Size(280, 60);
+			btnCategory.TabIndex = 0;
+			btnCategory.Text = "Category";
+			btnCategory.UseVisualStyleBackColor = true;
+			btnCategory.Click += btnCategory_Click;
 			// 
 			// panel3
 			// 
@@ -214,18 +226,6 @@
 			Pn_body.Name = "Pn_body";
 			Pn_body.Size = new Size(862, 540);
 			Pn_body.TabIndex = 22;
-			// 
-			// btnCategory
-			// 
-			btnCategory.Font = new Font("Montserrat Black", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-			btnCategory.ForeColor = Color.FromArgb(255, 128, 0);
-			btnCategory.Location = new Point(3, 3);
-			btnCategory.Name = "btnCategory";
-			btnCategory.Size = new Size(299, 60);
-			btnCategory.TabIndex = 0;
-			btnCategory.Text = "Category";
-			btnCategory.UseVisualStyleBackColor = true;
-			btnCategory.Click += btnCategory_Click;
 			// 
 			// AdminPage
 			// 

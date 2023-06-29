@@ -149,6 +149,7 @@
 			recipePicture.Margin = new Padding(3, 2, 3, 2);
 			recipePicture.Name = "recipePicture";
 			recipePicture.Size = new Size(431, 209);
+			recipePicture.SizeMode = PictureBoxSizeMode.Zoom;
 			recipePicture.TabIndex = 32;
 			recipePicture.TabStop = false;
 			// 
