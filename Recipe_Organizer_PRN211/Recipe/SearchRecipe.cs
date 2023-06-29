@@ -1,4 +1,5 @@
 ﻿using Recipe_Organizer_PRN211.Authentication;
+using Recipe_Organizer_PRN211.Plan;
 using Services.Models;
 using Services.Service;
 using Services.Services;
@@ -149,7 +150,14 @@ namespace Recipe_Organizer_PRN211.Recipe
 		{
 			Form addReipce = new AddRecipe();
 			this.Hide();
-			addReipce.Show();
+			addReipce.ShowDialog();
+		}
+
+		private void btnMealPlanning_Click(object sender, EventArgs e)
+		{
+			Form mealPlanning = new PlanView();
+			this.Hide();
+			mealPlanning.ShowDialog();
 		}
 	}
 }
