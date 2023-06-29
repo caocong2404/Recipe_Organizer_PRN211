@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Services.Models;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -17,29 +18,23 @@ namespace Services.Service
             set { date = value; }
         }
 
-        private string job;
+        private int userId;
 
-        public string Job
+        public int UserId
         {
-            get { return job; }
-            set { job = value; }
+            get { return userId; }
+            set { userId = value; }
         }
 
-        private Point fromTime;
+        private Recipe recipe;
 
-        public Point FromTime
+        public Recipe Recipe
         {
-            get { return fromTime; }
-            set { fromTime = value; }
+            get { return recipe; }
+            set { recipe = value; }
         }
 
-        private Point toTime;
-
-        public Point ToTime
-        {
-            get { return toTime; }
-            set { toTime = value; }
-        }
+        
 
         private string status;
 

@@ -1,4 +1,5 @@
-﻿using Services.Service;
+﻿using Services.Models;
+using Services.Service;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,8 +19,9 @@ namespace Recipe_Organizer_PRN211.Plan
 
 
         #region Peoperties
-        private string filePath = "data.xml";
-
+        
+        private MealPlanningRepository _mealPlanningRepository = new MealPlanningRepository();
+        private RecipeRepository _recipeRepository = new RecipeRepository();
         private List<List<Button>> matrix;
 
         public List<List<Button>> Matrix
@@ -44,14 +46,9 @@ namespace Recipe_Organizer_PRN211.Plan
 
             LoadMatrix();
 
-            try
-            {
-                Job = DeserializeFromXML(filePath) as PlanData;
-            }
-            catch
-            {
-                SetDefaultJob();
-            }
+            
+                Job = DeserializeFromXML(1);
+            
         }
 
         void SetDefaultJob()
@@ -61,11 +58,10 @@ namespace Recipe_Organizer_PRN211.Plan
             Job.Job.Add(new PlanItem()
             {
                 Date = DateTime.Now,
-                FromTime = new Point(4, 0),
-                ToTime = new Point(5, 0),
-                Job = "Thử nghiệm thôi",
+
+                Recipe = null,
                 Status = PlanItem.ListStatus[(int)EPlanItem.Breakfast]
-            });
+            }) ;
         }
 
         void LoadMatrix()
@@ -196,37 +192,48 @@ namespace Recipe_Organizer_PRN211.Plan
             SetDefaultDate();
         }
 
-        private void SerializeToXML(object data, string filePath)
+        
+
+        private PlanData DeserializeFromXML(int userId)
         {
-            FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write);
-            XmlSerializer sr = new XmlSerializer(typeof(PlanData));
-
-            sr.Serialize(fs, data);
-
-            fs.Close();
-        }
-
-        private object DeserializeFromXML(string filePath)
-        {
-            FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read);
-            try
-            {
-                XmlSerializer sr = new XmlSerializer(typeof(PlanData));
-
-                object result = sr.Deserialize(fs);
-                fs.Close();
-                return result;
+            List<MealPlanning> mealPlannings = _mealPlanningRepository.getListRecipesByUserId(userId);
+            
+            PlanData data = new PlanData();
+            if (mealPlannings.Count > 0) {
+                foreach (MealPlanning item in mealPlannings)
+                {
+                    data.Job.Add(new PlanItem()
+                    {
+                        Date = item.WeekStartDate,
+                        Recipe = _recipeRepository.GetRecipe(item.RecipeId),
+                        Status = item.Session,
+                        UserId = userId
+                    });
+                }
             }
-            catch (Exception e)
-            {
-                fs.Close();
-                throw new NotImplementedException();
-            }
+            
+            return data;
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            SerializeToXML(Job, filePath);
+            List<MealPlanning> mealPlannings = new List<MealPlanning>();
+            if (Job.Job.Count > 0)
+            {
+                foreach( PlanItem item in Job.Job)
+                {
+                    mealPlannings.Add(new MealPlanning() {
+                        RecipeId = item.Recipe.RecipeId,
+                        UserId = item.UserId,
+                        Session = item.Status,
+                        WeekStartDate = item.Date
+                    });
+                }
+
+                _mealPlanningRepository.SavePlan(mealPlannings, mealPlannings.FirstOrDefault().UserId);
+            }
+            
+
         }
     }
 }
