@@ -144,5 +144,12 @@ namespace Recipe_Organizer_PRN211.Recipe
 			else
 				txtWelcome.Text = "Hello " + user.Username;
 		}
+
+		private void btnAddRecipe_Click(object sender, EventArgs e)
+		{
+			Form addReipce = new AddRecipe();
+			this.Hide();
+			addReipce.Show();
+		}
 	}
 }
