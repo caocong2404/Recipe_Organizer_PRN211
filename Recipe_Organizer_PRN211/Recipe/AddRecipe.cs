@@ -11,6 +11,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Services.Models;
+using System.Xml.Linq;
+using Recipe_Organizer_PRN211.Recipe;
+
 
 namespace Recipe_Organizer_PRN211.Authentication
 {
@@ -28,20 +31,32 @@ namespace Recipe_Organizer_PRN211.Authentication
         public static string url = "";
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            var recipe = new Services.Models.Recipe();
-            recipe.Title = txtTitle.Text.ToString();
-            recipe.Description = txtDescription.Text.ToString();
-            recipe.Ingredient = txtIngredient.Text.ToString();
             txtImport.Text = ImageToBase64(url);
-            recipe.Img = txtImport.Text.ToString();
+            if ((txtDescription.Text.Length > 0) && (txtIngredient.Text.Length > 0) && (txtTitle.Text.Length > 0) && (txtImport.Text.Length > 0)
+                && (txtDescription.Text.Trim() != "") && (txtIngredient.Text.Trim() != "") && (txtTitle.Text.Trim() != "") && (txtImport.Text.Trim() != ""))
 
-            recipe.UserId = 1;
-            recipe.Status = "Pending";
+            {
+                var recipe = new Services.Models.Recipe();
+                recipe.Title = txtTitle.Text.ToString();
+                recipe.Description = txtDescription.Text.ToString();
+                recipe.Ingredient = txtIngredient.Text.ToString();
+                //txtImport.Text = ImageToBase64(url);
+                //recipe.Img = txtImport.Text.ToString();
+                recipe.Img = (txtImport.Text = ImageToBase64(url));
+                recipe.UserId = AppContext.CurrentUser.UserId;
 
-            recipe.Date = DateTime.Now;
-            // txtImport.Text = ImageToBase64(url);
-            _recipeRepository.Add(recipe);
+                recipe.Status = "Pending";
 
+
+                recipe.Date = DateTime.Now;
+                // txtImport.Text = ImageToBase64(url);
+                _recipeRepository.Add(recipe);
+            }
+            else
+            {
+                MessageBox.Show("Error type input date", "WARNING", MessageBoxButtons.OK);
+
+            }
 
         }
 
@@ -97,6 +112,14 @@ namespace Recipe_Organizer_PRN211.Authentication
                 }
             }
         }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Form searchForm = new SearchRecipe();
+            this.Hide();
+            searchForm.ShowDialog(); 
+        }
+
     }
 }
 

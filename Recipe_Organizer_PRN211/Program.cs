@@ -1,5 +1,7 @@
 using Recipe_Organizer_PRN211.Authentication;
 
+using Recipe_Organizer_PRN211.Plan;
+
 namespace Recipe_Organizer_PRN211
 {
     internal static class Program
@@ -14,7 +16,8 @@ namespace Recipe_Organizer_PRN211
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
-            Application.Run(new Homepage());
+            Application.Run(new Login());
+
             //Application.Run(new Recipe.SearchRecipe());
 
         }
