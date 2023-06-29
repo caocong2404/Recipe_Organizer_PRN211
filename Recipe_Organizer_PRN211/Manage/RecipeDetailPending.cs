@@ -1,4 +1,5 @@
 ﻿using Recipe_Organizer_PRN211.Authentication;
+using Recipe_Organizer_PRN211.Utility;
 using Services.Service;
 using System;
 using System.Collections.Generic;
@@ -59,7 +60,7 @@ namespace Recipe_Organizer_PRN211.Manage
 
 					// Clear any existing controls in the table layout panel
 					tlpDirection.Controls.Clear();
-
+					recipePicture.Image = Base64.Base64ToImage(recipe.Img);
 					// Set the column and row styles to autosize
 					tlpDirection.ColumnStyles.Clear();
 					tlpDirection.RowStyles.Clear();
@@ -88,7 +89,7 @@ namespace Recipe_Organizer_PRN211.Manage
 
 		private void btnBack_Click(object sender, EventArgs e)
 		{
-			
+
 		}
 
 		private void lbDate_Click(object sender, EventArgs e)
