@@ -10,16 +10,16 @@ using System.Windows.Forms;
 
 namespace Recipe_Organizer_PRN211.Plan
 {
-	public partial class ARecipe : Form
-	{
-		public ARecipe()
-		{
-			InitializeComponent();
-		}
+    public partial class ARecipe : Form
+    {
+        public ARecipe()
+        {
+            InitializeComponent();
+        }
 
-		private void ARecipe_Load(object sender, EventArgs e)
-		{
+        private void ARecipe_Load(object sender, EventArgs e)
+        {
 
-		}
-	}
+        }
+    }
 }
