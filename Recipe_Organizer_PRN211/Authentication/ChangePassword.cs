@@ -60,14 +60,15 @@ namespace Recipe_Organizer_PRN211.Authentication
                 user.Password = newPassword;
                 _userRepository.Update(user);
                 MessageBox.Show("Change password successfully", "Success");
-                Form login = new Login();
-                this.Hide();
-                login.Show();
-            }
-            else
+				Form login = new Login();
+				this.Close();
+				login.Show();
+				MessageBox.Show("You must login again to continue", "!!!", MessageBoxButtons.OK);
+			}
+			else
             {
-                
-            }
+				MessageBox.Show("Password and confirm password not match", "Warning", MessageBoxButtons.OK);
+			}
         }
     }
 }

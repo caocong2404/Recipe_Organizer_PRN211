@@ -153,11 +153,11 @@ namespace Recipe_Organizer_PRN211.Authentication
 			var role = _roleRepository.GetAll().Where(entity => entity.RoleId.Equals(roleID)).FirstOrDefault();
 
 			cbRole.Text = role.RoleName;
-			txtUsername.Text = user.Username.ToString();
+			txtUsername.Text = user.Username;
 			txtFirstname.Text = user.FirstName;
-			txtLastname.Text = user.LastName.ToString();
-			txtEmail.Text = user.Email.ToString();
-			txtPassword.Text = user.Password.ToString();
+			txtLastname.Text = user.LastName;
+			txtEmail.Text = user.Email;
+			txtPassword.Text = user.Password;
 			if (user.Birthday != null)
 				dateBirthday.Text = user.Birthday.ToString();
 			else dateBirthday.Text = null;
