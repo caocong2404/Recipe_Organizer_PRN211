@@ -1,4 +1,5 @@
-﻿using Recipe_Organizer_PRN211.Recipe;
+﻿using Recipe_Organizer_PRN211.Plan;
+using Recipe_Organizer_PRN211.Recipe;
 using Services.Models;
 using Services.Services;
 using System;
@@ -48,7 +49,7 @@ namespace Recipe_Organizer_PRN211.Authentication
 					else if (user.Role == 2)
 					{
 						//Form userProfile = new UserProfile();
-						Form recipeList = new SearchRecipe();
+						Form recipeList = new PlanView();
 						this.Hide();
 						recipeList.ShowDialog();
 					}

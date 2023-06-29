@@ -1,148 +1,149 @@
 ﻿namespace Recipe_Organizer_PRN211.Plan
 {
-    partial class ARecipe
-    {
-        /// <summary> 
-        /// Required designer variable.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
+	partial class ARecipe
+	{
+		/// <summary> 
+		/// Required designer variable.
+		/// </summary>
+		private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+		/// <summary> 
+		/// Clean up any resources being used.
+		/// </summary>
+		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing && (components != null))
+			{
+				components.Dispose();
+			}
+			base.Dispose(disposing);
+		}
 
-        #region Component Designer generated code
+		#region Component Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
-        /// the contents of this method with the code editor.
-        /// </summary>
-        private void InitializeComponent()
-        {
-            panel1 = new Panel();
-            btnDelete = new Button();
-            btnEdit = new Button();
-            cbStatus = new ComboBox();
-            panel2 = new Panel();
-            btnDetail = new Button();
-            btnOpenSearch = new Button();
-            txbJob = new TextBox();
-            panel1.SuspendLayout();
-            panel2.SuspendLayout();
-            SuspendLayout();
-            // 
-            // panel1
-            // 
-            panel1.Controls.Add(btnDelete);
-            panel1.Controls.Add(btnEdit);
-            panel1.Controls.Add(cbStatus);
-            panel1.Controls.Add(panel2);
-            panel1.Controls.Add(txbJob);
-            panel1.Location = new Point(4, 0);
-            panel1.Margin = new Padding(4, 5, 4, 5);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(996, 46);
-            panel1.TabIndex = 0;
-            // 
-            // btnDelete
-            // 
-            btnDelete.Location = new Point(932, 0);
-            btnDelete.Margin = new Padding(4, 5, 4, 5);
-            btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(60, 35);
-            btnDelete.TabIndex = 5;
-            btnDelete.Text = "Xóa";
-            btnDelete.UseVisualStyleBackColor = true;
-            btnDelete.Click += btnDelete_Click;
-            // 
-            // btnEdit
-            // 
-            btnEdit.Location = new Point(867, 0);
-            btnEdit.Margin = new Padding(4, 5, 4, 5);
-            btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(60, 35);
-            btnEdit.TabIndex = 4;
-            btnEdit.Text = "Sửa";
-            btnEdit.UseVisualStyleBackColor = true;
-            btnEdit.Click += btnEdit_Click;
-            // 
-            // cbStatus
-            // 
-            cbStatus.FormattingEnabled = true;
-            cbStatus.Location = new Point(721, 3);
-            cbStatus.Margin = new Padding(4, 5, 4, 5);
-            cbStatus.Name = "cbStatus";
-            cbStatus.Size = new Size(136, 28);
-            cbStatus.TabIndex = 3;
-            // 
-            // panel2
-            // 
-            panel2.Controls.Add(btnDetail);
-            panel2.Controls.Add(btnOpenSearch);
-            panel2.Location = new Point(514, 0);
-            panel2.Margin = new Padding(4, 5, 4, 5);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(204, 46);
-            panel2.TabIndex = 2;
-            // 
-            // btnDetail
-            // 
-            btnDetail.Location = new Point(106, 2);
-            btnDetail.Name = "btnDetail";
-            btnDetail.Size = new Size(94, 29);
-            btnDetail.TabIndex = 1;
-            btnDetail.Text = "Detail";
-            btnDetail.UseVisualStyleBackColor = true;
-            // 
-            // btnOpenSearch
-            // 
-            btnOpenSearch.Location = new Point(3, 3);
-            btnOpenSearch.Name = "btnOpenSearch";
-            btnOpenSearch.Size = new Size(94, 29);
-            btnOpenSearch.TabIndex = 0;
-            btnOpenSearch.Text = "Search";
-            btnOpenSearch.UseVisualStyleBackColor = true;
-            // 
-            // txbJob
-            // 
-            txbJob.Location = new Point(32, 0);
-            txbJob.Margin = new Padding(4, 5, 4, 5);
-            txbJob.Name = "txbJob";
-            txbJob.Size = new Size(452, 27);
-            txbJob.TabIndex = 1;
-            // 
-            // ARecipe
-            // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(panel1);
-            Margin = new Padding(4, 5, 4, 5);
-            Name = "ARecipe";
-            Size = new Size(1004, 51);
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
-            panel2.ResumeLayout(false);
-            ResumeLayout(false);
-        }
+		/// <summary> 
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
+		/// </summary>
+		private void InitializeComponent()
+		{
+			panel1 = new Panel();
+			btnDelete = new Button();
+			btnEdit = new Button();
+			cbStatus = new ComboBox();
+			panel2 = new Panel();
+			btnDetail = new Button();
+			btnOpenSearch = new Button();
+			txbJob = new TextBox();
+			panel1.SuspendLayout();
+			panel2.SuspendLayout();
+			SuspendLayout();
+			// 
+			// panel1
+			// 
+			panel1.Controls.Add(btnDelete);
+			panel1.Controls.Add(btnEdit);
+			panel1.Controls.Add(cbStatus);
+			panel1.Controls.Add(panel2);
+			panel1.Controls.Add(txbJob);
+			panel1.Location = new Point(4, 0);
+			panel1.Margin = new Padding(4, 5, 4, 5);
+			panel1.Name = "panel1";
+			panel1.Size = new Size(996, 46);
+			panel1.TabIndex = 0;
+			// 
+			// btnDelete
+			// 
+			btnDelete.Location = new Point(932, 0);
+			btnDelete.Margin = new Padding(4, 5, 4, 5);
+			btnDelete.Name = "btnDelete";
+			btnDelete.Size = new Size(60, 35);
+			btnDelete.TabIndex = 5;
+			btnDelete.Text = "Xóa";
+			btnDelete.UseVisualStyleBackColor = true;
+			btnDelete.Click += btnDelete_Click;
+			// 
+			// btnEdit
+			// 
+			btnEdit.Location = new Point(867, 0);
+			btnEdit.Margin = new Padding(4, 5, 4, 5);
+			btnEdit.Name = "btnEdit";
+			btnEdit.Size = new Size(60, 35);
+			btnEdit.TabIndex = 4;
+			btnEdit.Text = "Sửa";
+			btnEdit.UseVisualStyleBackColor = true;
+			btnEdit.Click += btnEdit_Click;
+			// 
+			// cbStatus
+			// 
+			cbStatus.FormattingEnabled = true;
+			cbStatus.Location = new Point(721, 3);
+			cbStatus.Margin = new Padding(4, 5, 4, 5);
+			cbStatus.Name = "cbStatus";
+			cbStatus.Size = new Size(136, 28);
+			cbStatus.TabIndex = 3;
+			// 
+			// panel2
+			// 
+			panel2.Controls.Add(btnDetail);
+			panel2.Controls.Add(btnOpenSearch);
+			panel2.Location = new Point(514, 0);
+			panel2.Margin = new Padding(4, 5, 4, 5);
+			panel2.Name = "panel2";
+			panel2.Size = new Size(204, 46);
+			panel2.TabIndex = 2;
+			// 
+			// btnDetail
+			// 
+			btnDetail.Location = new Point(106, 2);
+			btnDetail.Name = "btnDetail";
+			btnDetail.Size = new Size(94, 29);
+			btnDetail.TabIndex = 1;
+			btnDetail.Text = "Detail";
+			btnDetail.UseVisualStyleBackColor = true;
+			// 
+			// btnOpenSearch
+			// 
+			btnOpenSearch.Location = new Point(3, 3);
+			btnOpenSearch.Name = "btnOpenSearch";
+			btnOpenSearch.Size = new Size(94, 29);
+			btnOpenSearch.TabIndex = 0;
+			btnOpenSearch.Text = "Search";
+			btnOpenSearch.UseVisualStyleBackColor = true;
+			btnOpenSearch.Click += btnOpenSearch_Click;
+			// 
+			// txbJob
+			// 
+			txbJob.Location = new Point(32, 0);
+			txbJob.Margin = new Padding(4, 5, 4, 5);
+			txbJob.Name = "txbJob";
+			txbJob.Size = new Size(452, 27);
+			txbJob.TabIndex = 1;
+			// 
+			// ARecipe
+			// 
+			AutoScaleDimensions = new SizeF(8F, 20F);
+			AutoScaleMode = AutoScaleMode.Font;
+			Controls.Add(panel1);
+			Margin = new Padding(4, 5, 4, 5);
+			Name = "ARecipe";
+			Size = new Size(1004, 51);
+			panel1.ResumeLayout(false);
+			panel1.PerformLayout();
+			panel2.ResumeLayout(false);
+			ResumeLayout(false);
+		}
 
-        #endregion
+		#endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox txbJob;
-        private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button btnEdit;
-        private System.Windows.Forms.ComboBox cbStatus;
-        private Button btnDetail;
-        private Button btnOpenSearch;
-    }
+		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.Panel panel2;
+		private System.Windows.Forms.TextBox txbJob;
+		private System.Windows.Forms.Button btnDelete;
+		private System.Windows.Forms.Button btnEdit;
+		private System.Windows.Forms.ComboBox cbStatus;
+		private Button btnDetail;
+		private Button btnOpenSearch;
+	}
 }
