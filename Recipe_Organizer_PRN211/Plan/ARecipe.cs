@@ -1,4 +1,6 @@
-﻿using Services.Service;
+﻿using Recipe_Organizer_PRN211.Recipe;
+using Services.Models;
+using Services.Service;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,64 +13,74 @@ using System.Windows.Forms;
 
 namespace Recipe_Organizer_PRN211.Plan
 {
-    public partial class ARecipe : UserControl
-    {
-        private PlanItem job;
+	public partial class ARecipe : UserControl
+	{
+		private PlanItem job;
+		private RecipeRepository _recipeRepository;
 
-        public PlanItem Job
-        {
-            get { return job; }
-            set { job = value; }
-        }
+		public PlanItem Job
+		{
+			get { return job; }
+			set { job = value; }
+		}
 
-        private event EventHandler edited;
-        public event EventHandler Edited
-        {
-            add { edited += value; }
-            remove { edited -= value; }
-        }
+		private event EventHandler edited;
+		public event EventHandler Edited
+		{
+			add { edited += value; }
+			remove { edited -= value; }
+		}
 
-        private event EventHandler deleted;
-        public event EventHandler Deleted
-        {
-            add { deleted += value; }
-            remove { deleted -= value; }
-        }
-        public ARecipe(PlanItem job)
-        {
-            InitializeComponent();
+		private event EventHandler deleted;
+		public event EventHandler Deleted
+		{
+			add { deleted += value; }
+			remove { deleted -= value; }
+		}
+		public ARecipe(PlanItem job)
+		{
+			InitializeComponent();
 
-            cbStatus.DataSource = PlanItem.ListStatus;
+			cbStatus.DataSource = PlanItem.ListStatus;
 
-            this.Job = job;
+			this.Job = job;
 
-            ShowInfo();
-        }
+			ShowInfo();
+		}
 
-        void ShowInfo()
-        {
-            txbJob.Text = Job.Recipe.Title;
+		public ARecipe()
+		{
+		}
 
-            cbStatus.SelectedIndex = PlanItem.ListStatus.IndexOf(Job.Status);
-            
-        }
+		void ShowInfo()
+		{
+			txbJob.Text = Job.Recipe.Title;
 
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            if (deleted != null)
-                deleted(this, new EventArgs());
-        }
+			cbStatus.SelectedIndex = PlanItem.ListStatus.IndexOf(Job.Status);
 
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-            Job.Recipe.Title = txbJob.Text;
+		}
 
-            Job.Status = PlanItem.ListStatus[cbStatus.SelectedIndex];
+		private void btnDelete_Click(object sender, EventArgs e)
+		{
+			if (deleted != null)
+				deleted(this, new EventArgs());
+		}
 
-            if (edited != null)
-                edited(this, new EventArgs());
-        }
+		private void btnEdit_Click(object sender, EventArgs e)
+		{
+			Job.Recipe.Title = txbJob.Text;
 
-        
-    }
+			Job.Status = PlanItem.ListStatus[cbStatus.SelectedIndex];
+
+			if (edited != null)
+				edited(this, new EventArgs());
+		}
+
+		private void btnOpenSearch_Click(object sender, EventArgs e)
+		{
+			this.Hide();
+			SearchRecipe searchRecipeForm = new SearchRecipe();
+			searchRecipeForm.ShowDialog();
+		}
+	}
 }
