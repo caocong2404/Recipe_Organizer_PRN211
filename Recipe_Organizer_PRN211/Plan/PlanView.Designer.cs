@@ -33,7 +33,6 @@ namespace Recipe_Organizer_PRN211.Plan
         {
             panel1 = new Panel();
             panel3 = new Panel();
-            panel6 = new Panel();
             btnToDay = new Button();
             dtpkDate = new DateTimePicker();
             panel2 = new Panel();
@@ -48,6 +47,7 @@ namespace Recipe_Organizer_PRN211.Plan
             btnWednesday = new Button();
             btnTuesday = new Button();
             btnMonday = new Button();
+            btnQuit = new Button();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
             panel2.SuspendLayout();
@@ -66,7 +66,7 @@ namespace Recipe_Organizer_PRN211.Plan
             // 
             // panel3
             // 
-            panel3.Controls.Add(panel6);
+            panel3.Controls.Add(btnQuit);
             panel3.Controls.Add(btnToDay);
             panel3.Controls.Add(dtpkDate);
             panel3.Location = new Point(4, 5);
@@ -74,14 +74,6 @@ namespace Recipe_Organizer_PRN211.Plan
             panel3.Name = "panel3";
             panel3.Size = new Size(980, 43);
             panel3.TabIndex = 1;
-            // 
-            // panel6
-            // 
-            panel6.Location = new Point(9, 0);
-            panel6.Margin = new Padding(4, 5, 4, 5);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(280, 43);
-            panel6.TabIndex = 2;
             // 
             // btnToDay
             // 
@@ -230,6 +222,16 @@ namespace Recipe_Organizer_PRN211.Plan
             btnMonday.Text = "Mon";
             btnMonday.UseVisualStyleBackColor = true;
             // 
+            // btnQuit
+            // 
+            btnQuit.Location = new Point(273, 1);
+            btnQuit.Name = "btnQuit";
+            btnQuit.Size = new Size(78, 33);
+            btnQuit.TabIndex = 2;
+            btnQuit.Text = "Quit";
+            btnQuit.UseVisualStyleBackColor = true;
+            btnQuit.Click += btnQuit_Click;
+            // 
             // PlanView
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -252,7 +254,6 @@ namespace Recipe_Organizer_PRN211.Plan
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button btnToDay;
         private System.Windows.Forms.DateTimePicker dtpkDate;
         private System.Windows.Forms.Panel panel2;
@@ -267,6 +268,7 @@ namespace Recipe_Organizer_PRN211.Plan
         private System.Windows.Forms.Button btnWednesday;
         private System.Windows.Forms.Button btnTuesday;
         private System.Windows.Forms.Button btnMonday;
+        private Button btnQuit;
     }
 }
 
