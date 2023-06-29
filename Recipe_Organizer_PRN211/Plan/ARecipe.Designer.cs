@@ -33,19 +33,11 @@
             btnEdit = new Button();
             cbStatus = new ComboBox();
             panel2 = new Panel();
-            nmToMinute = new NumericUpDown();
-            nmToHours = new NumericUpDown();
-            label1 = new Label();
-            nmFromMinute = new NumericUpDown();
-            nmFromHours = new NumericUpDown();
+            btnDetail = new Button();
+            btnOpenSearch = new Button();
             txbJob = new TextBox();
-            ckbDone = new CheckBox();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)nmToMinute).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)nmToHours).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)nmFromMinute).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)nmFromHours).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -55,7 +47,6 @@
             panel1.Controls.Add(cbStatus);
             panel1.Controls.Add(panel2);
             panel1.Controls.Add(txbJob);
-            panel1.Controls.Add(ckbDone);
             panel1.Location = new Point(4, 0);
             panel1.Margin = new Padding(4, 5, 4, 5);
             panel1.Name = "panel1";
@@ -71,6 +62,7 @@
             btnDelete.TabIndex = 5;
             btnDelete.Text = "Xóa";
             btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
             // btnEdit
             // 
@@ -81,6 +73,7 @@
             btnEdit.TabIndex = 4;
             btnEdit.Text = "Sửa";
             btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.Click += btnEdit_Click;
             // 
             // cbStatus
             // 
@@ -93,93 +86,51 @@
             // 
             // panel2
             // 
-            panel2.Controls.Add(nmToMinute);
-            panel2.Controls.Add(nmToHours);
-            panel2.Controls.Add(label1);
-            panel2.Controls.Add(nmFromMinute);
-            panel2.Controls.Add(nmFromHours);
-            panel2.Location = new Point(451, 0);
+            panel2.Controls.Add(btnDetail);
+            panel2.Controls.Add(btnOpenSearch);
+            panel2.Location = new Point(514, 0);
             panel2.Margin = new Padding(4, 5, 4, 5);
             panel2.Name = "panel2";
-            panel2.Size = new Size(267, 46);
+            panel2.Size = new Size(204, 46);
             panel2.TabIndex = 2;
             // 
-            // nmToMinute
+            // btnDetail
             // 
-            nmToMinute.Location = new Point(213, 5);
-            nmToMinute.Margin = new Padding(4, 5, 4, 5);
-            nmToMinute.Name = "nmToMinute";
-            nmToMinute.Size = new Size(49, 27);
-            nmToMinute.TabIndex = 4;
+            btnDetail.Location = new Point(106, 2);
+            btnDetail.Name = "btnDetail";
+            btnDetail.Size = new Size(94, 29);
+            btnDetail.TabIndex = 1;
+            btnDetail.Text = "Detail";
+            btnDetail.UseVisualStyleBackColor = true;
             // 
-            // nmToHours
+            // btnOpenSearch
             // 
-            nmToHours.Location = new Point(156, 5);
-            nmToHours.Margin = new Padding(4, 5, 4, 5);
-            nmToHours.Name = "nmToHours";
-            nmToHours.Size = new Size(49, 27);
-            nmToHours.TabIndex = 3;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(119, 8);
-            label1.Margin = new Padding(4, 0, 4, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(36, 20);
-            label1.TabIndex = 2;
-            label1.Text = "Đến";
-            // 
-            // nmFromMinute
-            // 
-            nmFromMinute.Location = new Point(61, 5);
-            nmFromMinute.Margin = new Padding(4, 5, 4, 5);
-            nmFromMinute.Name = "nmFromMinute";
-            nmFromMinute.Size = new Size(49, 27);
-            nmFromMinute.TabIndex = 1;
-            // 
-            // nmFromHours
-            // 
-            nmFromHours.Location = new Point(4, 5);
-            nmFromHours.Margin = new Padding(4, 5, 4, 5);
-            nmFromHours.Name = "nmFromHours";
-            nmFromHours.Size = new Size(49, 27);
-            nmFromHours.TabIndex = 0;
+            btnOpenSearch.Location = new Point(3, 3);
+            btnOpenSearch.Name = "btnOpenSearch";
+            btnOpenSearch.Size = new Size(94, 29);
+            btnOpenSearch.TabIndex = 0;
+            btnOpenSearch.Text = "Search";
+            btnOpenSearch.UseVisualStyleBackColor = true;
             // 
             // txbJob
             // 
             txbJob.Location = new Point(32, 0);
             txbJob.Margin = new Padding(4, 5, 4, 5);
             txbJob.Name = "txbJob";
-            txbJob.Size = new Size(409, 27);
+            txbJob.Size = new Size(452, 27);
             txbJob.TabIndex = 1;
-            // 
-            // ckbDone
-            // 
-            ckbDone.AutoSize = true;
-            ckbDone.Location = new Point(4, 5);
-            ckbDone.Margin = new Padding(4, 5, 4, 5);
-            ckbDone.Name = "ckbDone";
-            ckbDone.Size = new Size(18, 17);
-            ckbDone.TabIndex = 0;
-            ckbDone.UseVisualStyleBackColor = true;
             // 
             // ARecipe
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1027, 290);
             Controls.Add(panel1);
             Margin = new Padding(4, 5, 4, 5);
             Name = "ARecipe";
+            Size = new Size(1004, 51);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
-            panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)nmToMinute).EndInit();
-            ((System.ComponentModel.ISupportInitialize)nmToHours).EndInit();
-            ((System.ComponentModel.ISupportInitialize)nmFromMinute).EndInit();
-            ((System.ComponentModel.ISupportInitialize)nmFromHours).EndInit();
             ResumeLayout(false);
         }
 
@@ -187,15 +138,11 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.NumericUpDown nmFromHours;
         private System.Windows.Forms.TextBox txbJob;
-        private System.Windows.Forms.CheckBox ckbDone;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.ComboBox cbStatus;
-        private System.Windows.Forms.NumericUpDown nmToMinute;
-        private System.Windows.Forms.NumericUpDown nmToHours;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown nmFromMinute;
+        private Button btnDetail;
+        private Button btnOpenSearch;
     }
 }

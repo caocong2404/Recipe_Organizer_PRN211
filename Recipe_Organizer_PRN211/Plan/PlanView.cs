@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Services.Service;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,18 +9,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace Recipe_Organizer_PRN211.Plan
 {
     public partial class PlanView : Form
     {
+
+
         #region Peoperties
+        private string filePath = "data.xml";
+
         private List<List<Button>> matrix;
 
         public List<List<Button>> Matrix
         {
             get { return matrix; }
             set { matrix = value; }
+        }
+
+        private PlanData job;
+
+        public PlanData Job
+        {
+            get { return job; }
+            set { job = value; }
         }
 
         private List<string> dateOfWeek = new List<string>() { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
@@ -29,6 +43,29 @@ namespace Recipe_Organizer_PRN211.Plan
             InitializeComponent();
 
             LoadMatrix();
+
+            try
+            {
+                Job = DeserializeFromXML(filePath) as PlanData;
+            }
+            catch
+            {
+                SetDefaultJob();
+            }
+        }
+
+        void SetDefaultJob()
+        {
+            Job = new PlanData();
+            Job.Job = new List<PlanItem>();
+            Job.Job.Add(new PlanItem()
+            {
+                Date = DateTime.Now,
+                FromTime = new Point(4, 0),
+                ToTime = new Point(5, 0),
+                Job = "Thử nghiệm thôi",
+                Status = PlanItem.ListStatus[(int)EPlanItem.Breakfast]
+            });
         }
 
         void LoadMatrix()
@@ -43,6 +80,7 @@ namespace Recipe_Organizer_PRN211.Plan
                 {
                     Button btn = new Button() { Width = Cons.dateButtonWidth, Height = Cons.dateButtonHeight };
                     btn.Location = new Point(oldBtn.Location.X + oldBtn.Width + Cons.margin, oldBtn.Location.Y);
+                    btn.Click += btn_Click;
 
                     pnlMatrix.Controls.Add(btn);
                     Matrix[i].Add(btn);
@@ -53,6 +91,14 @@ namespace Recipe_Organizer_PRN211.Plan
             }
 
             SetDefaultDate();
+        }
+
+        void btn_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty((sender as Button).Text))
+                return;
+            DailyPlan daily = new DailyPlan(new DateTime(dtpkDate.Value.Year, dtpkDate.Value.Month, Convert.ToInt32((sender as Button).Text)), Job);
+            daily.ShowDialog();
         }
 
         int DayOfMonth(DateTime date)
@@ -148,6 +194,39 @@ namespace Recipe_Organizer_PRN211.Plan
         private void btnToDay_Click(object sender, EventArgs e)
         {
             SetDefaultDate();
+        }
+
+        private void SerializeToXML(object data, string filePath)
+        {
+            FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write);
+            XmlSerializer sr = new XmlSerializer(typeof(PlanData));
+
+            sr.Serialize(fs, data);
+
+            fs.Close();
+        }
+
+        private object DeserializeFromXML(string filePath)
+        {
+            FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+            try
+            {
+                XmlSerializer sr = new XmlSerializer(typeof(PlanData));
+
+                object result = sr.Deserialize(fs);
+                fs.Close();
+                return result;
+            }
+            catch (Exception e)
+            {
+                fs.Close();
+                throw new NotImplementedException();
+            }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SerializeToXML(Job, filePath);
         }
     }
 }
