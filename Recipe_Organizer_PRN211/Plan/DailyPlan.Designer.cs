@@ -71,7 +71,7 @@
             btnPrevioursDay.Name = "btnPrevioursDay";
             btnPrevioursDay.Size = new Size(100, 35);
             btnPrevioursDay.TabIndex = 3;
-            btnPrevioursDay.Text = "Hôm qua";
+            btnPrevioursDay.Text = "◀️";
             btnPrevioursDay.UseVisualStyleBackColor = true;
             btnPrevioursDay.Click += btnPrevioursDay_Click;
             // 
@@ -82,7 +82,7 @@
             btnNextDay.Name = "btnNextDay";
             btnNextDay.Size = new Size(100, 35);
             btnNextDay.TabIndex = 2;
-            btnNextDay.Text = "Ngày mai";
+            btnNextDay.Text = "▶️";
             btnNextDay.UseVisualStyleBackColor = true;
             btnNextDay.Click += btnNextDay_Click;
             // 
@@ -117,15 +117,15 @@
             // mnsiAddJob
             // 
             mnsiAddJob.Name = "mnsiAddJob";
-            mnsiAddJob.Size = new Size(90, 24);
-            mnsiAddJob.Text = "Thêm việc";
+            mnsiAddJob.Size = new Size(96, 24);
+            mnsiAddJob.Text = "Add recipe";
             mnsiAddJob.Click += mnsiAddJob_Click;
             // 
             // mnsiToDay
             // 
             mnsiToDay.Name = "mnsiToDay";
-            mnsiToDay.Size = new Size(83, 24);
-            mnsiToDay.Text = "Hôm nay";
+            mnsiToDay.Size = new Size(63, 24);
+            mnsiToDay.Text = "Today";
             mnsiToDay.Click += mnsiToDay_Click;
             // 
             // btsmiQuit
