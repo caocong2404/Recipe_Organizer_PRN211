@@ -53,7 +53,10 @@ namespace Recipe_Organizer_PRN211.Authentication
             var category = new Category();
             category.Title = txtUsername.Text;
             category.Description = txtPassword.Text;
+<<<<<<< HEAD
             // category.ParentCategoryId = 1;
+=======
+>>>>>>> main
 
 
             _categoryRepository.Add(category);
@@ -85,10 +88,16 @@ namespace Recipe_Organizer_PRN211.Authentication
                 return;
             }
 
+<<<<<<< HEAD
             categorytotol.CategoryId = int.Parse(txtId.Text);
             categorytotol.Title = txtUsername.Text;
             categorytotol.Description = txtPassword.Text;
             // category.ParentCategoryId = 1;
+=======
+            var category = new Category();
+            category.Title = txtUsername.Text;
+            category.Description = txtPassword.Text;
+>>>>>>> main
 
             _categoryRepository.Update(categorytotol);
 

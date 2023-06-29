@@ -28,93 +28,23 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			btnReject = new Button();
-			btnApprove = new Button();
-			txtDescription = new TextBox();
-			txtTitle = new TextBox();
-			label3 = new Label();
-			label2 = new Label();
-			Emtpty = new Label();
+			components = new System.ComponentModel.Container();
 			btnRefresh = new Button();
 			btnSearch = new Button();
 			txtSearch = new TextBox();
 			dgvPendingRecipe = new DataGridView();
 			label5 = new Label();
-			dateCreate = new DateTimePicker();
-			picRecipe = new PictureBox();
+			recipeBindingSource = new BindingSource(components);
+			recipeIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+			titleDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+			descriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+			ingredientDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+			dateDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+			statusDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+			imgDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
 			((System.ComponentModel.ISupportInitialize)dgvPendingRecipe).BeginInit();
-			((System.ComponentModel.ISupportInitialize)picRecipe).BeginInit();
+			((System.ComponentModel.ISupportInitialize)recipeBindingSource).BeginInit();
 			SuspendLayout();
-			// 
-			// btnReject
-			// 
-			btnReject.BackColor = Color.Red;
-			btnReject.Font = new Font("Montserrat", 8.999999F, FontStyle.Bold, GraphicsUnit.Point);
-			btnReject.ForeColor = Color.White;
-			btnReject.Location = new Point(208, 386);
-			btnReject.Name = "btnReject";
-			btnReject.Size = new Size(141, 50);
-			btnReject.TabIndex = 56;
-			btnReject.Text = "Reject";
-			btnReject.UseVisualStyleBackColor = false;
-			btnReject.Click += btnReject_Click;
-			// 
-			// btnApprove
-			// 
-			btnApprove.BackColor = Color.Lime;
-			btnApprove.Font = new Font("Montserrat", 8.999999F, FontStyle.Bold, GraphicsUnit.Point);
-			btnApprove.Location = new Point(33, 386);
-			btnApprove.Name = "btnApprove";
-			btnApprove.Size = new Size(141, 50);
-			btnApprove.TabIndex = 55;
-			btnApprove.Text = "Approve";
-			btnApprove.UseVisualStyleBackColor = false;
-			btnApprove.Click += btnApprove_Click;
-			// 
-			// txtDescription
-			// 
-			txtDescription.Location = new Point(120, 325);
-			txtDescription.Multiline = true;
-			txtDescription.Name = "txtDescription";
-			txtDescription.Size = new Size(229, 23);
-			txtDescription.TabIndex = 48;
-			// 
-			// txtTitle
-			// 
-			txtTitle.Location = new Point(120, 288);
-			txtTitle.Name = "txtTitle";
-			txtTitle.Size = new Size(229, 23);
-			txtTitle.TabIndex = 47;
-			// 
-			// label3
-			// 
-			label3.AutoSize = true;
-			label3.Font = new Font("Montserrat SemiBold", 9.749999F, FontStyle.Bold, GraphicsUnit.Point);
-			label3.Location = new Point(33, 253);
-			label3.Name = "label3";
-			label3.Size = new Size(87, 18);
-			label3.TabIndex = 44;
-			label3.Text = "Create date";
-			// 
-			// label2
-			// 
-			label2.AutoSize = true;
-			label2.Font = new Font("Montserrat SemiBold", 9.749999F, FontStyle.Bold, GraphicsUnit.Point);
-			label2.Location = new Point(33, 326);
-			label2.Name = "label2";
-			label2.Size = new Size(87, 18);
-			label2.TabIndex = 43;
-			label2.Text = "Description";
-			// 
-			// Emtpty
-			// 
-			Emtpty.AutoSize = true;
-			Emtpty.Font = new Font("Montserrat SemiBold", 9.749999F, FontStyle.Bold, GraphicsUnit.Point);
-			Emtpty.Location = new Point(33, 288);
-			Emtpty.Name = "Emtpty";
-			Emtpty.Size = new Size(38, 18);
-			Emtpty.TabIndex = 42;
-			Emtpty.Text = "Title";
 			// 
 			// btnRefresh
 			// 
@@ -147,11 +77,14 @@
 			// 
 			// dgvPendingRecipe
 			// 
+			dgvPendingRecipe.AutoGenerateColumns = false;
 			dgvPendingRecipe.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			dgvPendingRecipe.Columns.AddRange(new DataGridViewColumn[] { recipeIdDataGridViewTextBoxColumn, titleDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn, ingredientDataGridViewTextBoxColumn, dateDataGridViewTextBoxColumn, statusDataGridViewTextBoxColumn, imgDataGridViewTextBoxColumn });
+			dgvPendingRecipe.DataSource = recipeBindingSource;
 			dgvPendingRecipe.Location = new Point(26, 74);
 			dgvPendingRecipe.Name = "dgvPendingRecipe";
 			dgvPendingRecipe.RowTemplate.Height = 25;
-			dgvPendingRecipe.Size = new Size(794, 145);
+			dgvPendingRecipe.Size = new Size(794, 388);
 			dgvPendingRecipe.TabIndex = 38;
 			dgvPendingRecipe.CellContentClick += dgvPendingRecipe_CellContentClick;
 			dgvPendingRecipe.CellDoubleClick += dgvPendingRecipe_CellDoubleClick;
@@ -161,43 +94,63 @@
 			label5.AutoSize = true;
 			label5.Font = new Font("Montserrat Black", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
 			label5.ForeColor = Color.FromArgb(192, 0, 0);
-			label5.Location = new Point(554, 20);
+			label5.Location = new Point(568, 19);
 			label5.Name = "label5";
 			label5.Size = new Size(241, 37);
 			label5.TabIndex = 37;
 			label5.Text = "Pending recipe";
 			// 
-			// dateCreate
+			// recipeBindingSource
 			// 
-			dateCreate.Location = new Point(120, 249);
-			dateCreate.Name = "dateCreate";
-			dateCreate.Size = new Size(229, 23);
-			dateCreate.TabIndex = 59;
+			recipeBindingSource.DataSource = typeof(Services.Models.Recipe);
 			// 
-			// picRecipe
+			// recipeIdDataGridViewTextBoxColumn
 			// 
-			picRecipe.Image = Properties.Resources.raspberry_good_fruit_plant_4k_um_1600x900;
-			picRecipe.Location = new Point(435, 235);
-			picRecipe.Name = "picRecipe";
-			picRecipe.Size = new Size(385, 201);
-			picRecipe.SizeMode = PictureBoxSizeMode.Zoom;
-			picRecipe.TabIndex = 60;
-			picRecipe.TabStop = false;
+			recipeIdDataGridViewTextBoxColumn.DataPropertyName = "RecipeId";
+			recipeIdDataGridViewTextBoxColumn.HeaderText = "RecipeId";
+			recipeIdDataGridViewTextBoxColumn.Name = "recipeIdDataGridViewTextBoxColumn";
+			// 
+			// titleDataGridViewTextBoxColumn
+			// 
+			titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
+			titleDataGridViewTextBoxColumn.HeaderText = "Title";
+			titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
+			// 
+			// descriptionDataGridViewTextBoxColumn
+			// 
+			descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+			descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+			descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+			// 
+			// ingredientDataGridViewTextBoxColumn
+			// 
+			ingredientDataGridViewTextBoxColumn.DataPropertyName = "Ingredient";
+			ingredientDataGridViewTextBoxColumn.HeaderText = "Ingredient";
+			ingredientDataGridViewTextBoxColumn.Name = "ingredientDataGridViewTextBoxColumn";
+			// 
+			// dateDataGridViewTextBoxColumn
+			// 
+			dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
+			dateDataGridViewTextBoxColumn.HeaderText = "Date";
+			dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
+			// 
+			// statusDataGridViewTextBoxColumn
+			// 
+			statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
+			statusDataGridViewTextBoxColumn.HeaderText = "Status";
+			statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+			// 
+			// imgDataGridViewTextBoxColumn
+			// 
+			imgDataGridViewTextBoxColumn.DataPropertyName = "Img";
+			imgDataGridViewTextBoxColumn.HeaderText = "Img";
+			imgDataGridViewTextBoxColumn.Name = "imgDataGridViewTextBoxColumn";
 			// 
 			// PendingRecipe
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(843, 474);
-			Controls.Add(picRecipe);
-			Controls.Add(dateCreate);
-			Controls.Add(btnReject);
-			Controls.Add(btnApprove);
-			Controls.Add(txtDescription);
-			Controls.Add(txtTitle);
-			Controls.Add(label3);
-			Controls.Add(label2);
-			Controls.Add(Emtpty);
 			Controls.Add(btnRefresh);
 			Controls.Add(btnSearch);
 			Controls.Add(txtSearch);
@@ -206,7 +159,7 @@
 			Name = "PendingRecipe";
 			Text = "PendingRecipe";
 			((System.ComponentModel.ISupportInitialize)dgvPendingRecipe).EndInit();
-			((System.ComponentModel.ISupportInitialize)picRecipe).EndInit();
+			((System.ComponentModel.ISupportInitialize)recipeBindingSource).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -215,28 +168,27 @@
 
 		private ComboBox cbRole;
 		private DateTimePicker dateBirthday;
-		private Button btnReject;
 		private Button btnDelete;
-		private Button btnApprove;
 		private Button btnCreate;
 		private Label label8;
 		private Label label7;
 		private TextBox txtPassword;
 		private TextBox txtEmail;
 		private TextBox txtLastname;
-		private TextBox txtDescription;
-		private TextBox txtTitle;
 		private Label label6;
 		private Label label4;
-		private Label label3;
-		private Label label2;
-		private Label Emtpty;
 		private Button btnRefresh;
 		private Button btnSearch;
 		private TextBox txtSearch;
 		private DataGridView dgvPendingRecipe;
 		private Label label5;
-		private DateTimePicker dateCreate;
-		private PictureBox picRecipe;
+		private DataGridViewTextBoxColumn recipeIdDataGridViewTextBoxColumn;
+		private DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
+		private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+		private DataGridViewTextBoxColumn ingredientDataGridViewTextBoxColumn;
+		private DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
+		private DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
+		private DataGridViewTextBoxColumn imgDataGridViewTextBoxColumn;
+		private BindingSource recipeBindingSource;
 	}
 }
