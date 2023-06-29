@@ -38,6 +38,7 @@
 			btnUserProfile = new Button();
 			txtWelcome = new Label();
 			btnAddRecipe = new PictureBox();
+			btnMealPlanning = new Button();
 			((System.ComponentModel.ISupportInitialize)btnAddRecipe).BeginInit();
 			SuspendLayout();
 			// 
@@ -139,12 +140,24 @@
 			btnAddRecipe.TabStop = false;
 			btnAddRecipe.Click += btnAddRecipe_Click;
 			// 
+			// btnMealPlanning
+			// 
+			btnMealPlanning.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+			btnMealPlanning.Location = new Point(552, 10);
+			btnMealPlanning.Name = "btnMealPlanning";
+			btnMealPlanning.Size = new Size(114, 40);
+			btnMealPlanning.TabIndex = 59;
+			btnMealPlanning.Text = "Meal planning";
+			btnMealPlanning.UseVisualStyleBackColor = true;
+			btnMealPlanning.Click += btnMealPlanning_Click;
+			// 
 			// SearchRecipe
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackgroundImageLayout = ImageLayout.Center;
 			ClientSize = new Size(974, 608);
+			Controls.Add(btnMealPlanning);
 			Controls.Add(btnAddRecipe);
 			Controls.Add(txtWelcome);
 			Controls.Add(btnUserProfile);
@@ -175,5 +188,6 @@
 		private Button btnUserProfile;
 		private Label txtWelcome;
 		private PictureBox btnAddRecipe;
+		private Button btnMealPlanning;
 	}
 }

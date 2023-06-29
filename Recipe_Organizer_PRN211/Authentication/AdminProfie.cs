@@ -71,9 +71,10 @@ namespace Recipe_Organizer_PRN211.Authentication
 
         private void btnChangePassword_Click(object sender, EventArgs e)
         {
-            Form changePassword = new ChangePassword();
-            this.Hide();
-            changePassword.Show();
+            AdminPage adminPage = new AdminPage();
+            adminPage.Close();
+            Form changePassword = new ChangePasswordAdmin();
+            changePassword.ShowDialog();
         }
         private void pageLoad()
         {
