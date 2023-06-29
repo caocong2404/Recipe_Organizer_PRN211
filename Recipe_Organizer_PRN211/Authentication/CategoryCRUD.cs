@@ -19,7 +19,7 @@ namespace Recipe_Organizer_PRN211.Authentication
         //UserRepository _userRepository;
         CategoryRepository _categoryRepository;
         RecipeHasCategoryRepository _recipeHasCategoryRepository;
-        Category category;
+        Category categorytotol;
         public CategoryCRUD()
         {
             // _userRepository = new UserRepository();
@@ -53,6 +53,10 @@ namespace Recipe_Organizer_PRN211.Authentication
             var category = new Category();
             category.Title = txtUsername.Text;
             category.Description = txtPassword.Text;
+<<<<<<< HEAD
+            // category.ParentCategoryId = 1;
+=======
+>>>>>>> main
 
 
             _categoryRepository.Add(category);
@@ -70,7 +74,7 @@ namespace Recipe_Organizer_PRN211.Authentication
         {
             bool result = false;
             if (userName == null || password == null) { return result; }
-            return result;
+            return true;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -84,11 +88,18 @@ namespace Recipe_Organizer_PRN211.Authentication
                 return;
             }
 
+<<<<<<< HEAD
+            categorytotol.CategoryId = int.Parse(txtId.Text);
+            categorytotol.Title = txtUsername.Text;
+            categorytotol.Description = txtPassword.Text;
+            // category.ParentCategoryId = 1;
+=======
             var category = new Category();
             category.Title = txtUsername.Text;
             category.Description = txtPassword.Text;
+>>>>>>> main
 
-            _categoryRepository.Update(category);
+            _categoryRepository.Update(categorytotol);
 
             var userList = _categoryRepository.GetAll();
 
@@ -125,9 +136,9 @@ namespace Recipe_Organizer_PRN211.Authentication
         private void dgvListUser_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             //chuột đang click ở dòng nào
-            var userID = dgvListUser[0, e.RowIndex].Value;
-            var category = _categoryRepository.GetAll().Where(entity => entity.CategoryId.Equals(userID)).FirstOrDefault();
-            this.category = category;
+            var CategoryID = dgvListUser[0, e.RowIndex].Value;
+            var category = _categoryRepository.GetAll().Where(entity => entity.CategoryId.Equals(CategoryID)).FirstOrDefault();
+            this.categorytotol = category;
             if (category == null)
                 return;
 
@@ -137,10 +148,22 @@ namespace Recipe_Organizer_PRN211.Authentication
                 txtUsername.Text = category.Title.ToString();
             if (category.Description != null)
                 txtPassword.Text = category.Description.ToString();
-
+            if (category.CategoryId != null)
+                txtId.Text = category.CategoryId.ToString();
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
+
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            var listUser = _categoryRepository.GetAll();
+            dgvListUser.DataSource = new BindingSource()
+            {
+                DataSource = listUser
+            };
+        }
+
+        private void btnSearch_Click_1(object sender, EventArgs e)
         {
             string searchValue = txtSearch.Text;
             if (searchValue.Length > 0)
@@ -154,7 +177,7 @@ namespace Recipe_Organizer_PRN211.Authentication
             }
         }
 
-        private void btnRefresh_Click(object sender, EventArgs e)
+        private void btnRefresh_Click_1(object sender, EventArgs e)
         {
             var listUser = _categoryRepository.GetAll();
             dgvListUser.DataSource = new BindingSource()
@@ -163,9 +186,62 @@ namespace Recipe_Organizer_PRN211.Authentication
             };
         }
 
-        private void dgvListUser_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void btnCreate_Click_1(object sender, EventArgs e)
         {
+            string categoryName = txtUsername.Text;
+            string categoryDrciption = txtPassword.Text;
 
+
+
+            if (!validateInput(categoryName, categoryDrciption))
+            {
+                MessageBox.Show("Textbox can not empty", "Warning", MessageBoxButtons.OK);
+                return;
+            }
+
+            var category = new Category();
+            category.Title = txtUsername.Text;
+            category.Description = txtPassword.Text;
+            // category.ParentCategoryId = 1;
+
+
+            _categoryRepository.Add(category);
+
+
+            var userList = _categoryRepository.GetAll();
+
+            dgvListUser.DataSource = new BindingSource()
+            {
+                DataSource = userList
+            };
         }
+
+        private void btnUpdate_Click_1(object sender, EventArgs e)
+        {
+            string categoryName = txtUsername.Text;
+            string categoryDrciption = txtPassword.Text;
+
+            if (!validateInput(categoryName, categoryDrciption))
+            {
+                MessageBox.Show("Textbox can not empty", "Warning", MessageBoxButtons.OK);
+                return;
+            }
+
+            categorytotol.CategoryId = int.Parse(txtId.Text);
+            categorytotol.Title = txtUsername.Text;
+            categorytotol.Description = txtPassword.Text;
+            // category.ParentCategoryId = 1;
+
+            _categoryRepository.Update(categorytotol);
+
+            var userList = _categoryRepository.GetAll();
+
+            dgvListUser.DataSource = new BindingSource()
+            {
+                DataSource = userList
+            };
+        }
+
+        
     }
 }
