@@ -21,7 +21,7 @@ namespace Recipe_Organizer_PRN211.Manage
 		{
 			_recipeRepository = new RecipeRepository();
 			InitializeComponent();
-			var recipeList = _recipeRepository.GetAll();
+			var recipeList = _recipeRepository.GetRecipeWithStatus("pending");
 			dgvPendingRecipe.DataSource = new BindingSource()
 			{
 				DataSource = recipeList
@@ -34,7 +34,14 @@ namespace Recipe_Organizer_PRN211.Manage
 			var recipeID = dgvPendingRecipe[0, e.RowIndex].Value;
 			Recipe_Organizer_PRN211.Authentication.AppContext.RecipeId = (int)recipeID;
 			Form pendingRecipe = new RecipeDetailPending();
-			pendingRecipe.ShowDialog();
+			if (pendingRecipe.ShowDialog() == DialogResult.OK)
+			{
+				var recipeList = _recipeRepository.GetRecipeWithStatus("pending");
+				dgvPendingRecipe.DataSource = new BindingSource()
+				{
+					DataSource = recipeList
+				};
+			}
 			//var recipe = _recipeRepository.GetAll().Where(entity => entity.UserId.Equals(recipeID)).FirstOrDefault();
 			//this.recipe = recipe;
 			//if (recipe == null)
@@ -60,18 +67,18 @@ namespace Recipe_Organizer_PRN211.Manage
 			string searchValue = txtSearch.Text;
 			if (searchValue.Length > 0)
 			{
-				var listRecipe = _recipeRepository.getRecipe(searchValue);
+				var listRecipe = _recipeRepository.searchRecipeWithStatus(searchValue, "pending");
 
 				dgvPendingRecipe.DataSource = new BindingSource()
 				{
-				    DataSource = listRecipe
+					DataSource = listRecipe
 				};
 			}
 		}
 
 		private void btnRefresh_Click(object sender, EventArgs e)
 		{
-			var listRecipe = _recipeRepository.GetAll();
+			var listRecipe = _recipeRepository.GetRecipeWithStatus("pending");
 			dgvPendingRecipe.DataSource = new BindingSource()
 			{
 				DataSource = listRecipe

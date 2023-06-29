@@ -20,6 +20,9 @@ namespace Recipe_Organizer_PRN211.Authentication
 		{
 			_userRepository = new UserRepository();
 			InitializeComponent();
+
+			txtUsername.Focus();
+
 		}
 
 
@@ -72,5 +75,12 @@ namespace Recipe_Organizer_PRN211.Authentication
 			loginForm.ShowDialog();
 
 		}
+
+
+		private void txtUsername_TextChanged(object sender, EventArgs e)
+		{
+
+		}
+
 	}
 }
