@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Services.Models;
 using System.Xml.Linq;
+using Recipe_Organizer_PRN211.Recipe;
 
 namespace Recipe_Organizer_PRN211.Authentication
 {
@@ -23,7 +24,7 @@ namespace Recipe_Organizer_PRN211.Authentication
         public AddRecipe()
         {
             _recipeRepository = new RecipeRepository();
-            
+
             InitializeComponent();
         }
         public static string url = "";
@@ -31,7 +32,7 @@ namespace Recipe_Organizer_PRN211.Authentication
         {
             txtImport.Text = ImageToBase64(url);
             if ((txtDescription.Text.Length > 0) && (txtIngredient.Text.Length > 0) && (txtTitle.Text.Length > 0) && (txtImport.Text.Length > 0)
-                && (txtDescription.Text.Trim()!="") && (txtIngredient.Text.Trim() != "") && (txtTitle.Text.Trim() != "") && (txtImport.Text.Trim() != ""))
+                && (txtDescription.Text.Trim() != "") && (txtIngredient.Text.Trim() != "") && (txtTitle.Text.Trim() != "") && (txtImport.Text.Trim() != ""))
             {
                 var recipe = new Services.Models.Recipe();
                 recipe.Title = txtTitle.Text.ToString();
@@ -40,7 +41,7 @@ namespace Recipe_Organizer_PRN211.Authentication
                 //txtImport.Text = ImageToBase64(url);
                 //recipe.Img = txtImport.Text.ToString();
                 recipe.Img = (txtImport.Text = ImageToBase64(url));
-                recipe.UserId = 7;
+                recipe.UserId = AppContext.CurrentUser.UserId;
                 recipe.Status = "Pending";
 
 
@@ -51,7 +52,7 @@ namespace Recipe_Organizer_PRN211.Authentication
             else
             {
                 MessageBox.Show("Error type input date", "WARNING", MessageBoxButtons.OK);
-              
+
             }
 
         }
@@ -107,6 +108,13 @@ namespace Recipe_Organizer_PRN211.Authentication
                     return base64String;
                 }
             }
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Form searchForm = new SearchRecipe();
+            this.Hide();
+            searchForm.ShowDialog(); 
         }
     }
 }
