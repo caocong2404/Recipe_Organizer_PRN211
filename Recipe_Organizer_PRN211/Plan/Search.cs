@@ -70,8 +70,23 @@ namespace Recipe_Organizer_PRN211.Plan
 				int recipeId;
 				if (int.TryParse(selectedRecipe.Split('-')[0].Trim(), out recipeId))
 				{
-                    Recipe.AppContext.RecipeId = recipeId;
-					this.Close();
+                    Plan.AppContext.planItem = new PlanItem() { RecipeId = recipeId };
+					//var data = Plan.AppContext.planData;
+
+     //               if (data.Job == null)
+					//{
+					//	data = new PlanData();
+					//	data.Job = new List<PlanItem>() { Plan.AppContext.planItem };
+					//} else
+					//{
+     //                   data.Job.Add(Plan.AppContext.planItem);
+     //               }
+     //               Plan.AppContext.planData = data;
+
+
+                    this.Close();
+					//DailyPlan dailyPlan = new DailyPlan(Plan.AppContext.planItem.Date, Plan.AppContext.planData);
+					//dailyPlan.ShowDialog();
 				}
 				else
 				{

@@ -31,245 +31,221 @@ namespace Recipe_Organizer_PRN211.Plan
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.nmNotify = new System.Windows.Forms.NumericUpDown();
-            this.ckbNotify = new System.Windows.Forms.CheckBox();
-            this.btnToDay = new System.Windows.Forms.Button();
-            this.dtpkDate = new System.Windows.Forms.DateTimePicker();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.pnlMatrix = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.btnPreviours = new System.Windows.Forms.Button();
-            this.btnSunday = new System.Windows.Forms.Button();
-            this.btnSaturday = new System.Windows.Forms.Button();
-            this.btnFriday = new System.Windows.Forms.Button();
-            this.btnThusday = new System.Windows.Forms.Button();
-            this.btnWednesday = new System.Windows.Forms.Button();
-            this.btnTuesday = new System.Windows.Forms.Button();
-            this.btnMonday = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nmNotify)).BeginInit();
-            this.panel2.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.SuspendLayout();
+            panel1 = new Panel();
+            panel3 = new Panel();
+            panel6 = new Panel();
+            btnToDay = new Button();
+            dtpkDate = new DateTimePicker();
+            panel2 = new Panel();
+            pnlMatrix = new Panel();
+            panel4 = new Panel();
+            btnNext = new Button();
+            btnPreviours = new Button();
+            btnSunday = new Button();
+            btnSaturday = new Button();
+            btnFriday = new Button();
+            btnThusday = new Button();
+            btnWednesday = new Button();
+            btnTuesday = new Button();
+            btnMonday = new Button();
+            panel1.SuspendLayout();
+            panel3.SuspendLayout();
+            panel2.SuspendLayout();
+            panel4.SuspendLayout();
+            SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(741, 356);
-            this.panel1.TabIndex = 0;
+            panel1.Controls.Add(panel3);
+            panel1.Controls.Add(panel2);
+            panel1.Location = new Point(16, 18);
+            panel1.Margin = new Padding(4, 5, 4, 5);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(988, 548);
+            panel1.TabIndex = 0;
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.panel6);
-            this.panel3.Controls.Add(this.btnToDay);
-            this.panel3.Controls.Add(this.dtpkDate);
-            this.panel3.Location = new System.Drawing.Point(3, 3);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(735, 28);
-            this.panel3.TabIndex = 1;
+            panel3.Controls.Add(panel6);
+            panel3.Controls.Add(btnToDay);
+            panel3.Controls.Add(dtpkDate);
+            panel3.Location = new Point(4, 5);
+            panel3.Margin = new Padding(4, 5, 4, 5);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(980, 43);
+            panel3.TabIndex = 1;
             // 
             // panel6
             // 
-            this.panel6.Controls.Add(this.nmNotify);
-            this.panel6.Controls.Add(this.ckbNotify);
-            this.panel6.Location = new System.Drawing.Point(7, 0);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(210, 28);
-            this.panel6.TabIndex = 2;
-            // 
-            // nmNotify
-            // 
-            this.nmNotify.Location = new System.Drawing.Point(81, 3);
-            this.nmNotify.Maximum = new decimal(new int[] {
-            3600,
-            0,
-            0,
-            0});
-            this.nmNotify.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nmNotify.Name = "nmNotify";
-            this.nmNotify.Size = new System.Drawing.Size(60, 20);
-            this.nmNotify.TabIndex = 1;
-            this.nmNotify.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // ckbNotify
-            // 
-            this.ckbNotify.AutoSize = true;
-            this.ckbNotify.Location = new System.Drawing.Point(3, 4);
-            this.ckbNotify.Name = "ckbNotify";
-            this.ckbNotify.Size = new System.Drawing.Size(78, 17);
-            this.ckbNotify.TabIndex = 0;
-            this.ckbNotify.Text = "Thông báo";
-            this.ckbNotify.UseVisualStyleBackColor = true;
+            panel6.Location = new Point(9, 0);
+            panel6.Margin = new Padding(4, 5, 4, 5);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(280, 43);
+            panel6.TabIndex = 2;
             // 
             // btnToDay
             // 
-            this.btnToDay.Location = new System.Drawing.Point(493, 0);
-            this.btnToDay.Name = "btnToDay";
-            this.btnToDay.Size = new System.Drawing.Size(75, 23);
-            this.btnToDay.TabIndex = 1;
-            this.btnToDay.Text = "Hôm nay";
-            this.btnToDay.UseVisualStyleBackColor = true;
-            this.btnToDay.Click += new System.EventHandler(this.btnToDay_Click);
+            btnToDay.Location = new Point(657, 0);
+            btnToDay.Margin = new Padding(4, 5, 4, 5);
+            btnToDay.Name = "btnToDay";
+            btnToDay.Size = new Size(100, 35);
+            btnToDay.TabIndex = 1;
+            btnToDay.Text = "Today";
+            btnToDay.UseVisualStyleBackColor = true;
+            btnToDay.Click += btnToDay_Click;
             // 
             // dtpkDate
             // 
-            this.dtpkDate.Location = new System.Drawing.Point(287, 3);
-            this.dtpkDate.Name = "dtpkDate";
-            this.dtpkDate.Size = new System.Drawing.Size(200, 20);
-            this.dtpkDate.TabIndex = 0;
-            this.dtpkDate.ValueChanged += new System.EventHandler(this.dtpkDate_ValueChanged);
+            dtpkDate.Location = new Point(383, 5);
+            dtpkDate.Margin = new Padding(4, 5, 4, 5);
+            dtpkDate.Name = "dtpkDate";
+            dtpkDate.Size = new Size(265, 27);
+            dtpkDate.TabIndex = 0;
+            dtpkDate.ValueChanged += dtpkDate_ValueChanged;
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.pnlMatrix);
-            this.panel2.Controls.Add(this.panel4);
-            this.panel2.Location = new System.Drawing.Point(3, 37);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(735, 314);
-            this.panel2.TabIndex = 0;
+            panel2.Controls.Add(pnlMatrix);
+            panel2.Controls.Add(panel4);
+            panel2.Location = new Point(4, 57);
+            panel2.Margin = new Padding(4, 5, 4, 5);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(980, 483);
+            panel2.TabIndex = 0;
             // 
             // pnlMatrix
             // 
-            this.pnlMatrix.Location = new System.Drawing.Point(88, 55);
-            this.pnlMatrix.Name = "pnlMatrix";
-            this.pnlMatrix.Size = new System.Drawing.Size(561, 254);
-            this.pnlMatrix.TabIndex = 1;
+            pnlMatrix.Location = new Point(117, 85);
+            pnlMatrix.Margin = new Padding(4, 5, 4, 5);
+            pnlMatrix.Name = "pnlMatrix";
+            pnlMatrix.Size = new Size(748, 391);
+            pnlMatrix.TabIndex = 1;
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.btnNext);
-            this.panel4.Controls.Add(this.btnPreviours);
-            this.panel4.Controls.Add(this.btnSunday);
-            this.panel4.Controls.Add(this.btnSaturday);
-            this.panel4.Controls.Add(this.btnFriday);
-            this.panel4.Controls.Add(this.btnThusday);
-            this.panel4.Controls.Add(this.btnWednesday);
-            this.panel4.Controls.Add(this.btnTuesday);
-            this.panel4.Controls.Add(this.btnMonday);
-            this.panel4.Location = new System.Drawing.Point(3, 3);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(729, 46);
-            this.panel4.TabIndex = 0;
+            panel4.Controls.Add(btnNext);
+            panel4.Controls.Add(btnPreviours);
+            panel4.Controls.Add(btnSunday);
+            panel4.Controls.Add(btnSaturday);
+            panel4.Controls.Add(btnFriday);
+            panel4.Controls.Add(btnThusday);
+            panel4.Controls.Add(btnWednesday);
+            panel4.Controls.Add(btnTuesday);
+            panel4.Controls.Add(btnMonday);
+            panel4.Location = new Point(4, 5);
+            panel4.Margin = new Padding(4, 5, 4, 5);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(972, 71);
+            panel4.TabIndex = 0;
             // 
             // btnNext
             // 
-            this.btnNext.Location = new System.Drawing.Point(651, 3);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(75, 40);
-            this.btnNext.TabIndex = 8;
-            this.btnNext.Text = "Tháng sau";
-            this.btnNext.UseVisualStyleBackColor = true;
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            btnNext.Location = new Point(868, 5);
+            btnNext.Margin = new Padding(4, 5, 4, 5);
+            btnNext.Name = "btnNext";
+            btnNext.Size = new Size(100, 62);
+            btnNext.TabIndex = 8;
+            btnNext.Text = "▶️";
+            btnNext.UseVisualStyleBackColor = true;
+            btnNext.Click += btnNext_Click;
             // 
             // btnPreviours
             // 
-            this.btnPreviours.Location = new System.Drawing.Point(4, 3);
-            this.btnPreviours.Name = "btnPreviours";
-            this.btnPreviours.Size = new System.Drawing.Size(75, 40);
-            this.btnPreviours.TabIndex = 7;
-            this.btnPreviours.Text = "Tháng trước";
-            this.btnPreviours.UseVisualStyleBackColor = true;
-            this.btnPreviours.Click += new System.EventHandler(this.btnPreviours_Click);
+            btnPreviours.Location = new Point(5, 5);
+            btnPreviours.Margin = new Padding(4, 5, 4, 5);
+            btnPreviours.Name = "btnPreviours";
+            btnPreviours.Size = new Size(100, 62);
+            btnPreviours.TabIndex = 7;
+            btnPreviours.Text = "◀️";
+            btnPreviours.UseVisualStyleBackColor = true;
+            btnPreviours.Click += btnPreviours_Click;
             // 
             // btnSunday
             // 
-            this.btnSunday.Location = new System.Drawing.Point(571, 3);
-            this.btnSunday.Name = "btnSunday";
-            this.btnSunday.Size = new System.Drawing.Size(75, 40);
-            this.btnSunday.TabIndex = 6;
-            this.btnSunday.Text = "Chủ nhật";
-            this.btnSunday.UseVisualStyleBackColor = true;
+            btnSunday.Location = new Point(761, 5);
+            btnSunday.Margin = new Padding(4, 5, 4, 5);
+            btnSunday.Name = "btnSunday";
+            btnSunday.Size = new Size(100, 62);
+            btnSunday.TabIndex = 6;
+            btnSunday.Text = "Sun";
+            btnSunday.UseVisualStyleBackColor = true;
             // 
             // btnSaturday
             // 
-            this.btnSaturday.Location = new System.Drawing.Point(490, 3);
-            this.btnSaturday.Name = "btnSaturday";
-            this.btnSaturday.Size = new System.Drawing.Size(75, 40);
-            this.btnSaturday.TabIndex = 5;
-            this.btnSaturday.Text = "Thứ 7";
-            this.btnSaturday.UseVisualStyleBackColor = true;
+            btnSaturday.Location = new Point(653, 5);
+            btnSaturday.Margin = new Padding(4, 5, 4, 5);
+            btnSaturday.Name = "btnSaturday";
+            btnSaturday.Size = new Size(100, 62);
+            btnSaturday.TabIndex = 5;
+            btnSaturday.Text = "Sat";
+            btnSaturday.UseVisualStyleBackColor = true;
             // 
             // btnFriday
             // 
-            this.btnFriday.Location = new System.Drawing.Point(409, 3);
-            this.btnFriday.Name = "btnFriday";
-            this.btnFriday.Size = new System.Drawing.Size(75, 40);
-            this.btnFriday.TabIndex = 4;
-            this.btnFriday.Text = "Thứ 6";
-            this.btnFriday.UseVisualStyleBackColor = true;
+            btnFriday.Location = new Point(545, 5);
+            btnFriday.Margin = new Padding(4, 5, 4, 5);
+            btnFriday.Name = "btnFriday";
+            btnFriday.Size = new Size(100, 62);
+            btnFriday.TabIndex = 4;
+            btnFriday.Text = "Fri";
+            btnFriday.UseVisualStyleBackColor = true;
             // 
             // btnThusday
             // 
-            this.btnThusday.Location = new System.Drawing.Point(328, 3);
-            this.btnThusday.Name = "btnThusday";
-            this.btnThusday.Size = new System.Drawing.Size(75, 40);
-            this.btnThusday.TabIndex = 3;
-            this.btnThusday.Text = "Thứ 5";
-            this.btnThusday.UseVisualStyleBackColor = true;
+            btnThusday.Location = new Point(437, 5);
+            btnThusday.Margin = new Padding(4, 5, 4, 5);
+            btnThusday.Name = "btnThusday";
+            btnThusday.Size = new Size(100, 62);
+            btnThusday.TabIndex = 3;
+            btnThusday.Text = "Thu";
+            btnThusday.UseVisualStyleBackColor = true;
             // 
             // btnWednesday
             // 
-            this.btnWednesday.Location = new System.Drawing.Point(247, 3);
-            this.btnWednesday.Name = "btnWednesday";
-            this.btnWednesday.Size = new System.Drawing.Size(75, 40);
-            this.btnWednesday.TabIndex = 2;
-            this.btnWednesday.Text = "Thứ 4";
-            this.btnWednesday.UseVisualStyleBackColor = true;
+            btnWednesday.Location = new Point(329, 5);
+            btnWednesday.Margin = new Padding(4, 5, 4, 5);
+            btnWednesday.Name = "btnWednesday";
+            btnWednesday.Size = new Size(100, 62);
+            btnWednesday.TabIndex = 2;
+            btnWednesday.Text = "Wed";
+            btnWednesday.UseVisualStyleBackColor = true;
             // 
             // btnTuesday
             // 
-            this.btnTuesday.Location = new System.Drawing.Point(166, 3);
-            this.btnTuesday.Name = "btnTuesday";
-            this.btnTuesday.Size = new System.Drawing.Size(75, 40);
-            this.btnTuesday.TabIndex = 1;
-            this.btnTuesday.Text = "Thứ 3";
-            this.btnTuesday.UseVisualStyleBackColor = true;
+            btnTuesday.Location = new Point(221, 5);
+            btnTuesday.Margin = new Padding(4, 5, 4, 5);
+            btnTuesday.Name = "btnTuesday";
+            btnTuesday.Size = new Size(100, 62);
+            btnTuesday.TabIndex = 1;
+            btnTuesday.Text = "Tue";
+            btnTuesday.UseVisualStyleBackColor = true;
             // 
             // btnMonday
             // 
-            this.btnMonday.Location = new System.Drawing.Point(85, 3);
-            this.btnMonday.Name = "btnMonday";
-            this.btnMonday.Size = new System.Drawing.Size(75, 40);
-            this.btnMonday.TabIndex = 0;
-            this.btnMonday.Text = "Thứ 2";
-            this.btnMonday.UseVisualStyleBackColor = true;
+            btnMonday.Location = new Point(113, 5);
+            btnMonday.Margin = new Padding(4, 5, 4, 5);
+            btnMonday.Name = "btnMonday";
+            btnMonday.Size = new Size(100, 62);
+            btnMonday.TabIndex = 0;
+            btnMonday.Text = "Mon";
+            btnMonday.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // PlanView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(765, 370);
-            this.Controls.Add(this.panel1);
-            this.Name = "Form1";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Lập lịch công việc";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
-            this.panel1.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nmNotify)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1020, 569);
+            Controls.Add(panel1);
+            Margin = new Padding(4, 5, 4, 5);
+            Name = "PlanView";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Meal planning";
+            FormClosing += Form1_FormClosing;
+            panel1.ResumeLayout(false);
+            panel3.ResumeLayout(false);
+            panel2.ResumeLayout(false);
+            panel4.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion
@@ -277,8 +253,6 @@ namespace Recipe_Organizer_PRN211.Plan
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.NumericUpDown nmNotify;
-        private System.Windows.Forms.CheckBox ckbNotify;
         private System.Windows.Forms.Button btnToDay;
         private System.Windows.Forms.DateTimePicker dtpkDate;
         private System.Windows.Forms.Panel panel2;

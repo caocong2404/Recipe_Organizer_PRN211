@@ -112,7 +112,7 @@ namespace Recipe_Organizer_PRN211.Recipe
 				{
 					AppContext.RecipeId = recipeId;
 					this.Hide();
-					RecipeDetail recipeDetailForm = new RecipeDetail();
+					RecipeDetail recipeDetailForm = new RecipeDetail(1);
 					recipeDetailForm.ShowDialog();
 				}
 				else
