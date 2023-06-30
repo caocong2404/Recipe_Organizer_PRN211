@@ -82,22 +82,26 @@ namespace Recipe_Organizer_PRN211.Plan
 
         void ARecipe_Edited(object sender, EventArgs e)
         {
-            ARecipe uc = sender as ARecipe;
-            PlanItem job = uc.Job;
-            var plan = Plan.AppContext.planItem;
-            int count = 0;
-            foreach (PlanItem item in Job.Job)
+            if (Plan.AppContext.planItem != null && Plan.AppContext.planItem.RecipeId > 0)
             {
-                if (item.RecipeId.Equals(plan.RecipeId) && item.Date.Equals(job.Date) && item.Status.Equals(job.Status))
+                ARecipe uc = sender as ARecipe;
+                PlanItem job = uc.Job;
+                var plan = Plan.AppContext.planItem;
+                int count = 0;
+                foreach (PlanItem item in Job.Job)
                 {
-                    count++;
+                    if (item.RecipeId.Equals(plan.RecipeId) && item.Date.Equals(job.Date) && item.Status.Equals(job.Status))
+                    {
+                        count++;
 
+                    }
+                }
+                if (count == 0)
+                {
+                    job.RecipeId = plan.RecipeId;
                 }
             }
-            if (count == 0)
-            {
-                job.RecipeId = plan.RecipeId;
-            }
+            
 
 
         }
