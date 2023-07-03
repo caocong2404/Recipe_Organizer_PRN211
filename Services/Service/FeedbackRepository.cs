@@ -18,6 +18,10 @@ namespace Services.Service
 			_context = new Recipe_Organizer_PRN211Context();
 			_dbSet = _context.Set<Feedback>();
 		}
+		public List<Feedback> GetAll()
+		{ 
+			return _dbSet.ToList();
+		}
 
 		public Feedback ShowAllFeedback(int feedbackId)
 		{

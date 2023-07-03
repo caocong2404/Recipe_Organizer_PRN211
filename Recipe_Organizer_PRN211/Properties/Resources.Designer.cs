@@ -353,6 +353,26 @@ namespace Recipe_Organizer_PRN211.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap star_empty {
+            get {
+                object obj = ResourceManager.GetObject("star-empty", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap star_filled {
+            get {
+                object obj = ResourceManager.GetObject("star-filled", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap user_background_01 {
             get {
                 object obj = ResourceManager.GetObject("user-background-01", resourceCulture);

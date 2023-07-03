@@ -29,8 +29,14 @@
 		private void InitializeComponent()
 		{
 			label1 = new Label();
-			textBox1 = new TextBox();
-			button1 = new Button();
+			txtFeedback = new TextBox();
+			btnClose = new Button();
+			label2 = new Label();
+			label3 = new Label();
+			txtRecipeName = new TextBox();
+			groupBox1 = new GroupBox();
+			txtRatingAvg = new TextBox();
+			groupBox1.SuspendLayout();
 			SuspendLayout();
 			// 
 			// label1
@@ -38,41 +44,90 @@
 			label1.AutoSize = true;
 			label1.Font = new Font("Montserrat ExtraBold", 13.7999992F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
 			label1.ForeColor = Color.Red;
-			label1.Location = new Point(179, 27);
+			label1.Location = new Point(348, 26);
 			label1.Name = "label1";
 			label1.Size = new Size(136, 32);
 			label1.TabIndex = 0;
 			label1.Text = "Feedback";
 			// 
-			// textBox1
+			// txtFeedback
 			// 
-			textBox1.Location = new Point(12, 62);
-			textBox1.Multiline = true;
-			textBox1.Name = "textBox1";
-			textBox1.ScrollBars = ScrollBars.Vertical;
-			textBox1.Size = new Size(461, 324);
-			textBox1.TabIndex = 1;
+			txtFeedback.Location = new Point(12, 102);
+			txtFeedback.Multiline = true;
+			txtFeedback.Name = "txtFeedback";
+			txtFeedback.ScrollBars = ScrollBars.Vertical;
+			txtFeedback.Size = new Size(780, 284);
+			txtFeedback.TabIndex = 1;
 			// 
-			// button1
+			// btnClose
 			// 
-			button1.Font = new Font("Montserrat", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-			button1.Location = new Point(379, 409);
-			button1.Name = "button1";
-			button1.Size = new Size(94, 29);
-			button1.TabIndex = 2;
-			button1.Text = "Close";
-			button1.UseVisualStyleBackColor = true;
+			btnClose.Location = new Point(690, 392);
+			btnClose.Name = "btnClose";
+			btnClose.Size = new Size(75, 34);
+			btnClose.TabIndex = 6;
+			btnClose.Text = "Close";
+			btnClose.Click += btnClose_Click;
+			// 
+			// label2
+			// 
+			label2.AutoSize = true;
+			label2.Font = new Font("Montserrat", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+			label2.Location = new Point(21, 64);
+			label2.Name = "label2";
+			label2.Size = new Size(129, 24);
+			label2.TabIndex = 3;
+			label2.Text = "Recipe Name:";
+			// 
+			// label3
+			// 
+			label3.AutoSize = true;
+			label3.Font = new Font("Montserrat", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+			label3.Location = new Point(523, 61);
+			label3.Name = "label3";
+			label3.Size = new Size(146, 24);
+			label3.TabIndex = 4;
+			label3.Text = "Rating Average:";
+			// 
+			// txtRecipeName
+			// 
+			txtRecipeName.Location = new Point(156, 61);
+			txtRecipeName.Name = "txtRecipeName";
+			txtRecipeName.Size = new Size(345, 27);
+			txtRecipeName.TabIndex = 5;
+			// 
+			// groupBox1
+			// 
+			groupBox1.Controls.Add(txtRatingAvg);
+			groupBox1.Controls.Add(btnClose);
+			groupBox1.Location = new Point(3, 12);
+			groupBox1.Name = "groupBox1";
+			groupBox1.Size = new Size(807, 436);
+			groupBox1.TabIndex = 6;
+			groupBox1.TabStop = false;
+			// 
+			// txtRatingAvg
+			// 
+			txtRatingAvg.Location = new Point(667, 46);
+			txtRatingAvg.Name = "txtRatingAvg";
+			txtRatingAvg.Size = new Size(98, 27);
+			txtRatingAvg.TabIndex = 7;
 			// 
 			// ShowAllFeedback
 			// 
 			AutoScaleDimensions = new SizeF(8F, 20F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(496, 450);
-			Controls.Add(button1);
-			Controls.Add(textBox1);
+			ClientSize = new Size(822, 450);
+			Controls.Add(txtRecipeName);
+			Controls.Add(label3);
+			Controls.Add(label2);
+			Controls.Add(txtFeedback);
 			Controls.Add(label1);
+			Controls.Add(groupBox1);
 			Name = "ShowAllFeedback";
 			Text = "ShowAllFeedback";
+			Load += ShowAllFeedback_Load;
+			groupBox1.ResumeLayout(false);
+			groupBox1.PerformLayout();
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -80,7 +135,12 @@
 		#endregion
 
 		private Label label1;
-		private TextBox textBox1;
-		private Button button1;
+		private TextBox txtFeedback;
+		private Button btnClose;
+		private Label label2;
+		private Label label3;
+		private TextBox txtRecipeName;
+		private GroupBox groupBox1;
+		private TextBox txtRatingAvg;
 	}
 }
