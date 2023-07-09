@@ -30,12 +30,15 @@ namespace Recipe_Organizer_PRN211.Authentication
 		}
 		public static string url = "";
 
-		private void btnAdd_Click(object sender, EventArgs e)
-		{
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            if(url!=null&& url.Length >0) {
+				txtImport.Text = ImageToBase64(url);
+			}
+           
+            if ((txtDescription.Text.Length > 0) && (txtIngredient.Text.Length > 0) && (txtTitle.Text.Length > 0) && (txtImport.Text.Length > 0)
+                && (txtDescription.Text.Trim() != "") && (txtIngredient.Text.Trim() != "") && (txtTitle.Text.Trim() != "") && (txtImport.Text.Trim() != ""))
 
-			txtImport.Text = ImageToBase64(url);
-			if ((txtDescription.Text.Length > 0) && (txtIngredient.Text.Length > 0) && (txtTitle.Text.Length > 0) && (txtImport.Text.Length > 0)
-				&& (txtDescription.Text.Trim() != "") && (txtIngredient.Text.Trim() != "") && (txtTitle.Text.Trim() != "") && (txtImport.Text.Trim() != ""))
 
 			{
 				var recipe = new Services.Models.Recipe();
