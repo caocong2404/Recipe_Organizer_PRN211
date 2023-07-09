@@ -1,4 +1,6 @@
-﻿using Services.Service;
+﻿using Recipe_Organizer_PRN211.Recipe;
+using Services.Models;
+using Services.Service;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +16,9 @@ namespace Recipe_Organizer_PRN211.Plan
     public partial class ARecipe : UserControl
     {
         private PlanItem job;
+        private RecipeRepository _recipeRepository = new RecipeRepository();
+
+
 
         public PlanItem Job
         {
@@ -26,6 +31,7 @@ namespace Recipe_Organizer_PRN211.Plan
         {
             add { edited += value; }
             remove { edited -= value; }
+
         }
 
         private event EventHandler deleted;
@@ -45,12 +51,26 @@ namespace Recipe_Organizer_PRN211.Plan
             ShowInfo();
         }
 
+        public ARecipe()
+        {
+        }
+
         void ShowInfo()
         {
-            txbJob.Text = Job.Recipe.Title;
+            if (Job.RecipeId == -1)
+            {
+                txbJob.Text = "";
+            }
+            else
+            {
+
+
+
+                txbJob.Text = _recipeRepository.GetTitle(Job.RecipeId);
+
+            }
 
             cbStatus.SelectedIndex = PlanItem.ListStatus.IndexOf(Job.Status);
-            
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -61,7 +81,7 @@ namespace Recipe_Organizer_PRN211.Plan
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            Job.Recipe.Title = txbJob.Text;
+            //Job.Recipe.Title = txbJob.Text;
 
             Job.Status = PlanItem.ListStatus[cbStatus.SelectedIndex];
 
@@ -69,6 +89,31 @@ namespace Recipe_Organizer_PRN211.Plan
                 edited(this, new EventArgs());
         }
 
-        
+        private void btnOpenSearch_Click(object sender, EventArgs e)
+        {
+
+
+
+
+            Search search = new Search();
+            search.ShowDialog();
+
+
+
+            if (edited != null)
+                edited(this, new EventArgs());
+            ShowInfo();
+
+        }
+
+        private void btnDetail_Click(object sender, EventArgs e)
+        {
+            Recipe.AppContext.RecipeId = Job.RecipeId;
+            this.Hide();
+            RecipeDetail recipeDetailForm = new RecipeDetail(2);
+            recipeDetailForm.ShowDialog();
+            this.Show();
+
+        }
     }
 }

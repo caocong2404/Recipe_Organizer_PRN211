@@ -1,4 +1,5 @@
-﻿using Services.Service;
+﻿using Services.Models;
+using Services.Service;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,8 +12,8 @@ using System.Windows.Forms;
 
 namespace Recipe_Organizer_PRN211.Plan
 {
-	public partial class DailyPlan : Form
-	{
+    public partial class DailyPlan : Form
+    {
         private DateTime date;
 
         public DateTime Date
@@ -43,6 +44,7 @@ namespace Recipe_Organizer_PRN211.Plan
             pnlJob.Controls.Add(fPanel);
 
             dtpkDate.Value = Date;
+
         }
 
         void ShowJobByDate(DateTime date)
@@ -56,6 +58,7 @@ namespace Recipe_Organizer_PRN211.Plan
                     AddJob(todayJob[i]);
                 }
             }
+
         }
 
         void AddJob(PlanItem job)
@@ -65,6 +68,7 @@ namespace Recipe_Organizer_PRN211.Plan
             ARecipe.Deleted += ARecipe_Deleteed;
 
             fPanel.Controls.Add(ARecipe);
+
         }
 
         void ARecipe_Deleteed(object sender, EventArgs e)
@@ -78,6 +82,28 @@ namespace Recipe_Organizer_PRN211.Plan
 
         void ARecipe_Edited(object sender, EventArgs e)
         {
+            if (Plan.AppContext.planItem != null && Plan.AppContext.planItem.RecipeId > 0)
+            {
+                ARecipe uc = sender as ARecipe;
+                PlanItem job = uc.Job;
+                var plan = Plan.AppContext.planItem;
+                int count = 0;
+                foreach (PlanItem item in Job.Job)
+                {
+                    if (item.RecipeId.Equals(plan.RecipeId) && item.Date.Equals(job.Date) && item.Status.Equals(job.Status))
+                    {
+                        count++;
+
+                    }
+                }
+                if (count == 0)
+                {
+                    job.RecipeId = plan.RecipeId;
+                }
+            }
+            
+
+
         }
 
         List<PlanItem> GetJobByDay(DateTime date)
@@ -102,7 +128,14 @@ namespace Recipe_Organizer_PRN211.Plan
 
         private void mnsiAddJob_Click(object sender, EventArgs e)
         {
-            PlanItem item = new PlanItem() { Date = dtpkDate.Value };
+            int userId = Recipe_Organizer_PRN211.Authentication.AppContext.CurrentUser.UserId;
+
+            PlanItem item = new PlanItem() { Date = dtpkDate.Value, RecipeId = -1, UserId = userId, Status = "Breakfast" };
+            if (Job.Job == null)
+            {
+                Job = new PlanData();
+                Job.Job = new List<PlanItem> { item };
+            }
             Job.Job.Add(item);
             AddJob(item);
         }
@@ -110,6 +143,16 @@ namespace Recipe_Organizer_PRN211.Plan
         private void mnsiToDay_Click(object sender, EventArgs e)
         {
             dtpkDate.Value = DateTime.Now;
+        }
+
+        private void DailyPlan_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Plan.AppContext.planData = Job;
+        }
+
+        private void btsmiQuit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

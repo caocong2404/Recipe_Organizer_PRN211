@@ -1,6 +1,8 @@
-﻿namespace Recipe_Organizer_PRN211.Recipe
+﻿using Recipe_Organizer_PRN211.Recipe;
+
+namespace Recipe_Organizer_PRN211.Plan
 {
-	partial class SearchRecipe
+	partial class Search
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -75,8 +77,8 @@
 			// 
 			lbTitle.AutoSize = true;
 			lbTitle.Font = new Font("Montserrat Black", 18F, FontStyle.Regular, GraphicsUnit.Point);
-			lbTitle.ForeColor = Color.Red;
-			lbTitle.Location = new Point(561, 94);
+			lbTitle.ForeColor = Color.FromArgb(255, 128, 0);
+			lbTitle.Location = new Point(386, 55);
 			lbTitle.Name = "lbTitle";
 			lbTitle.Size = new Size(223, 33);
 			lbTitle.TabIndex = 22;
@@ -96,7 +98,7 @@
 			// 
 			// btnLogout
 			// 
-			btnLogout.Font = new Font("Montserrat Medium", 8.999999F, FontStyle.Bold, GraphicsUnit.Point);
+			btnLogout.Font = new Font("Montserrat", 8.999999F, FontStyle.Regular, GraphicsUnit.Point);
 			btnLogout.Location = new Point(839, 12);
 			btnLogout.Name = "btnLogout";
 			btnLogout.Size = new Size(89, 38);
@@ -108,7 +110,7 @@
 			// btnUserProfile
 			// 
 			btnUserProfile.FlatStyle = FlatStyle.System;
-			btnUserProfile.Font = new Font("Montserrat Medium", 8.999999F, FontStyle.Bold, GraphicsUnit.Point);
+			btnUserProfile.Font = new Font("Montserrat", 8.999999F, FontStyle.Regular, GraphicsUnit.Point);
 			btnUserProfile.ForeColor = Color.Red;
 			btnUserProfile.Location = new Point(744, 12);
 			btnUserProfile.Name = "btnUserProfile";
@@ -155,8 +157,7 @@
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
-			BackgroundImage = Properties.Resources.login_background;
-			BackgroundImageLayout = ImageLayout.Stretch;
+			BackgroundImageLayout = ImageLayout.Center;
 			ClientSize = new Size(974, 608);
 			Controls.Add(btnMealPlanning);
 			Controls.Add(btnAddRecipe);

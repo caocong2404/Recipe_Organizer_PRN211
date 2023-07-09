@@ -18,9 +18,17 @@ namespace Recipe_Organizer_PRN211.Recipe
 	{
 		private RecipeRepository _recipeRepository;
 
-		public RecipeDetail()
+		public RecipeDetail(int num)
 		{
 			InitializeComponent();
+			if (num == 1) {
+				button1.Hide();
+			}
+			if (num == 2)
+			{
+				btnBack.Hide();
+				btnAddFeedback.Hide();
+			}
 			_recipeRepository = new RecipeRepository();
 		}
 		protected override void OnLoad(EventArgs e)
@@ -105,9 +113,9 @@ namespace Recipe_Organizer_PRN211.Recipe
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			Form searhRecipe = new SearchRecipe();
-			this.Hide();
-			searhRecipe.ShowDialog();
+			
+			this.Close();
+			
 		}
 
 

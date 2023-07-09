@@ -1,5 +1,5 @@
 ﻿using Recipe_Organizer_PRN211.Authentication;
-using Recipe_Organizer_PRN211.Plan;
+using Recipe_Organizer_PRN211.Recipe;
 using Services.Models;
 using Services.Service;
 using Services.Services;
@@ -13,16 +13,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Recipe_Organizer_PRN211.Recipe
+namespace Recipe_Organizer_PRN211.Plan
 {
-	public partial class SearchRecipe : Form
+	public partial class Search : Form
 	{
 		private RecipeRepository _recipeRepository;
 		private RecipeDetail _recipeDetailForm;
 		private UserRepository _userRepository;
-		public SearchRecipe()
+		public Search()
 		{
-
 			InitializeComponent();
 			_recipeRepository = new RecipeRepository();
 			_userRepository = new UserRepository();
@@ -34,18 +33,7 @@ namespace Recipe_Organizer_PRN211.Recipe
 			string searchValue = txtSearch.Text;
 			if (searchValue.Length > 0)
 			{
-				var recipeList = _recipeRepository.searchRecipeWithStatus(searchValue, "public");
-
-				// Update DataGridView
-				//dgvRecipeList.DataSource = new BindingSource()
-				//{
-				//	DataSource = recipeList.Select(r => new
-				//	{
-				//		r.RecipeId,
-				//		r.Title,
-				//		r.Date
-				//	})
-				//};
+				var recipeList = _recipeRepository.getRecipe(searchValue);
 
 				// Update ListBox
 				lstRecipes.Items.Clear();
@@ -64,16 +52,7 @@ namespace Recipe_Organizer_PRN211.Recipe
 
 		private void RefreshRecipeList()
 		{
-			var recipeList = _recipeRepository.GetRecipeWithStatus("public");
-			//dgvRecipeList.DataSource = new BindingSource()
-			//{
-			//	DataSource = recipeList.Select(r => new
-			//	{
-			//		r.RecipeId,
-			//		r.Title,
-			//		r.Date
-			//	})
-			//};
+			var recipeList = _recipeRepository.GetAll();
 
 			lstRecipes.Items.Clear();
 			foreach (var recipe in recipeList)
@@ -83,25 +62,6 @@ namespace Recipe_Organizer_PRN211.Recipe
 
 		}
 
-		//private void dgvRecipeList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-		//{
-		//	if (e.RowIndex >= 0 && e.RowIndex < dgvRecipeList.Rows.Count)
-		//	{
-		//		var recipeID = dgvRecipeList[0, e.RowIndex].Value;
-		//		if (recipeID != null && int.TryParse(recipeID.ToString(), out int recipeId))
-		//		{
-		//			AppContext.RecipeId = recipeId;
-		//			this.Hide();
-		//			RecipeDetail recipeDetailForm = new RecipeDetail();
-		//			recipeDetailForm.ShowDialog();
-		//		}
-		//		else
-		//		{
-		//			MessageBox.Show("Sorry, Recipe is not found", "Message", MessageBoxButtons.OK);
-		//		}
-		//	}
-		//}
-
 		private void lstRecipes_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			var selectedRecipe = lstRecipes.SelectedItem?.ToString();
@@ -110,10 +70,23 @@ namespace Recipe_Organizer_PRN211.Recipe
 				int recipeId;
 				if (int.TryParse(selectedRecipe.Split('-')[0].Trim(), out recipeId))
 				{
-					AppContext.RecipeId = recipeId;
-					this.Hide();
-					RecipeDetail recipeDetailForm = new RecipeDetail(1);
-					recipeDetailForm.ShowDialog();
+                    Plan.AppContext.planItem = new PlanItem() { RecipeId = recipeId };
+					//var data = Plan.AppContext.planData;
+
+     //               if (data.Job == null)
+					//{
+					//	data = new PlanData();
+					//	data.Job = new List<PlanItem>() { Plan.AppContext.planItem };
+					//} else
+					//{
+     //                   data.Job.Add(Plan.AppContext.planItem);
+     //               }
+     //               Plan.AppContext.planData = data;
+
+
+                    this.Close();
+					//DailyPlan dailyPlan = new DailyPlan(Plan.AppContext.planItem.Date, Plan.AppContext.planData);
+					//dailyPlan.ShowDialog();
 				}
 				else
 				{

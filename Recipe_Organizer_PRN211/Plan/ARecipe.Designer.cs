@@ -26,6 +26,7 @@
         /// Required method for Designer support - do not modify 
         /// the contents of this method with the code editor.
         /// </summary>
+
         private void InitializeComponent()
         {
             panel1 = new Panel();
@@ -55,69 +56,72 @@
             // 
             // btnDelete
             // 
-            btnDelete.Location = new Point(932, 0);
+            btnDelete.Location = new Point(906, 6);
             btnDelete.Margin = new Padding(4, 5, 4, 5);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(60, 35);
+            btnDelete.Size = new Size(73, 35);
             btnDelete.TabIndex = 5;
-            btnDelete.Text = "Xóa";
+            btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.Click += btnDelete_Click;
             // 
             // btnEdit
             // 
-            btnEdit.Location = new Point(867, 0);
+            btnEdit.Location = new Point(827, 5);
             btnEdit.Margin = new Padding(4, 5, 4, 5);
             btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(60, 35);
+            btnEdit.Size = new Size(71, 35);
             btnEdit.TabIndex = 4;
-            btnEdit.Text = "Sửa";
+            btnEdit.Text = "Update";
             btnEdit.UseVisualStyleBackColor = true;
             btnEdit.Click += btnEdit_Click;
             // 
             // cbStatus
             // 
             cbStatus.FormattingEnabled = true;
-            cbStatus.Location = new Point(721, 3);
+            cbStatus.Location = new Point(658, 7);
             cbStatus.Margin = new Padding(4, 5, 4, 5);
             cbStatus.Name = "cbStatus";
-            cbStatus.Size = new Size(136, 28);
+            cbStatus.Size = new Size(146, 28);
             cbStatus.TabIndex = 3;
             // 
             // panel2
             // 
             panel2.Controls.Add(btnDetail);
             panel2.Controls.Add(btnOpenSearch);
-            panel2.Location = new Point(514, 0);
+            panel2.Location = new Point(439, 0);
             panel2.Margin = new Padding(4, 5, 4, 5);
             panel2.Name = "panel2";
-            panel2.Size = new Size(204, 46);
+            panel2.Size = new Size(211, 46);
             panel2.TabIndex = 2;
             // 
             // btnDetail
             // 
-            btnDetail.Location = new Point(106, 2);
+            btnDetail.Location = new Point(103, 7);
             btnDetail.Name = "btnDetail";
             btnDetail.Size = new Size(94, 29);
             btnDetail.TabIndex = 1;
             btnDetail.Text = "Detail";
             btnDetail.UseVisualStyleBackColor = true;
+            btnDetail.Click += btnDetail_Click;
             // 
             // btnOpenSearch
             // 
-            btnOpenSearch.Location = new Point(3, 3);
+            btnOpenSearch.Location = new Point(3, 6);
             btnOpenSearch.Name = "btnOpenSearch";
             btnOpenSearch.Size = new Size(94, 29);
             btnOpenSearch.TabIndex = 0;
             btnOpenSearch.Text = "Search";
             btnOpenSearch.UseVisualStyleBackColor = true;
+            btnOpenSearch.Click += btnOpenSearch_Click;
             // 
             // txbJob
             // 
-            txbJob.Location = new Point(32, 0);
+            txbJob.Enabled = false;
+            txbJob.Location = new Point(38, 6);
             txbJob.Margin = new Padding(4, 5, 4, 5);
             txbJob.Name = "txbJob";
-            txbJob.Size = new Size(452, 27);
+            txbJob.Size = new Size(372, 27);
             txbJob.TabIndex = 1;
             // 
             // ARecipe
