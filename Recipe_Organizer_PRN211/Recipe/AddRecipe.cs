@@ -32,8 +32,10 @@ namespace Recipe_Organizer_PRN211.Authentication
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
-            txtImport.Text = ImageToBase64(url);
+            if(url!=null&& url.Length >0) {
+				txtImport.Text = ImageToBase64(url);
+			}
+           
             if ((txtDescription.Text.Length > 0) && (txtIngredient.Text.Length > 0) && (txtTitle.Text.Length > 0) && (txtImport.Text.Length > 0)
                 && (txtDescription.Text.Trim() != "") && (txtIngredient.Text.Trim() != "") && (txtTitle.Text.Trim() != "") && (txtImport.Text.Trim() != ""))
 
