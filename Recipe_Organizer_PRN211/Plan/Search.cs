@@ -18,7 +18,6 @@ namespace Recipe_Organizer_PRN211.Plan
     public partial class Search : Form
     {
         private RecipeRepository _recipeRepository;
-        private RecipeDetail _recipeDetailForm;
         private UserRepository _userRepository;
         public Search()
         {
@@ -33,7 +32,7 @@ namespace Recipe_Organizer_PRN211.Plan
             string searchValue = txtSearch.Text;
             if (searchValue.Length > 0)
             {
-                var recipeList = _recipeRepository.getRecipe(searchValue);
+                var recipeList = _recipeRepository.searchRecipeWithStatus(searchValue, "public");
 
                 // Update ListBox
                 lstRecipes.Items.Clear();
@@ -52,7 +51,7 @@ namespace Recipe_Organizer_PRN211.Plan
 
         private void RefreshRecipeList()
         {
-            var recipeList = _recipeRepository.GetAll();
+            var recipeList = _recipeRepository.GetRecipeWithStatus("public");
 
             lstRecipes.Items.Clear();
             foreach (var recipe in recipeList)
