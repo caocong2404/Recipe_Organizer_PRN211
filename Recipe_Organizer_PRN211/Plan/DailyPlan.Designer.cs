@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DailyPlan));
             panel1 = new Panel();
             panel3 = new Panel();
             btnPrevioursDay = new Button();
@@ -142,11 +143,12 @@
             ClientSize = new Size(1043, 786);
             Controls.Add(panel1);
             Controls.Add(mnsMain);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = mnsMain;
             Margin = new Padding(4, 5, 4, 5);
             Name = "DailyPlan";
             StartPosition = FormStartPosition.CenterParent;
-            Text = "Lịch trong ngày";
+            Text = "Day plan";
             FormClosing += DailyPlan_FormClosing;
             panel1.ResumeLayout(false);
             panel3.ResumeLayout(false);
@@ -158,15 +160,15 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button btnPrevioursDay;
-        private System.Windows.Forms.Button btnNextDay;
-        private System.Windows.Forms.DateTimePicker dtpkDate;
-        private System.Windows.Forms.Panel pnlJob;
-        private System.Windows.Forms.MenuStrip mnsMain;
-        private System.Windows.Forms.ToolStripMenuItem mnsiAddJob;
-        private System.Windows.Forms.ToolStripMenuItem mnsiToDay;
+        private Panel panel1;
+        private Panel panel3;
+        private Button btnPrevioursDay;
+        private Button btnNextDay;
+        private DateTimePicker dtpkDate;
+        private Panel pnlJob;
+        private MenuStrip mnsMain;
+        private ToolStripMenuItem mnsiAddJob;
+        private ToolStripMenuItem mnsiToDay;
         private ToolStripMenuItem btsmiQuit;
     }
 }

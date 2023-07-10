@@ -31,8 +31,10 @@ namespace Recipe_Organizer_PRN211.Plan
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlanView));
             panel1 = new Panel();
             panel3 = new Panel();
+            btnQuit = new Button();
             btnToDay = new Button();
             dtpkDate = new DateTimePicker();
             panel2 = new Panel();
@@ -47,7 +49,6 @@ namespace Recipe_Organizer_PRN211.Plan
             btnWednesday = new Button();
             btnTuesday = new Button();
             btnMonday = new Button();
-            btnQuit = new Button();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
             panel2.SuspendLayout();
@@ -74,6 +75,16 @@ namespace Recipe_Organizer_PRN211.Plan
             panel3.Name = "panel3";
             panel3.Size = new Size(980, 43);
             panel3.TabIndex = 1;
+            // 
+            // btnQuit
+            // 
+            btnQuit.Location = new Point(273, 1);
+            btnQuit.Name = "btnQuit";
+            btnQuit.Size = new Size(78, 33);
+            btnQuit.TabIndex = 2;
+            btnQuit.Text = "Quit";
+            btnQuit.UseVisualStyleBackColor = true;
+            btnQuit.Click += btnQuit_Click;
             // 
             // btnToDay
             // 
@@ -222,27 +233,19 @@ namespace Recipe_Organizer_PRN211.Plan
             btnMonday.Text = "Mon";
             btnMonday.UseVisualStyleBackColor = true;
             // 
-            // btnQuit
-            // 
-            btnQuit.Location = new Point(273, 1);
-            btnQuit.Name = "btnQuit";
-            btnQuit.Size = new Size(78, 33);
-            btnQuit.TabIndex = 2;
-            btnQuit.Text = "Quit";
-            btnQuit.UseVisualStyleBackColor = true;
-            btnQuit.Click += btnQuit_Click;
-            // 
             // PlanView
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1020, 569);
             Controls.Add(panel1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4, 5, 4, 5);
             Name = "PlanView";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Meal planning";
             FormClosing += Form1_FormClosing;
+            Load += PlanView_Load;
             panel1.ResumeLayout(false);
             panel3.ResumeLayout(false);
             panel2.ResumeLayout(false);
@@ -252,22 +255,22 @@ namespace Recipe_Organizer_PRN211.Plan
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button btnToDay;
-        private System.Windows.Forms.DateTimePicker dtpkDate;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel pnlMatrix;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Button btnNext;
-        private System.Windows.Forms.Button btnPreviours;
-        private System.Windows.Forms.Button btnSunday;
-        private System.Windows.Forms.Button btnSaturday;
-        private System.Windows.Forms.Button btnFriday;
-        private System.Windows.Forms.Button btnThusday;
-        private System.Windows.Forms.Button btnWednesday;
-        private System.Windows.Forms.Button btnTuesday;
-        private System.Windows.Forms.Button btnMonday;
+        private Panel panel1;
+        private Panel panel3;
+        private Button btnToDay;
+        private DateTimePicker dtpkDate;
+        private Panel panel2;
+        private Panel pnlMatrix;
+        private Panel panel4;
+        private Button btnNext;
+        private Button btnPreviours;
+        private Button btnSunday;
+        private Button btnSaturday;
+        private Button btnFriday;
+        private Button btnThusday;
+        private Button btnWednesday;
+        private Button btnTuesday;
+        private Button btnMonday;
         private Button btnQuit;
     }
 }

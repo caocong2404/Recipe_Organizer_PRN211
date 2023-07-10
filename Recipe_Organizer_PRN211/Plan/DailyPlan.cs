@@ -101,7 +101,7 @@ namespace Recipe_Organizer_PRN211.Plan
                     job.RecipeId = plan.RecipeId;
                 }
             }
-            
+
 
 
         }
