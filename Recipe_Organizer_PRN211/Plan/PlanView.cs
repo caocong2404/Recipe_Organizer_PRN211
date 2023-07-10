@@ -272,6 +272,10 @@ namespace Recipe_Organizer_PRN211.Plan
 			SearchRecipe searchForm = new SearchRecipe();
 			searchForm.Show();
 		}
+        private void PlanView_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
