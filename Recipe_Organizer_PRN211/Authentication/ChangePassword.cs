@@ -49,6 +49,13 @@ namespace Recipe_Organizer_PRN211.Authentication
                 MessageBox.Show("Confirm password not empty", "Warning");
                 return;
             }
+          
+            if (oldPassword.Equals(newPassword))
+            {
+                MessageBox.Show("Old password and new password are equal", "Warning", MessageBoxButtons.OK);
+                return;
+            }
+
             if (confirmPassword.Equals(newPassword))
             {
                 var user = _userRepository.getUser(AppContext.CurrentUser.Username, oldPassword);

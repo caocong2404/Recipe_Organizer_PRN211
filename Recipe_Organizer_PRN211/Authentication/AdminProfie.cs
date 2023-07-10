@@ -1,4 +1,5 @@
-﻿using Services.Models;
+﻿using Recipe_Organizer_PRN211.Utility;
+using Services.Models;
 using Services.Services;
 using System;
 using System.Collections.Generic;
@@ -54,12 +55,17 @@ namespace Recipe_Organizer_PRN211.Authentication
 				MessageBox.Show("Last name not empty", "Warning");
 				return;
 			}
-			if (email.Length == 0)
-			{
-				MessageBox.Show("Email not empty", "Warning");
-				return;
-			}
-			user.FirstName = firstName.Trim();
+            if (email.Length == 0)
+            {
+                MessageBox.Show("Email not empty", "Warning");
+                return;
+            }
+            if (!EmailService.IsValidEmail(email))
+            {
+                MessageBox.Show("Invalid email format", "Warning");
+                return;
+            }
+            user.FirstName = firstName.Trim();
 			user.LastName = lastname.Trim();
 			user.Email = email.Trim();
 			user.Birthday = birhday;
