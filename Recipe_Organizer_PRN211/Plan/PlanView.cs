@@ -269,7 +269,9 @@ namespace Recipe_Organizer_PRN211.Plan
         private void btnQuit_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
+			SearchRecipe searchForm = new SearchRecipe();
+			searchForm.Show();
+		}
     }
 }
 
