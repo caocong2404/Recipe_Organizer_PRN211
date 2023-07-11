@@ -17,15 +17,12 @@ namespace Recipe_Organizer_PRN211.Feedback
 {
 	public partial class ShowAllFeedback : Form
 	{
-		RecipeRepository recipeRepository; 
+		RecipeRepository recipeRepository;
 		public ShowAllFeedback()
 		{
 			recipeRepository = new RecipeRepository();
 			InitializeComponent();
-			int recipeId = Recipe_Organizer_PRN211.Recipe.AppContext.RecipeId;
-			Services.Models.Recipe recipe = recipeRepository.GetRecipe(recipeId);
-			// Display the recipe name in the recipeNameTextBox
-			txtRecipeName.Text = recipe.Title;
+
 		}
 
 		private void btnClose_Click(object sender, EventArgs e)
@@ -44,9 +41,9 @@ namespace Recipe_Organizer_PRN211.Feedback
 				{
 					string[] feedbackFields = feedbackLine.Split('\t');
 
-					if (feedbackFields.Length >= 6)
+					if (feedbackFields.Length >= 7)
 					{
-						txtFeedback.AppendText($"Username: {feedbackFields[1]}\r\nTitle: {feedbackFields[2]}\r\nDescription: {feedbackFields[3]}\r\nRating: {feedbackFields[4]}\r\nDate: {feedbackFields[5]}\r\n\r\n");
+						txtFeedback.AppendText($"Username: {feedbackFields[1]}\r\nRecipeName: {feedbackFields[2]}\r\nTitle: {feedbackFields[3]}\r\nDescription: {feedbackFields[4]}\r\nRating: {feedbackFields[5]}\r\nDate: {feedbackFields[6]}\r\n\r\n");
 					}
 				}
 			}
@@ -54,21 +51,6 @@ namespace Recipe_Organizer_PRN211.Feedback
 			{
 				MessageBox.Show("Feedback file not found.", "Error");
 			}
-
-			// Calculate the average rating of the feedback
-			double ratingSum = 0;
-			foreach (string feedbackLine in feedbackLines)
-			{
-				string[] feedbackFields = feedbackLine.Split('\t');
-				if (feedbackFields.Length >= 6)
-				{
-					ratingSum += double.Parse(feedbackFields[4]);
-				}
-			}
-			double ratingAvg = ratingSum / feedbackLines.Length;
-
-			// Display the average rating in the rating textbox
-			txtRatingAvg.Text = ratingAvg.ToString("0.00");
 		}
 	}
 }

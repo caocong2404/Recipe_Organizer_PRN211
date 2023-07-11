@@ -110,6 +110,7 @@
 			txtDescription.Size = new Size(694, 140);
 			txtDescription.TabIndex = 9;
 			txtDescription.Text = "Enter your Feedback...\r\n";
+			txtDescription.Click += txtDescription_Click;
 			// 
 			// btnClear
 			// 

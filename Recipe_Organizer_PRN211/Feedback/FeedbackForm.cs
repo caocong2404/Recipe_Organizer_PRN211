@@ -22,9 +22,11 @@ namespace Recipe_Organizer_PRN211.Feedback
 		private PictureBox[] stars;
 
 		FeedbackRepository _feedbackRepository;
+		RecipeRepository _recipeRepository;
 		public FeedbackForm()
 		{
 			_feedbackRepository = new FeedbackRepository();
+			_recipeRepository = new RecipeRepository();
 			InitializeComponent();
 		}
 
@@ -48,6 +50,9 @@ namespace Recipe_Organizer_PRN211.Feedback
 				MessageBox.Show("Title or rating is invalid!!!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
+			int recipeId = Recipe_Organizer_PRN211.Recipe.AppContext.RecipeId;
+			Services.Models.Recipe recipe = _recipeRepository.GetRecipe(recipeId);
+			var recipeName = recipe.Title;
 			var userId = Recipe_Organizer_PRN211.Authentication.AppContext.CurrentUser.UserId;
 			var userName = Recipe_Organizer_PRN211.Authentication.AppContext.CurrentUser.Username;
 			var feedback = new Services.Models.Feedback();
@@ -56,9 +61,7 @@ namespace Recipe_Organizer_PRN211.Feedback
 			feedback.Description = txtDescription.Text;
 			feedback.Date = DateTime.Now;
 			feedback.Rating = rating;
-			var user = new Services.Models.User();
-			user.Username = userName;
-			string feedbackText = $"{feedback.UserId}\t{user.Username}\t{feedback.Title}\t{feedback.Description}\t{feedback.Rating}\t{feedback.Date}";
+			string feedbackText = $"{feedback.UserId}\t{userName}\t{recipeName}\t{feedback.Title}\t{feedback.Description}\t{feedback.Rating}\t{feedback.Date}";
 			string feedbackFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Data", "feedback.txt");
 			File.AppendAllText(feedbackFilePath, feedbackText + Environment.NewLine);
 			//_feedbackRepository.Add();
@@ -125,6 +128,11 @@ namespace Recipe_Organizer_PRN211.Feedback
 			else if (selectedstar == star5) rating = 5;
 			else rating = 0;
 
+		}
+
+		private void txtDescription_Click(object sender, EventArgs e)
+		{
+			txtDescription.Clear();
 		}
 	}
 }
