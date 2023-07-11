@@ -93,7 +93,7 @@ namespace Recipe_Organizer_PRN211.Plan
                 }
                 oldBtn = new Button() { Width = 0, Height = 0, Location = new Point(-Cons.margin, oldBtn.Location.Y + Cons.dateButtonHeight) };
             }
-vc 
+
             SetDefaultDate();
         }
 
