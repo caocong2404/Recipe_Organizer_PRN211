@@ -49,21 +49,33 @@ namespace Recipe_Organizer_PRN211.Authentication
                 MessageBox.Show("Confirm password not empty", "Warning");
                 return;
             }
+          
+            if (oldPassword.Equals(newPassword))
+            {
+                MessageBox.Show("Old password and new password are equal", "Warning", MessageBoxButtons.OK);
+                return;
+            }
+
             if (confirmPassword.Equals(newPassword))
             {
-                var user = _userRepository.getUser(AppContext.CurrentUser.Username);
+                var user = _userRepository.getUser(AppContext.CurrentUser.Username, oldPassword);
+                if (user == null)
+                {
+					MessageBox.Show("Wrong password", "Warning", MessageBoxButtons.OK);
+					return;
+				}
                 user.Password = newPassword;
                 _userRepository.Update(user);
                 MessageBox.Show("Change password successfully", "Success");
-                Form login = new Login();
-                this.Hide();
-                login.Show();
-            }
-            else
+				Form login = new Login();
+				this.Close();
+				login.Show();
+				MessageBox.Show("You must login again to continue", "!!!", MessageBoxButtons.OK);
+			}
+			else
             {
-                MessageBox.Show("New password and confirm password not match", "Warning");
-                return;
-            }
+				MessageBox.Show("Password and confirm password not match", "Warning", MessageBoxButtons.OK);
+			}
         }
     }
 }

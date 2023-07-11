@@ -1,4 +1,6 @@
-﻿using Services.Models;
+﻿using Microsoft.IdentityModel.Tokens;
+using Recipe_Organizer_PRN211.Utility;
+using Services.Models;
 using Services.Service;
 using Services.Services;
 using System;
@@ -79,7 +81,7 @@ namespace Recipe_Organizer_PRN211.Authentication
 		public bool validateInput(string userName, string password)
 		{
 			bool result = false;
-			if (userName == null || password == null)
+			if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
 			{
 				return result;
 			}
@@ -95,8 +97,17 @@ namespace Recipe_Organizer_PRN211.Authentication
 			string email = txtEmail.Text;
 			Role roles = cbRole.SelectedItem as Role;
 			int role = roles.RoleId;
-
-			user.FirstName = firstName.Trim();
+            if (email.Length == 0)
+            {
+                MessageBox.Show("Email not empty", "Warning");
+                return;
+            }
+            if (!EmailService.IsValidEmail(email))
+            {
+                MessageBox.Show("Invalid email format", "Warning");
+                return;
+            }
+            user.FirstName = firstName.Trim();
 			user.LastName = lastname.Trim();
 			user.Email = email.Trim();
 			user.Birthday = birhday;
@@ -153,11 +164,11 @@ namespace Recipe_Organizer_PRN211.Authentication
 			var role = _roleRepository.GetAll().Where(entity => entity.RoleId.Equals(roleID)).FirstOrDefault();
 
 			cbRole.Text = role.RoleName;
-			txtUsername.Text = user.Username.ToString();
+			txtUsername.Text = user.Username;
 			txtFirstname.Text = user.FirstName;
-			txtLastname.Text = user.LastName.ToString();
-			txtEmail.Text = user.Email.ToString();
-			txtPassword.Text = user.Password.ToString();
+			txtLastname.Text = user.LastName;
+			txtEmail.Text = user.Email;
+			txtPassword.Text = user.Password;
 			if (user.Birthday != null)
 				dateBirthday.Text = user.Birthday.ToString();
 			else dateBirthday.Text = null;

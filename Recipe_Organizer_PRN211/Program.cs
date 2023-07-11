@@ -16,7 +16,7 @@ namespace Recipe_Organizer_PRN211
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
-            Application.Run(new Login());
+            Application.Run(new Homepage());
 
             //Application.Run(new Recipe.SearchRecipe());
 

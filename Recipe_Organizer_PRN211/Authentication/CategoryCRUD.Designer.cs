@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             btnDelete = new Button();
             btnUpdate = new Button();
             btnCreate = new Button();
@@ -39,8 +40,14 @@
             btnSearch = new Button();
             txtSearch = new TextBox();
             dgvListUser = new DataGridView();
+            categoryIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            titleDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            descriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            categoryBindingSource = new BindingSource(components);
             label5 = new Label();
+            txtId = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvListUser).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)categoryBindingSource).BeginInit();
             SuspendLayout();
             // 
             // btnDelete
@@ -52,6 +59,7 @@
             btnDelete.TabIndex = 56;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Visible = false;
             // 
             // btnUpdate
             // 
@@ -62,6 +70,7 @@
             btnUpdate.TabIndex = 55;
             btnUpdate.Text = "Update";
             btnUpdate.UseVisualStyleBackColor = true;
+            btnUpdate.Click += btnUpdate_Click_1;
             // 
             // btnCreate
             // 
@@ -72,23 +81,25 @@
             btnCreate.TabIndex = 54;
             btnCreate.Text = "Create";
             btnCreate.UseVisualStyleBackColor = true;
+            btnCreate.Click += btnCreate_Click_1;
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Microsoft Sans Serif", 9.749999F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(520, 391);
+            label7.Location = new Point(29, 467);
             label7.Name = "label7";
-            label7.Size = new Size(91, 20);
+            label7.Size = new Size(187, 20);
             label7.TabIndex = 52;
-            label7.Text = "Password";
+            label7.Text = "Category Description";
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(635, 391);
+            txtPassword.Location = new Point(243, 467);
             txtPassword.Margin = new Padding(3, 4, 3, 4);
+            txtPassword.Multiline = true;
             txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(254, 27);
+            txtPassword.Size = new Size(254, 67);
             txtPassword.TabIndex = 51;
             // 
             // txtUsername
@@ -103,7 +114,7 @@
             // 
             empty.AutoSize = true;
             empty.Font = new Font("Microsoft Sans Serif", 9.749999F, FontStyle.Bold, GraphicsUnit.Point);
-            empty.Location = new Point(78, 389);
+            empty.Location = new Point(29, 394);
             empty.Name = "empty";
             empty.Size = new Size(138, 20);
             empty.TabIndex = 42;
@@ -119,6 +130,7 @@
             btnRefresh.TabIndex = 41;
             btnRefresh.Text = "Refresh";
             btnRefresh.UseVisualStyleBackColor = true;
+            btnRefresh.Click += btnRefresh_Click_1;
             // 
             // btnSearch
             // 
@@ -130,6 +142,7 @@
             btnSearch.TabIndex = 40;
             btnSearch.Text = "Search";
             btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click_1;
             // 
             // txtSearch
             // 
@@ -141,7 +154,10 @@
             // 
             // dgvListUser
             // 
+            dgvListUser.AutoGenerateColumns = false;
             dgvListUser.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvListUser.Columns.AddRange(new DataGridViewColumn[] { categoryIdDataGridViewTextBoxColumn, titleDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn });
+            dgvListUser.DataSource = categoryBindingSource;
             dgvListUser.Location = new Point(78, 155);
             dgvListUser.Margin = new Padding(3, 4, 3, 4);
             dgvListUser.Name = "dgvListUser";
@@ -149,7 +165,37 @@
             dgvListUser.RowTemplate.Height = 25;
             dgvListUser.Size = new Size(887, 193);
             dgvListUser.TabIndex = 38;
-            dgvListUser.CellContentClick += dgvListUser_CellContentClick;
+          
+            dgvListUser.CellDoubleClick += dgvListUser_CellDoubleClick;
+            // 
+            // categoryIdDataGridViewTextBoxColumn
+            // 
+            categoryIdDataGridViewTextBoxColumn.DataPropertyName = "CategoryId";
+            categoryIdDataGridViewTextBoxColumn.HeaderText = "CategoryId";
+            categoryIdDataGridViewTextBoxColumn.MinimumWidth = 6;
+            categoryIdDataGridViewTextBoxColumn.Name = "categoryIdDataGridViewTextBoxColumn";
+            categoryIdDataGridViewTextBoxColumn.Visible = false;
+            categoryIdDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // titleDataGridViewTextBoxColumn
+            // 
+            titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
+            titleDataGridViewTextBoxColumn.HeaderText = "Title";
+            titleDataGridViewTextBoxColumn.MinimumWidth = 6;
+            titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
+            titleDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            descriptionDataGridViewTextBoxColumn.MinimumWidth = 6;
+            descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            descriptionDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // categoryBindingSource
+            // 
+            categoryBindingSource.DataSource = typeof(Services.Models.Category);
             // 
             // label5
             // 
@@ -162,11 +208,20 @@
             label5.TabIndex = 37;
             label5.Text = "Category List";
             // 
-            // Category
+            // txtId
+            // 
+            txtId.Location = new Point(699, 621);
+            txtId.Name = "txtId";
+            txtId.Size = new Size(125, 27);
+            txtId.TabIndex = 57;
+            txtId.Visible = false;
+            // 
+            // CategoryCRUD
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1043, 660);
+            Controls.Add(txtId);
             Controls.Add(btnDelete);
             Controls.Add(btnUpdate);
             Controls.Add(btnCreate);
@@ -179,9 +234,10 @@
             Controls.Add(txtSearch);
             Controls.Add(dgvListUser);
             Controls.Add(label5);
-            Name = "Category";
+            Name = "CategoryCRUD";
             Text = "Category";
             ((System.ComponentModel.ISupportInitialize)dgvListUser).EndInit();
+            ((System.ComponentModel.ISupportInitialize)categoryBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -199,5 +255,10 @@
         private TextBox txtSearch;
         private DataGridView dgvListUser;
         private Label label5;
+        private DataGridViewTextBoxColumn categoryIdDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private BindingSource categoryBindingSource;
+        private TextBox txtId;
     }
 }

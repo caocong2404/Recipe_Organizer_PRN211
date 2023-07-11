@@ -1,4 +1,5 @@
-﻿using Recipe_Organizer_PRN211.Recipe;
+﻿using Recipe_Organizer_PRN211.Plan;
+using Recipe_Organizer_PRN211.Recipe;
 using Services.Models;
 using Services.Services;
 using System;
@@ -53,9 +54,11 @@ namespace Recipe_Organizer_PRN211.Authentication
 						recipeList.ShowDialog();
 					}
 				}
+			} else
+			{
+				MessageBox.Show("User not valid", "Warning", MessageBoxButtons.OK);
+				return;
 			}
-			MessageBox.Show("User not valid", "Warning", MessageBoxButtons.OK);
-			return;
 		}
 		private bool checkLogin(string username, string password)
 		{

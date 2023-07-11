@@ -1,4 +1,7 @@
-﻿using Services.Service;
+﻿using Recipe_Organizer_PRN211.Authentication;
+using Recipe_Organizer_PRN211.Recipe;
+using Services.Models;
+using Services.Service;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,9 +21,11 @@ namespace Recipe_Organizer_PRN211.Plan
 
 
         #region Peoperties
-        private string filePath = "data.xml";
 
+        private MealPlanningRepository _mealPlanningRepository = new MealPlanningRepository();
+        private RecipeRepository _recipeRepository = new RecipeRepository();
         private List<List<Button>> matrix;
+
 
         public List<List<Button>> Matrix
         {
@@ -43,15 +48,15 @@ namespace Recipe_Organizer_PRN211.Plan
             InitializeComponent();
 
             LoadMatrix();
+            int userId = Recipe_Organizer_PRN211.Authentication.AppContext.CurrentUser.UserId;
 
-            try
+            Job = DeserializeFromXML(userId);
+            if (job == null)
             {
-                Job = DeserializeFromXML(filePath) as PlanData;
+                Plan.AppContext.planData = new PlanData();
             }
-            catch
-            {
-                SetDefaultJob();
-            }
+
+
         }
 
         void SetDefaultJob()
@@ -61,9 +66,8 @@ namespace Recipe_Organizer_PRN211.Plan
             Job.Job.Add(new PlanItem()
             {
                 Date = DateTime.Now,
-                FromTime = new Point(4, 0),
-                ToTime = new Point(5, 0),
-                Job = "Thử nghiệm thôi",
+
+                RecipeId = -1,
                 Status = PlanItem.ListStatus[(int)EPlanItem.Breakfast]
             });
         }
@@ -98,7 +102,9 @@ namespace Recipe_Organizer_PRN211.Plan
             if (string.IsNullOrEmpty((sender as Button).Text))
                 return;
             DailyPlan daily = new DailyPlan(new DateTime(dtpkDate.Value.Year, dtpkDate.Value.Month, Convert.ToInt32((sender as Button).Text)), Job);
+            this.Hide();
             daily.ShowDialog();
+            this.Show();
         }
 
         int DayOfMonth(DateTime date)
@@ -196,42 +202,86 @@ namespace Recipe_Organizer_PRN211.Plan
             SetDefaultDate();
         }
 
-        private void SerializeToXML(object data, string filePath)
+
+
+        private PlanData DeserializeFromXML(int userId)
         {
-            FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write);
-            XmlSerializer sr = new XmlSerializer(typeof(PlanData));
+            List<MealPlanning> mealPlannings = _mealPlanningRepository.getListRecipesByUserId(userId);
 
-            sr.Serialize(fs, data);
-
-            fs.Close();
-        }
-
-        private object DeserializeFromXML(string filePath)
-        {
-            FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read);
-            try
+            PlanData data = new PlanData();
+            data.Job = new List<PlanItem>();
+            if (mealPlannings.Count > 0)
             {
-                XmlSerializer sr = new XmlSerializer(typeof(PlanData));
+                foreach (MealPlanning item in mealPlannings)
+                {
+                    data.Job.Add(new PlanItem()
+                    {
+                        Date = item.WeekStartDate,
+                        RecipeId = item.RecipeId,
+                        Status = item.Session,
+                        UserId = userId
+                    });
+                }
+            }
 
-                object result = sr.Deserialize(fs);
-                fs.Close();
-                return result;
-            }
-            catch (Exception e)
-            {
-                fs.Close();
-                throw new NotImplementedException();
-            }
+            return data;
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            SerializeToXML(Job, filePath);
+            List<MealPlanning> mealPlannings = new List<MealPlanning>();
+            int userId = Recipe_Organizer_PRN211.Authentication.AppContext.CurrentUser.UserId;
+            if (Job.Job == null)
+
+            {
+                Job = Plan.AppContext.planData;
+            }
+            if (Job.Job == null)
+            {
+                _mealPlanningRepository.DeleteAllPlan(userId);
+            }
+            else
+
+            if (Job.Job.Count > 0)
+            {
+                foreach (PlanItem item in Job.Job)
+                {
+                    if (item.RecipeId != -1)
+                    {
+                        mealPlannings.Add(new MealPlanning()
+                        {
+                            RecipeId = item.RecipeId,
+                            UserId = item.UserId,
+                            Session = item.Status,
+                            WeekStartDate = item.Date
+                        });
+                    }
+                }
+
+
+                _mealPlanningRepository.SavePlan(mealPlannings, userId);
+            }
+
+
+
+        }
+
+        private void btnQuit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+			SearchRecipe searchForm = new SearchRecipe();
+			searchForm.Show();
+		}
+        private void PlanView_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
 
 
-    
-	
+
+
+
+
 

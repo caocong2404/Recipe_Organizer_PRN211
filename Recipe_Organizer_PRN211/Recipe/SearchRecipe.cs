@@ -1,4 +1,5 @@
 ﻿using Recipe_Organizer_PRN211.Authentication;
+using Recipe_Organizer_PRN211.Plan;
 using Services.Models;
 using Services.Service;
 using Services.Services;
@@ -33,7 +34,7 @@ namespace Recipe_Organizer_PRN211.Recipe
 			string searchValue = txtSearch.Text;
 			if (searchValue.Length > 0)
 			{
-				var recipeList = _recipeRepository.getRecipe(searchValue);
+				var recipeList = _recipeRepository.searchRecipeWithStatus(searchValue, "public");
 
 				// Update DataGridView
 				//dgvRecipeList.DataSource = new BindingSource()
@@ -63,7 +64,7 @@ namespace Recipe_Organizer_PRN211.Recipe
 
 		private void RefreshRecipeList()
 		{
-			var recipeList = _recipeRepository.GetAll();
+			var recipeList = _recipeRepository.GetRecipeWithStatus("public");
 			//dgvRecipeList.DataSource = new BindingSource()
 			//{
 			//	DataSource = recipeList.Select(r => new
@@ -111,7 +112,7 @@ namespace Recipe_Organizer_PRN211.Recipe
 				{
 					AppContext.RecipeId = recipeId;
 					this.Hide();
-					RecipeDetail recipeDetailForm = new RecipeDetail();
+					RecipeDetail recipeDetailForm = new RecipeDetail(1);
 					recipeDetailForm.ShowDialog();
 				}
 				else
@@ -149,7 +150,14 @@ namespace Recipe_Organizer_PRN211.Recipe
 		{
 			Form addReipce = new AddRecipe();
 			this.Hide();
-			addReipce.Show();
+			addReipce.ShowDialog();
+		}
+
+		private void btnMealPlanning_Click(object sender, EventArgs e)
+		{
+			Form mealPlanning = new PlanView();
+			this.Hide();
+			mealPlanning.ShowDialog();
 		}
 	}
 }
